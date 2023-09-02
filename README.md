@@ -22,15 +22,17 @@ The trickiest thing I have found, particularly earlier in my career was that I c
 
 I could sit and do HackerRank challenges for days on end, and it wouldn't really sink in. I tried other sources to varying degrees of success including YouTube videos, books, paid for online Udemy-type courses.
 
-A lot of the time, I'd learn syntax or the rough outline of concepts but I was missing a key piece. How does one go about building robust software.
+A lot of the time, I'd learn syntax or the rough outline of concepts but I was missing a key piece. How does one go about building robust software? Unfortunately, this wasn't easily attained.
 
 ### What this course is
 
-The intention for this is to stand up as an end-to-end course. To teach the reader the fundementals of good software engineering, to demonstrate how to write effective tests and why this should be the first big thing you learn. And then how this can underpin your daily work.
+The intention for this is to stand up as a thorough course. To teach the reader the fundementals of good software engineering. To demonstrate how to write effective tests and why this should be the first big thing you learn. And then how this can underpin your daily work.
 
 ### What this course is not
 
 Unfortunately the realm of software engineering is enourmous. And I'd be lying to you if I said I could cover all of it. In fact, I'd bet my house that if anyone made that claim then they would also be lying too!
+
+So there will be a number of things which this course will not address. For these points, we will _signpost the way out._
 
 ***
 
