@@ -32,3 +32,12 @@ The intention for this is to stand up as an end-to-end course. To teach the read
 
 Unfortunately the realm of software engineering is enourmous. And I'd be lying to you if I said I could cover all of it. In fact, I'd bet my house that if anyone made that claim then they would also be lying too!
 
+***
+
+## Prerequisites
+
+This course assumes the following of the reader:
+
+* Basic knowledge of types such as integers, booleans and strings.
+* Basic knowledge of data structures like lists, sets, tuples and dictionaries.
+* Basic knowledge of control flow.
