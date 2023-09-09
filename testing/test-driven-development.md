@@ -1,4 +1,4 @@
-# Test Driven Development
+# Test driven development
 
 ## Introduction
 
@@ -24,6 +24,16 @@ I have tried a number of methods over the years but I have found that taking a T
 
 And then there is the fact that it is also simply not for everyone. We are all different and unique in our own ways. The biggest thing to remember is we learn in different ways. And **figuring out the best learning approach which works for you** is in itself an incredibly useful skill to have.
 
-And with that in mind, I'm not going to tell you which approach you should adopt.
+And with that in mind, I am not going to tell you which approach you should adopt.
 
-Next up, we will take a short walkthrough writing our first function with TDD.
+## Red-green-refactor
+
+TDD has a cyclic approach with 3 main phases of the cycle. It is often referred to as the _red blue green_ refactor cycle.
+
+The 3 phases are intended to force us into the following:
+
+* Red - We write a test which we know will fail. We should also run the test to ensure that we see the _red_ i.e. the test failing.
+* Green - We write a small piece of source code and run our test to ensure that we see the _green_ i.e. the test now passing. In this phase we just care about writing enough to get us to the _green_ state. Being in the red is not safe ground, so the general principle is that we want to get back to _green_ as quick as possible.
+* Refactor - Now that we know our test passes with a pretty minimal implementation, we can spend this phase improving our implementation. This is the phase we use to care about optimizations.&#x20;
+
+Next up, we will take a short walkthrough writing our first simple function with TDD.

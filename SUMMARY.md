@@ -5,4 +5,8 @@
 ## Testing
 
 * [Context](testing/context.md)
-* [Test Driven Development](testing/test-driven-development.md)
+* [Test driven development](testing/test-driven-development.md)
+
+***
+
+* [Writing our first function](writing-our-first-function.md)
