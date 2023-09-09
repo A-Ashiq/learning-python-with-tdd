@@ -82,7 +82,7 @@ With this in mind, it's important to strike the right balance. For the most part
 
 This is of course caveated. This advice probably applies to most types of systems we work on, but not all.
 
-Next up, we will take a short walkthrough writing our first simple function with TDD.
+Next up, we will get our environment set up so that we can commence our development work.
 
 ## References
 

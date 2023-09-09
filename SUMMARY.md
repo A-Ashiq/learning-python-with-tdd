@@ -7,4 +7,8 @@
 * [Context](testing/context.md)
 * [Test driven development](testing/test-driven-development.md)
 * [Types of tests](testing/types-of-tests.md)
-* [Writing our first function](testing/writing-our-first-function.md)
+
+## Getting started
+
+* [Environment setup](getting-started/environment-setup.md)
+* [Writing our first function](getting-started/writing-our-first-function.md)
