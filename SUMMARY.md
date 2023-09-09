@@ -6,7 +6,5 @@
 
 * [Context](testing/context.md)
 * [Test driven development](testing/test-driven-development.md)
-
-***
-
-* [Writing our first function](writing-our-first-function.md)
+* [Types of tests](testing/types-of-tests.md)
+* [Writing our first function](testing/writing-our-first-function.md)

@@ -34,6 +34,4 @@ The 3 phases are intended to force us into the following:
 
 * Red - We write a test which we know will fail. We should also run the test to ensure that we see the _red_ i.e. the test failing.
 * Green - We write a small piece of source code and run our test to ensure that we see the _green_ i.e. the test now passing. In this phase we just care about writing enough to get us to the _green_ state. Being in the red is not safe ground, so the general principle is that we want to get back to _green_ as quick as possible.
-* Refactor - Now that we know our test passes with a pretty minimal implementation, we can spend this phase improving our implementation. This is the phase we use to care about optimizations.&#x20;
-
-Next up, we will take a short walkthrough writing our first simple function with TDD.
+* Refactor - Now that we know our test passes with a pretty minimal implementation, we can spend this phase improving our implementation. This is the phase we use to care about optimizations.
