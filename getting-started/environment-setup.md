@@ -62,7 +62,25 @@ Here we are saying to `pip` freeze our project dependencies and write them out t
 
 And that gives us a new virtual environment to begin developing within.
 
-With all of that in place, we will take a short walkthrough writing our first simple function with TDD.
+## Installating test runner
+
+And finally, we will need to install a test runner.
+
+The `unittest` library comes bundled with the standard install of Python but we will be using `pytest`.
+
+`pytest` is a 3rd party library and as such we will need to add it to our project dependencies. To do this we will need to install it with the following command:
+
+```
+pip install pytest
+```
+
+And now lets add it to our project dependencies by calling the following command again:
+
+```
+pip freeze > requirements.txt
+```
+
+With all of that in place, we are ready to take a short walkthrough writing our first simple function with TDD.
 
 ## References
 
