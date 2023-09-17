@@ -11,4 +11,5 @@
 ## Getting started
 
 * [Environment setup](getting-started/environment-setup.md)
+* [Test template](getting-started/test-template.md)
 * [Writing our first function](getting-started/writing-our-first-function.md)
