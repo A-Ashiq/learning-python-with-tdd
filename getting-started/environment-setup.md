@@ -34,9 +34,9 @@ And then we can run the following command to create our first virtual environmen
 python -m venv venv
 ```
 
-Here we are saying to our system-level `python` create a `venv` (a virtual environment) at the current directory position in a subfolder called `venv/`.&#x20;
+Here we are saying to our system-level `python` create a `venv` (a virtual environment) at the current directory position in a subfolder called `venv/`.
 
-<figure><img src="../.gitbook/assets/Screenshot 2023-09-09 at 21.14.56.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2023-09-17 at 10.58.56.png" alt="" width="375"><figcaption></figcaption></figure>
 
 The 1st argument in this command was an instruction to create a virtual environment. The 2nd argument is the name of the folder we want our virtual environment to go in.
 
@@ -85,3 +85,4 @@ With all of that in place, we are ready to take a short walkthrough writing our 
 ## References
 
 * [Virtual environments and packages - Python official docs](https://docs.python.org/3/tutorial/venv.html)
+* [Pytest docs](https://docs.pytest.org/)
