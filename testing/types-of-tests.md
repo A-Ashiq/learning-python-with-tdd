@@ -80,7 +80,9 @@ For example, it would be ill advised to only write unit tests. Although you migh
 
 With this in mind, it's important to strike the right balance. For the most part, use unit tests frequently and integration tests sparingly in comparison. Use higher level tests (end to end, integration) to check for higher level behaviour that would sit closer to the user.
 
-This is of course caveated. This advice probably applies to most types of systems we work on, but not all.
+We should aim for a balanced test suite. End to end tests can tell us if our system as a whole is working in the way we want. But they are expensive and can be harder to debug when they break when compared to lower level tests (unit tests).
+
+This advice comes with a caveat. It probably applies to most types of systems we work on, but not all.
 
 Next up, we will get our environment set up so that we can commence our development work.
 
