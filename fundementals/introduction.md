@@ -11,4 +11,6 @@ For each concept, we will write tests to verify expected/claimed behaviours. You
 
 By the end of this chapter, we will be familiar with the main core concepts of the language as well being pretty comfortable with idea of relying on tests to take the wheel for us.  &#x20;
 
-We will also get used to the idea of writing tests to confirm our beliefs, to make sure our code is behaving in the ways we want it to.
+We will also get used to the idea of writing tests to confirm our beliefs, and even to disprove theories.
+
+> As software engineers, we have the ultimate gift of lightning fast and incredibly cheap feedback loops during our day-to-day work in the form of automated tests. Compared to other professions this can feel like magic dust. So we should take full advantage of that!
