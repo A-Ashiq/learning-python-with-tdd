@@ -2,7 +2,9 @@
 
 The first of the data structures we will cover is the list.
 
-Lists are an ordered built-in data structure of variable capacity. You might have heard them referred to as arrays from people coming from other languages and for all intents and purposes they are the same.&#x20;
+Lists are an ordered, indexed built-in data structure of variable capacity. You might have heard them referred to as arrays from people coming from other languages and for all intents and purposes they are the same.&#x20;
+
+Lists can be instantiated with a pair of square brackets, `[]` or via the contsructor `list()`.
 
 To start of with we should create a new file in which we can write our tests. So in your terminal lets use the following command:
 
