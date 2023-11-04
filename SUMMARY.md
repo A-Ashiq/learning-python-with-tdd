@@ -14,6 +14,11 @@
 * [Test template](getting-started/test-template.md)
 * [Writing our first function](getting-started/writing-our-first-function.md)
 
+## Fundementals
+
+* [Introduction](fundementals/introduction.md)
+* [Lists](fundementals/lists.md)
+
 ## Building an application together
 
 * [Introduction](building-an-application-together/introduction.md)
