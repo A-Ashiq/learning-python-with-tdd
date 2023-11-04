@@ -102,9 +102,17 @@ Let's try this again, but this time let's remove an item:
 
 > From here on out we will be writing each test as a method on our test class. The rest of the test class will be omitted for brevity.
 
+```
+test_lists.py:17 (TestLists.test_item_can_be_removed)
+[1, 2] != [1, 2, 3]
+
+Expected :[1, 2, 3]
+Actual   :[1, 2]
+```
+
 Again, our test will fail. That's because our assertion claims that the `numbers` list will still contain the item that we just removed.
 
-Here we can determine that the `remove()` method takes an object and removes the first occurence of that item from the list. In our case we took a list which contained the integers 1, 2 and 3, and removed the first instance of the number 3. For our list, we only had the 1 instance of the integer 3 in our list.
+But from this we can determine that the `remove()` method takes an object and removes the first occurence of that item from the list. In our case we took a list which contained the integers 1, 2 and 3, and removed the first instance of the number 3. For our list, we only had the 1 instance of the integer 3 in our list.
 
 If we refactor our test with the correct assertion, we can see the difference:
 
