@@ -212,7 +212,62 @@ Another really useful property about lists, is that they are indexed. This means
 
 The fact that lists are indexed provide us with the ability to manipulate lists in situations when we don't know ahead of time what items are in the list, or we don't care.
 
-***
+### Retrieving the index of an item
+
+Getting the index of an item is pretty straight forward. We can call `index()` on the list object with the first argument being the item itself:
+
+```python
+    def test_index_returns_correct_value(self):
+        """
+        Given a list of strings
+        When `index()` is called for a given string
+        Then the correct index is returned
+        """
+        # Given
+        items = ["a", "b", "c"]
+
+        # When
+        index = items.index("b")
+
+        # Then
+        assert index == "b"
+
+```
+
+Once again, this test is going to fail:
+
+```
+FAILED                              [100%]
+test_lists.py:49 (TestLists.test_index)
+1 != 'b'
+
+Expected :'b'
+Actual   :1
+<Click to see difference>
+```
+
+Listening to our test and we can see that the returned index is 1. So let's refactor our test
+
+```python
+    def test_index_returns_correct_value(self):
+        """
+        Given a list of strings
+        When `index()` is called for a given string
+        Then the correct index is returned
+        """
+        # Given
+        items = ["a", "b", "c"]
+
+        # When
+        index = items.index("b")
+
+        # Then
+        assert index == 1
+```
+
+And now that our test passes, we've confirmed our theory.
+
+##
 
 ## References
 
