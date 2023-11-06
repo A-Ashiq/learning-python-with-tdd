@@ -118,7 +118,7 @@ But from this we can determine that the `remove()` method takes an object and re
 
 If we refactor our test with the correct assertion, we can see the difference:
 
-```
+```python
     def test_item_can_be_removed(self):
         """
         Given a list of integers
@@ -139,6 +139,78 @@ If we refactor our test with the correct assertion, we can see the difference:
 With this test passing, we've confirmed the basic idea of **mutability** to ourselves. We have also found out how to use the `append()` and `remove()` methods on the `list` object to change the `list` after it has been created.
 
 > We're kinda stretching the idea/purpose of TDD here, but this chapter is primarily about us gaining an understanding of the core language concepts and of course writing tests to verify the behaviours we expect from our code.
+
+### Adding iterables to a list
+
+So we've found that we can add individual items to a list. But we also have the ability to add other iterables to a list, including another list.&#x20;
+
+So let's write a test for this:
+
+```python
+    def test_another_list_can_be_added(self):
+        """
+        Given a list of integers
+        When another list is added to the original list
+        Then all the items in the 2nd list will be added
+        """
+        # Given
+        main_list = [1, 2]
+        items_to_be_added = [3, 4]
+
+        # When
+        main_list.extend(items_to_be_added)
+
+        # Then
+        assert main_list == [1, 2]
+```
+
+As you might have guessed, this test is going to fail:
+
+```
+FAILED          [100%]
+test_lists.py:33 (TestLists.test_another_list_can_be_added)
+[1, 2, 3, 4] != [1, 2]
+
+Expected :[1, 2]
+Actual   :[1, 2, 3, 4]
+<Click to see difference>
+```
+
+Our test is telling us what we expect i.e. the items from the 2nd list have now been added to the first.&#x20;
+
+> With `extend()` we have modified the list in-place.
+
+So let's refactor our test to prove our theory:
+
+```python
+    def test_another_list_can_be_added(self):
+        """
+        Given a list of integers
+        When another list is added to the original list
+        Then all the items in the 2nd list will be added
+        """
+        # Given
+        main_list = [1, 2]
+        items_to_be_added = [3, 4]
+
+        # When
+        main_list.extend(items_to_be_added)
+
+        # Then
+        assert main_list == [1, 2, 3, 4]
+```
+
+And now the test passes. Great!
+
+***
+
+## Indexing
+
+Another really useful property about lists, is that they are indexed. This means that every item in a list is assigned a position. Whereby the first item in the list is denoted with the index of `0`
+
+<figure><img src="../.gitbook/assets/Screenshot 2023-11-06 at 18.49.47.png" alt=""><figcaption><p>In this list of the 3 strings, each item is assigned an index starting from 0</p></figcaption></figure>
+
+The fact that lists are indexed provide us with the ability to manipulate lists in situations when we don't know ahead of time what items are in the list, or we don't care.
 
 ***
 
