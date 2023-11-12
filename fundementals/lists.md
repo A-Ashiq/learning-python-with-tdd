@@ -22,7 +22,7 @@ Unlike some of the other data structures we can **add or remove items** from the
 
 But don't take my word for it. Lets write some tests and verify this claim. Lets start of with setting up our first test, we'll use this to check our previous claim that lists are mutable:
 
-```
+```python
 class TestLists:
     def test_are_mutable(self):
         """
@@ -59,7 +59,7 @@ Actual   :[1, 2, 3, 4]
 
 Remember that we are trying to prove that lists are mutable. So with that in mind, let's refactor our test to catch our expected behaviour:
 
-```
+```python
 class TestLists:    
     def test_item_can_be_added(self):
         """
@@ -84,7 +84,7 @@ Our test now passes, and we've proved the concept of mutability to ourselves.&#x
 
 Let's try this again, but this time let's remove an item:
 
-```
+```python
     def test_item_can_be_removed(self):
         """
         Given a list of integers
@@ -267,13 +267,9 @@ Listening to our test and we can see that the returned index is 1. So let's refa
 
 And now that our test passes, we've confirmed our theory.
 
-
-
 ### Inserting items at a given index
 
 Because lists are indexed, we can also perform interesting operations like slice a list based on a provided index or insert an item into a list at a given position.
-
-
 
 Let's write a test to prove that idea:
 
