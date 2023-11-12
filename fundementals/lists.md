@@ -267,8 +267,202 @@ Listening to our test and we can see that the returned index is 1. So let's refa
 
 And now that our test passes, we've confirmed our theory.
 
-##
+
+
+### Inserting items at a given index
+
+Because lists are indexed, we can also perform interesting operations like slice a list based on a provided index or insert an item into a list at a given position.
+
+
+
+Let's write a test to prove that idea:
+
+```python
+    def test_item_can_be_inserted_at_index(self):
+        """
+        Given a list of items
+        When `insert()` is called for a given item and index
+        Then the item is added to the list at the given index
+        """
+        # Given
+        items = ["a", "c", "d"]
+
+        # When
+        items.insert(1, "b")
+
+        # Then
+        assert items == ["a", "c", "d"]
+
+```
+
+Once again, this test is going to fail as things stand, because our assertion suggests we don't expect the item to be insterted at the position of 1.&#x20;
+
+```
+FAILED      [100%]
+test_lists.py:64 (TestLists.test_item_can_be_inserted_at_index)
+['a', 'b', 'c', 'd'] != ['a', 'c', 'd']
+
+Expected :['a', 'c', 'd']
+Actual   :['a', 'b', 'c', 'd']
+<Click to see difference>
+```
+
+Lets correct our assertion to match up with our theory:
+
+```python
+    def test_item_can_be_inserted_at_index(self):
+        """
+        Given a list of items
+        When `insert()` is called for a given item and index
+        Then the item is added to the list at the given index
+        """
+        # Given
+        items = ["a", "c", "d"]
+
+        # When
+        items.insert(1, "b")
+
+        # Then
+        assert items == ["a", "b", "c", "d"]
+```
+
+Now our test passes, we can see that we've taken our item, in this case the string `"b"` and inserted it at the position of `1`.&#x20;
+
+> Remember, that we have 0-based indexing. Meaning we start counting from 0 instead of 1.
+
+***
+
+## Additional operations
+
+There are a number of other operations which we can use on lists, although some of these also fall under the bracket of mutability.
+
+### Sorting
+
+We can sort items within a list and mutate the list in place. So lets write a test that tries to negate this theory first:
+
+```python
+    def test_can_be_sorted(self):
+        """
+        Given a list of items
+        When `sort()` is called on the list
+        Then the items within the list are sorted
+        """
+        # Given
+        items = ["b", "c", "a"]
+
+        # When
+        items.sort()
+
+        # Then
+        assert items == ["b", "c", "a"]
+```
+
+This test is going to fail because we're trying to say that the list remains as is even after calling `sort()` in the list:
+
+```
+FAILED                      [100%]
+test_lists.py:79 (TestLists.test_can_be_sorted)
+['a', 'b', 'c'] != ['b', 'c', 'a']
+
+Expected :['b', 'c', 'a']
+Actual   :['a', 'b', 'c']
+<Click to see difference>
+```
+
+We can see quite clearly that the items within the list were sorted for us. Refactoring our test slightly should get us in to the green:
+
+```python
+    def test_can_be_sorted(self):
+        """
+        Given a list of items
+        When `sort()` is called on the list
+        Then the items within the list are sorted
+        """
+        # Given
+        items = ["b", "c", "a"]
+
+        # When
+        items.sort()
+
+        # Then
+        assert items == ["a", "b", "c"]
+```
+
+We have barely scratched the surface with how useful `sort()` is here. We can sort by a given attribute, reverse the sorting operation i.e. in descending order too.&#x20;
+
+We can also use the `sorted()` built-in function, which operates in a pretty similar way to the `sort()` method. The key difference being that the `sorted()` function returns a new list instead of mutating the existing list.
+
+For brevity we are not going to go over all of these possibilities. But it would be worth exploring them for yourself, using tests as guardrails to prove these concepts to yourself.
+
+### Counting list length
+
+Another very common and useful operation for lists is the ability to get a count of all the items within a list. This can be acheived via the `len()` call.
+
+We know the drill pretty well at this point, so lets write the test to try and disprove this claim first:
+
+```python
+    def test_can_be_counted(self):
+        """
+        Given a list of items
+        When `len()` is called on the list
+        Then an integer is returned representing the number of items
+        """
+        # Given
+        items = ["b", "c", "a"]
+
+        # When
+        number_of_items = len(items)
+
+        # Then
+        assert number_of_items == 1
+```
+
+This test is going to fail, because we actually have 3 items in the list not 1:
+
+```
+FAILED                     [100%]
+test_lists.py:94 (TestLists.test_can_be_counted)
+3 != 1
+
+Expected :1
+Actual   :3
+<Click to see difference>
+```
+
+Refactoring this test to get us in the green:
+
+```python
+    def test_can_be_counted(self):
+        """
+        Given a list of items
+        When `len()` is called on the list
+        Then an integer is returned representing the number of items
+        """
+        # Given
+        items = ["b", "c", "a"]
+
+        # When
+        number_of_items = len(items)
+
+        # Then
+        assert number_of_items == 3
+```
+
+***
+
+## Summary
+
+In this section we covered a number of key operations and useful characteristics of lists. We drove our learning with tests, discrediting and proving theories to ourselves along the way in what might have felt like a scientific approach at times.
+
+There are a number of things we didn't get round to covering in this section, and it might have been a little foolish to have attempted to do so! With the framework we've used, you can explore other properties and characteristics for yourself.&#x20;
+
+{% hint style="info" %}
+You can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-fundementals/tree/master/lists)
+{% endhint %}
+
+***
 
 ## References
 
 * [Lists | Official Python Documentation](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+* [Examples of source code](https://github.com/A-Ashiq/learning-python-with-tdd-fundementals/tree/master/lists)
