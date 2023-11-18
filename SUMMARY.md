@@ -18,6 +18,7 @@
 
 * [Introduction](fundementals/introduction.md)
 * [Lists](fundementals/lists.md)
+* [Tuples](fundementals/tuples.md)
 
 ## Building an application together
 
