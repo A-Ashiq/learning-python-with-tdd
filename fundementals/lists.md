@@ -24,7 +24,7 @@ But don't take my word for it. Lets write some tests and verify this claim. Lets
 
 ```python
 class TestLists:
-    def test_are_mutable(self):
+    def test_item_can_be_added(self):
         """
         Given a list of integers
         When an integer is added to the list
