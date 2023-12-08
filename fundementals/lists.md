@@ -238,55 +238,39 @@ The fact that lists are indexed provide us with the ability to manipulate lists 
 Getting the index of an item is pretty straight forward. We can call `index()` on the list object with the first argument being the item itself:
 
 ```python
-    def test_index_returns_correct_value(self):
+from src.lists import (
+    add_item_to_list,
+    remove_item_from_list,
+    add_list_to_list,
+    get_index_of_item,
+)
+
+    ...
+    
+    def test_get_index_of_item(self):
         """
         Given a list of strings
-        When `index()` is called for a given string
+        When `get_index_of_item()` is called for a given string
         Then the correct index is returned
         """
         # Given
         items = ["a", "b", "c"]
 
         # When
-        index = items.index("b")
-
-        # Then
-        assert index == "b"
-
-```
-
-Once again, this test is going to fail:
-
-```
-FAILED                              [100%]
-test_lists.py:49 (TestLists.test_index)
-1 != 'b'
-
-Expected :'b'
-Actual   :1
-<Click to see difference>
-```
-
-Listening to our test and we can see that the returned index is 1. So let's refactor our test
-
-```python
-    def test_index_returns_correct_value(self):
-        """
-        Given a list of strings
-        When `index()` is called for a given string
-        Then the correct index is returned
-        """
-        # Given
-        items = ["a", "b", "c"]
-
-        # When
-        index = items.index("b")
+        index = get_index_of_item(items=items, item="b")
 
         # Then
         assert index == 1
 ```
 
-And now that our test passes, we've confirmed our theory.
+Once again, this test is going to fail. We get an `ImportError` so lets go and define it:
+
+```python
+def get_index_of_item(items: list[str], item: str) -> int:
+    return items.index(item)
+```
+
+And now that our test passes, we've confirmed our theory!
 
 ### Inserting items at a given index
 
