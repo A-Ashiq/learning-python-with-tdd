@@ -6,10 +6,10 @@ Tuples are a similar sequence data type to lists. However, tuples are an immutab
 
 Tuples are denoted by comma seperated items. These are often wrapped with round brackets, `()`. But it is the `,` characters not the round brackets which instantiate tuples for us.
 
-To prove some of the core characteristics of tuples, we can create a new test file. In your terminal:
+To prove some of the core characteristics of tuples, we can create a new test file and another file for the source code. In your terminal:
 
 ```
-touch test_tuples.py
+touch tests/test_tuples.py src/tuples.py
 ```
 
 ***
