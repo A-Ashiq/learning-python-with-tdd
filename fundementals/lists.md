@@ -138,7 +138,7 @@ from src.lists import add_item_to_list, remove_item_from_list
 
 ...
 
-def test_item_can_be_removed(self):
+def test_remove_item_from_list(self):
     """
     Given a list of integers
     When `remove_item_from_list()` is called
