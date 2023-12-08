@@ -9,10 +9,10 @@ Lists can be instantiated with a pair of square brackets, `[]` or via the contsr
 To start of with we should create a new file in which we can write our tests. So in your terminal lets use the following command:
 
 ```
-touch test_lists.py
+touch tests/test_lists.py
 ```
 
-This command will create a new file called `test_lists.py` . With this in place we can start going over a number of concepts around lists, using our tests to _see_ these concepts in action.
+This command will create a new file called `test_lists.py` in the `tests/` directory. With this in place we can start going over a number of concepts around lists, using our tests to _see_ these concepts in action.
 
 ## Mutability
 
@@ -23,62 +23,111 @@ Unlike some of the other data structures we can **add or remove items** from the
 But don't take my word for it. Lets write some tests and verify this claim. Lets start of with setting up our first test, we'll use this to check our previous claim that lists are mutable:
 
 ```python
+from src.lists import add_item_to_list
+
+
 class TestLists:
-    def test_item_can_be_added(self):
+    def test_add_item_to_list(self):
         """
-        Given a list of integers
-        When an integer is added to the list
-        Then the item can be found in the list
+        Given a list of integers and a new number to be added
+        When `add_item_to_list()` is called
+        Then the new number can be found in the list
         """
         # Given
         new_number = 4
         numbers = [1, 2, 3]
 
         # When
-        numbers.append(new_number)
+        new_numbers = add_item_to_list(items=numbers, item=new_number)
 
         # Then
-        assert numbers == [1, 2, 3]
+        assert new_numbers == [1, 2, 3, 4]
 ```
 
-> This test will fail when ran
+> This test will fail when ran because we have not yet defined `add_item_to_list()`
 
-Here we are using the `append()` method on the `list` object.&#x20;
+For this first test case, we are going to apply TDD to the letter. Now remember, that means we adhere to the red-green-refactor cycle.&#x20;
+
+So if we run this test as things stand we will fall at the first hurdle with an import error:
+
+```
+test_lists.py:1: in <module>
+    from src.lists import add_item_to_list
+E   ImportError: cannot import name 'add_item_to_list' from 'src.lists' (/Users/afaanashiq/projects/learn-python-with-tdd/2-fundementals/src/lists.py)
+```
+
+Okay, so we're in the red. Our test is failing because we have tried to import something which does not exist. Also remember that we should listen to our tests and let them guide the way for us.
+
+With this in mind we should start by creating the file:
+
+```
+touch src/lists.py
+```
+
+Within that file we should create the function that our test wanted us to create:
+
+```python
+def add_item_to_list():
+    ...
+```
+
+Note that the ellipsis `...` here acts as a placeholder. This is akin to the `pass` keyword.
+
+Running our test again and we will get another failure. This time we will get a `TypeError`:
+
+```
+FAILED                   [100%]
+test_lists.py:4 (TestLists.test_add_item_to_list)
+self = <test_lists.TestLists object at 0x1045b89b0>
+
+    def test_add_item_to_list(self):
+        """
+        Given a list of integers and a new number to be added
+        When `add_item_to_list()` is called
+        Then the new number can be found in the list
+        """
+        # Given
+        new_number = 4
+        numbers = [1, 2, 3]
+    
+        # When
+>       new_numbers = add_item_to_list(items=numbers, item=new_number)
+E       TypeError: add_item_to_list() got an unexpected keyword argument 'items'
+
+test_lists.py:16: TypeError
+```
+
+Our test is telling us that we tried to pass something into our function that isn't allowed. That's kinda obvious because we didn't define too much in our function.
+
+Right so we need to get out of the red. Being true to the letter of TDD would push us to get back to green as quick as possible with the smallest amount of change and then refactor from safe ground.&#x20;
+
+So with that in mind, let's modify our `add_item_to_list()` function:
+
+```python
+def add_item_to_list(items: list[int], item: int) -> list[int]:
+    return [1, 2, 3, 4]
+```
+
+Now we have defined 2 arguments to the function along with type hints to say that we expect to be provided with a list of integers and another integer.
+
+If you think this function looks terrible you'd be correct, `add_item_to_list()` currently only holds true for the 1 one case of when `items=[1, 2, 3]` and `item=`4.&#x20;
+
+In all other possible test cases, our function will not suffice. But remember our goal was simply to get back to the safe ground of a passing test.
+
+Now that we are in that safe zone, let's refactor our function to finally make use of the `append()` method on the `list` object:
+
+```python
+def add_item_to_list(items: list[int], item: int) -> list[int]:
+    items.append(item)
+    return items
+
+```
 
 As you might have guessed, the `append()` method takes an object and adds it to the end of the list. In our case we took a list which contained the integers 1, 2 and 3, and added the integer 4 to the end of the list.
 
-Our test is in the red state, we've done this on purpose so that we can see the differences between an invalid state compared to what we expect from this.&#x20;
+We could write more test cases against this function. And maybe that might be worth doing in your own time!
 
-```
-test_lists.py:1 (TestLists.test_are_mutable)
-[1, 2, 3, 4] != [1, 2, 3]
-
-Expected :[1, 2, 3]
-Actual   :[1, 2, 3, 4]
-```
-
-Remember that we are trying to prove that lists are mutable. So with that in mind, let's refactor our test to catch our expected behaviour:
-
-```python
-class TestLists:    
-    def test_item_can_be_added(self):
-        """
-        Given a list of integers
-        When an integer is added to the list
-        Then the item can be found in the list
-        """
-        # Given
-        new_number = 4
-        numbers = [1, 2, 3]
-
-        # When
-        numbers.append(new_number)
-
-        # Then
-        assert numbers == [1, 2, 3, new_number]
-```
-
-Our test now passes, and we've proved the concept of mutability to ourselves.&#x20;
+But our test now passes, and we've proved the concept of mutability to ourselves. So let's move on.
 
 ### Removing items from a list
 
