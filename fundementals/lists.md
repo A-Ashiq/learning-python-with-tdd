@@ -379,51 +379,39 @@ Another very common and useful operation for lists is the ability to get a count
 We know the drill pretty well at this point, so lets write the test to try and disprove this claim first:
 
 ```python
-    def test_can_be_counted(self):
+from src.lists import (
+    add_item_to_list,
+    remove_item_from_list,
+    add_list_to_list,
+    get_index_of_item,
+    insert_item_at_index,
+    sort_items_in_list,
+    count_items,
+)
+  
+    ...
+   
+    def test_count_items(self):
         """
         Given a list of items
-        When `len()` is called on the list
+        When `count_items()` is called with the list
         Then an integer is returned representing the number of items
         """
         # Given
         items = ["b", "c", "a"]
 
         # When
-        number_of_items = len(items)
-
-        # Then
-        assert number_of_items == 1
-```
-
-This test is going to fail, because we actually have 3 items in the list not 1:
-
-```
-FAILED                     [100%]
-test_lists.py:94 (TestLists.test_can_be_counted)
-3 != 1
-
-Expected :1
-Actual   :3
-<Click to see difference>
-```
-
-Refactoring this test to get us in the green:
-
-```python
-    def test_can_be_counted(self):
-        """
-        Given a list of items
-        When `len()` is called on the list
-        Then an integer is returned representing the number of items
-        """
-        # Given
-        items = ["b", "c", "a"]
-
-        # When
-        number_of_items = len(items)
+        number_of_items = count_items(items=items)
 
         # Then
         assert number_of_items == 3
+```
+
+With this in place, we know what to expect from our test. So let's write the source code to match:
+
+```python
+def count_items(items: list[str]) -> int:
+    return len(items)
 ```
 
 ***
