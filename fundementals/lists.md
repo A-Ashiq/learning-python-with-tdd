@@ -329,52 +329,42 @@ There are a number of other operations which we can use on lists, although some 
 We can sort items within a list and mutate the list in place. So lets write a test that tries to negate this theory first:
 
 ```python
-    def test_can_be_sorted(self):
-        """
-        Given a list of items
-        When `sort()` is called on the list
-        Then the items within the list are sorted
-        """
-        # Given
-        items = ["b", "c", "a"]
-
-        # When
-        items.sort()
-
-        # Then
-        assert items == ["b", "c", "a"]
+  from src.lists import (
+    add_item_to_list,
+    remove_item_from_list,
+    add_list_to_list,
+    get_index_of_item,
+    insert_item_at_index,
+    sort_items_in_list,
+)
+    
+    ...
+   
+    def test_sort_items_in_list(self):
+      """
+      Given a list of items
+      When `sort_items_in_list()` is called on the list
+      Then the items within the list are sorted
+      """
+      # Given
+      items = ["b", "c", "a"]
+    
+      # When
+      sort_items_in_list(items=items)
+    
+      # Then
+      assert items == ["a", "b", "c"]
+    
 ```
 
-This test is going to fail because we're trying to say that the list remains as is even after calling `sort()` in the list:
-
-```
-FAILED                      [100%]
-test_lists.py:79 (TestLists.test_can_be_sorted)
-['a', 'b', 'c'] != ['b', 'c', 'a']
-
-Expected :['b', 'c', 'a']
-Actual   :['a', 'b', 'c']
-<Click to see difference>
-```
-
-We can see quite clearly that the items within the list were sorted for us. Refactoring our test slightly should get us in to the green:
+So with our test in place lets head over to our source code:
 
 ```python
-    def test_can_be_sorted(self):
-        """
-        Given a list of items
-        When `sort()` is called on the list
-        Then the items within the list are sorted
-        """
-        # Given
-        items = ["b", "c", "a"]
-
-        # When
-        items.sort()
-
-        # Then
-        assert items == ["a", "b", "c"]
+ def sort_items_in_list(items: list[str]) -> list[str]:
+    return items.sort()
 ```
+
+And with that in place we have a passing test!
 
 We have barely scratched the surface with how useful `sort()` is here. We can sort by a given attribute, reverse the sorting operation i.e. in descending order too.&#x20;
 
