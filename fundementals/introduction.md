@@ -14,3 +14,13 @@ By the end of this chapter, we will be familiar with the main core concepts of t
 We will also get used to the idea of writing tests to confirm our beliefs, and even to disprove theories.
 
 > As software engineers, we have the ultimate gift of lightning fast and incredibly cheap feedback loops during our day-to-day work in the form of automated tests. Compared to other professions this can feel like magic dust. So we should take full advantage of that!
+
+***
+
+With that in mind, we should get our project structure set up. Run the following command to get started:
+
+```
+mkdir src tests
+```
+
+This command will create 2 folders for us, 1 called `src/` and another called `tests/` . As you might have guessed in the `src/` folder we will place all of our source code. And our`tests/` folder will be the home for our accompanying tests.
