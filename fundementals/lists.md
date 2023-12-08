@@ -189,10 +189,10 @@ So we've found that we can add individual items to a list. But we also have the 
 So let's write a test for this:
 
 ```python
-    def test_another_list_can_be_added(self):
+    def test_add_list_to_list(self):
         """
-        Given a list of integers
-        When another list is added to the original list
+        Given 2 list of integers and
+        When `add_list_to_list()` is called
         Then all the items in the 2nd list will be added
         """
         # Given
@@ -200,49 +200,24 @@ So let's write a test for this:
         items_to_be_added = [3, 4]
 
         # When
-        main_list.extend(items_to_be_added)
+        new_numbers = add_list_to_list(items=main_list, items_to_be_added=items_to_be_added)
 
         # Then
-        assert main_list == [1, 2]
+        assert new_numbers == [1, 2, 3, 4]
 ```
 
-As you might have guessed, this test is going to fail:
+As you might have guessed, this test is going to fail.
 
-```
-FAILED          [100%]
-test_lists.py:33 (TestLists.test_another_list_can_be_added)
-[1, 2, 3, 4] != [1, 2]
+Our test is telling us what we expect so we should go and define our function:
 
-Expected :[1, 2]
-Actual   :[1, 2, 3, 4]
-<Click to see difference>
-```
-
-Our test is telling us what we expect i.e. the items from the 2nd list have now been added to the first.&#x20;
+<pre class="language-python"><code class="lang-python"><strong>def add_list_to_list(items: list[int], items_to_be_added: list[int]) -> list[int]:
+</strong>    items.extend(items_to_be_added)
+    return items
+</code></pre>
 
 > With `extend()` we have modified the list in-place.
 
-So let's refactor our test to prove our theory:
-
-```python
-    def test_another_list_can_be_added(self):
-        """
-        Given a list of integers
-        When another list is added to the original list
-        Then all the items in the 2nd list will be added
-        """
-        # Given
-        main_list = [1, 2]
-        items_to_be_added = [3, 4]
-
-        # When
-        main_list.extend(items_to_be_added)
-
-        # Then
-        assert main_list == [1, 2, 3, 4]
-```
-
-And now the test passes. Great!
+We've skipped a couple of steps to get to our proof a little quicker. So feel free to write some more test cases against this function.
 
 ***
 
