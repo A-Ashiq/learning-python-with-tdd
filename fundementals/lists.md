@@ -136,23 +136,23 @@ Let's try this again, but this time let's remove an item:
 ```python
 from src.lists import add_item_to_list, remove_item_from_list
 
-...
+    ...
 
-def test_remove_item_from_list(self):
-    """
-    Given a list of integers
-    When `remove_item_from_list()` is called
-    Then the item cannot be found in the list
-    """
-    # Given
-    number_to_remove = 3
-    numbers = [1, 2, number_to_remove]
-
-    # When
-    new_numbers = remove_item_from_list(items=numbers, item=number_to_remove)
-
-    # Then
-    assert new_numbers == [1, 2]
+    def test_remove_item_from_list(self):
+        """
+        Given a list of integers
+        When `remove_item_from_list()` is called
+        Then the item cannot be found in the list
+        """
+        # Given
+        number_to_remove = 3
+        numbers = [1, 2, number_to_remove]
+    
+        # When
+        new_numbers = remove_item_from_list(items=numbers, item=number_to_remove)
+    
+        # Then
+        assert new_numbers == [1, 2]
 ```
 
 > From here on out we will be writing each test as a method on our test class. The rest of the test class will be omitted for brevity.
@@ -189,6 +189,10 @@ So we've found that we can add individual items to a list. But we also have the 
 So let's write a test for this:
 
 ```python
+from src.lists import add_item_to_list, remove_item_from_list, add_list_to_list
+
+    ...
+    
     def test_add_list_to_list(self):
         """
         Given 2 list of integers and
