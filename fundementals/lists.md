@@ -279,52 +279,39 @@ Because lists are indexed, we can also perform interesting operations like slice
 Let's write a test to prove that idea:
 
 ```python
-    def test_item_can_be_inserted_at_index(self):
+from src.lists import (
+    add_item_to_list,
+    remove_item_from_list,
+    add_list_to_list,
+    get_index_of_item,
+    insert_item_at_index,
+)
+
+    ...
+    
+    def test_insert_item_at_index(self):
         """
         Given a list of items
-        When `insert()` is called for a given item and index
+        When `test_insert_item_at_index()` is called
+            for a given item and index
         Then the item is added to the list at the given index
         """
         # Given
         items = ["a", "c", "d"]
 
         # When
-        items.insert(1, "b")
-
-        # Then
-        assert items == ["a", "c", "d"]
-
-```
-
-Once again, this test is going to fail as things stand, because our assertion suggests we don't expect the item to be insterted at the position of 1.&#x20;
-
-```
-FAILED      [100%]
-test_lists.py:64 (TestLists.test_item_can_be_inserted_at_index)
-['a', 'b', 'c', 'd'] != ['a', 'c', 'd']
-
-Expected :['a', 'c', 'd']
-Actual   :['a', 'b', 'c', 'd']
-<Click to see difference>
-```
-
-Lets correct our assertion to match up with our theory:
-
-```python
-    def test_item_can_be_inserted_at_index(self):
-        """
-        Given a list of items
-        When `insert()` is called for a given item and index
-        Then the item is added to the list at the given index
-        """
-        # Given
-        items = ["a", "c", "d"]
-
-        # When
-        items.insert(1, "b")
+        insert_item_at_index(items=items, index=1, item="b")
 
         # Then
         assert items == ["a", "b", "c", "d"]
+
+```
+
+Once again, this test is going to fail as things stand, because we haven't defined our function. So lets do just that:
+
+```python
+def insert_item_at_index(items: list[str], index: int, item: str) -> list[str]:
+    return items.insert(index, item)
 ```
 
 Now our test passes, we can see that we've taken our item, in this case the string `"b"` and inserted it at the position of `1`.&#x20;
