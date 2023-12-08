@@ -134,60 +134,53 @@ But our test now passes, and we've proved the concept of mutability to ourselves
 Let's try this again, but this time let's remove an item:
 
 ```python
-    def test_item_can_be_removed(self):
-        """
-        Given a list of integers
-        When an integer is removed from the list
-        Then the item cannot be found in the list
-        """
-        # Given
-        number_to_remove = 3
-        numbers = [1, 2, number_to_remove]
+from src.lists import add_item_to_list, remove_item_from_list
 
-        # When
-        numbers.remove(number_to_remove)
+...
 
-        # Then
-        assert numbers == [1, 2, number_to_remove]
+def test_item_can_be_removed(self):
+    """
+    Given a list of integers
+    When `remove_item_from_list()` is called
+    Then the item cannot be found in the list
+    """
+    # Given
+    number_to_remove = 3
+    numbers = [1, 2, number_to_remove]
+
+    # When
+    new_numbers = remove_item_from_list(items=numbers, item=number_to_remove)
+
+    # Then
+    assert new_numbers == [1, 2]
 ```
 
 > From here on out we will be writing each test as a method on our test class. The rest of the test class will be omitted for brevity.
 
-```
-test_lists.py:17 (TestLists.test_item_can_be_removed)
-[1, 2] != [1, 2, 3]
+Again, this test is going to fail because we have not defined the `remove_item_from_list` function.
 
-Expected :[1, 2, 3]
-Actual   :[1, 2]
-```
-
-Again, our test will fail. That's because our assertion claims that the `numbers` list will still contain the item that we just removed.
-
-But from this we can determine that the `remove()` method takes an object and removes the first occurence of that item from the list. In our case we took a list which contained the integers 1, 2 and 3, and removed the first instance of the number 3. For our list, we only had the 1 instance of the integer 3 in our list.
-
-If we refactor our test with the correct assertion, we can see the difference:
+So let's head over to our `src/lists.py` file and define that function for ourselves:
 
 ```python
-    def test_item_can_be_removed(self):
-        """
-        Given a list of integers
-        When an integer is removed from the list
-        Then the item cannot be found in the list
-        """
-        # Given
-        number_to_remove = 3
-        numbers = [1, 2, number_to_remove]
-
-        # When
-        numbers.remove(number_to_remove)
-
-        # Then
-        assert numbers == [1, 2]
+def remove_item_from_list(items: list[int], item: int) -> list[int]:
+    return [1, 2]
 ```
+
+Once again, our test will pass. But it doesn't really mean much functionally. We just want to get to the green zone so we can think in safety about our implementation:
+
+```python
+def remove_item_from_list(items: list[int], item: int) -> list[int]:
+    items.remove(item)
+    return items
+```
+
+Now we can see our test passes. Again, this would be a good opportunity to write some more tests cases against this function.
+
+From this we can determine that the `remove()` method takes an object and removes the first occurence of that item from the list. In our case we took a list which contained the integers 1, 2 and 3, and removed the first instance of the number 3. For our list, we only had the 1 instance of the integer 3 in our list.
 
 With this test passing, we've confirmed the basic idea of **mutability** to ourselves. We have also found out how to use the `append()` and `remove()` methods on the `list` object to change the `list` after it has been created.
 
-> We're kinda stretching the idea/purpose of TDD here, but this chapter is primarily about us gaining an understanding of the core language concepts and of course writing tests to verify the behaviours we expect from our code.
+> This chapter is primarily about us gaining an understanding of the core language concepts and of course writing tests to verify the behaviours we expect from our code. As we go further along you'll see more of the benefits of TDD.
 
 ### Adding iterables to a list
 
