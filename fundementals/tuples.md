@@ -9,7 +9,7 @@ Tuples are denoted by comma seperated items. These are often wrapped with round 
 To prove some of the core characteristics of tuples, we can create a new test file and another file for the source code. In your terminal:
 
 ```
-touch tests/test_tuples.py src/tuples.py
+touch tests/test_tuples.py
 ```
 
 ***
