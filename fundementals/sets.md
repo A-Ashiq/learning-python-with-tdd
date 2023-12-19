@@ -105,3 +105,49 @@ class TestSets:
 Running this and our test now passes.
 
 ***
+
+## Difference
+
+There are a number of operations specific to the `set` data structure which are grounded in the core mathematics world.
+
+The first one we are going to look at is the `difference` operation. The `difference` operation allows us to find all the items in 1 `set` when compared to another `set`.
+
+Let's write a test for this:
+
+```python
+from src.tuples import get_difference
+
+    ...
+    
+    def test_get_difference(self):
+        """
+        Given 2 sets
+        When `get_difference()` is called
+        Then the returned set contains 
+            the difference of set A against set B
+        """
+        # Given
+        main = {"a", "b"}
+        secondary = set("b")
+
+        # When
+        difference: set = get_difference(main=main, secondary=secondary)
+
+        # Then
+        assert difference == {"a"}
+```
+
+You know the drill by now. Our `NameError` will tell us to go and write our `get_difference()` function:
+
+```python
+def get_difference(main: set, secondary: set) -> set:
+    return set(main).difference(secondary)
+```
+
+{% hint style="info" %}
+Note that `set(main).difference(secondary)`would also be equivalent to `main - difference`.
+{% endhint %}
+
+With our function in place, the last thing we need to do is run our now passing test.
+
+***
