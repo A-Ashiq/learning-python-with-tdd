@@ -100,6 +100,6 @@ This might feel a little alien, but its important for us to be able to test for 
 In this section we covered key characteristics of tuples.
 
 {% hint style="info" %}
-You can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-fundementals/tree/master/tuples)
+You can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-course-materials)
 {% endhint %}
 

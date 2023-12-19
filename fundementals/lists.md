@@ -423,7 +423,7 @@ In this section we covered a number of key operations and useful characteristics
 There are a number of things we didn't get round to covering in this section, and it might have been a little foolish to have attempted to do so! With the framework we've used, you can explore other properties and characteristics for yourself.&#x20;
 
 {% hint style="info" %}
-You can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-fundementals/tree/master/lists)
+You can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-course-materials)
 {% endhint %}
 
 ***
