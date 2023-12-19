@@ -8,6 +8,10 @@ Let's create ourselves a test file so that we can prove some of these concepts t
 touch sets.py test_sets.py
 ```
 
+***
+
+## Deduplication
+
 In our test file, we are going to write a test to prove the de-deduplication concept to ourselves:
 
 ```python
@@ -100,3 +104,4 @@ class TestSets:
 
 Running this and our test now passes.
 
+***
