@@ -145,7 +145,7 @@ def get_difference(main: set, secondary: set) -> set:
 ```
 
 {% hint style="info" %}
-Note that `set(main).difference(secondary)`would also be equivalent to `main - difference`.
+Note that `main - difference` would be shorthand for `set(main).difference(secondary)`.
 {% endhint %}
 
 With our function in place, the last thing we need to do is run our now passing test.
