@@ -123,6 +123,54 @@ We can check the key is in the dictionary with the followng:
 
 We cannot however check that the value of `123` is in the dictionary with this approach. Remember that the keys are hashed and this is how we access items in dictionaries.
 
+### Accessing key value pairs
+
+Lets say we have a dictionary and we try to access a key which does not exist in that dictionary. What do you think should happen?
+
+Well the answer is. It depends on how we tried to access the key. With dictionaries we have 2 primary methods of accessing keys.&#x20;
+
+We can access keys with the square bracket notation or with the `get()` method.  If we try to access a key which does not exist via the square bracket notation, then a `KeyError` will be raised.
+
+Note that the `get()` method is simply a try/except catch whereby we can return a default value instead of allowing the `KeyError` to be raised.
+
+```python
+import pytest
+
+from src.dicts import add_item_to_dict, get_item_from_dict
+
+class TestDicts:
+    
+  ...  
+    
+    def test_looking_up_non_existent_key_raises_error(self):
+        """
+        Given a dictionary and a non-existent key
+        When `get_item_from_dict()` is called
+        Then a `KeyError` is raised
+        """
+        # Given
+        items = {}
+        key = "abc"
+        
+        # When / Then
+        with pytest.raises(expected_exception=KeyError):
+            get_item_from_dict(items=items, key=key)
+        
+```
+
+Heading over to our source code file we can implement our new function:
+
+```python
+def get_item_from_dict(items: dict, key: str) -> int:
+    return items[key]
+```
+
+Running the test and we can see it passes.
+
+Trying to look up a key which does not exist will throw a `KeyError`. This tells us explicitly that our operation failed because we tried to look up a key which was not in the dictionary at the point in which we enacted the lookup.
+
+This is important because in this scenario we can _catch_ this error and decide how we want to treat the failure scenario. This is known as control flow and is incredibly useful for us to be able to manipulate.
+
 ***
 
 ## Summary
