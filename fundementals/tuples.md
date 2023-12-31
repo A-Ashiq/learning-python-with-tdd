@@ -85,7 +85,7 @@ class TestTuples:
         items = "a", "b", "c"
 
         # When / Then
-        with pytest.raises(TypeError):
+        with pytest.raises(expected_exception=TypeError):
             items[3] = "d"
 ```
 
