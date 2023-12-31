@@ -20,6 +20,7 @@
 * [Lists](fundementals/lists.md)
 * [Tuples](fundementals/tuples.md)
 * [Sets](fundementals/sets.md)
+* [Dictionaries](fundementals/dictionaries.md)
 
 ## Building an application together
 
