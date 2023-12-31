@@ -5,7 +5,7 @@ A set in Python is an unordered array-like data structure. The most interesting 
 Let's create ourselves a test file so that we can prove some of these concepts to ourselves.
 
 ```
-touch sets.py test_sets.py
+touch src/sets.py tests/test_sets.py
 ```
 
 ***
