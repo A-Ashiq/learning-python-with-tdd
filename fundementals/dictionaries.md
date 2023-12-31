@@ -103,11 +103,33 @@ This will overwrite the original value of key with our new value.
 
 ***
 
+## Looking up items
 
+As mentioned previously, dictionaries are a key-value pair data structure from which we look up each pair via their key.
 
+Let's say we have the following dictionary:
 
+```python
+items = {"abc": 123}
+```
 
+In this case, `"abc"` is the only key in the dictionary. Its corresponding value is `123`.
 
+We can check the key is in the dictionary with the followng:
+
+```python
+"abc" in items
+```
+
+We cannot however check that the value of `123` is in the dictionary with this approach. Remember that the keys are hashed and this is how we access items in dictionaries.
+
+***
+
+## Summary
+
+Dictionaries are useful due to their flexibility and performance benefits. We have the ability to get a sequence based data structure containing just the keys or the values by themselves in addition to the `items()` call that we saw earlier, which can be helpful for iteration type operations.
+
+We can also `pop()` items from a dictionary in a similar way in which we can do with lists.
 
 ***
 
