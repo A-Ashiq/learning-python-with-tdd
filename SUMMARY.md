@@ -21,6 +21,7 @@
 * [Tuples](fundementals/tuples.md)
 * [Sets](fundementals/sets.md)
 * [Dictionaries](fundementals/dictionaries.md)
+* [Error handling](fundementals/error-handling.md)
 
 ## Building an application together
 
