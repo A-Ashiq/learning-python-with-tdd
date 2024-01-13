@@ -43,5 +43,5 @@ But what if the call to `do_something_first()` happened to throw a `KeyError`? I
 
 Confusing right?
 
-This is why we should aim to keep our `try` blocks as small as possible. Ideally 1 liners.
+This is why we should aim to keep our `try` blocks as small as possible. Ideally 1 liners. This reduces the blast errors of our error catching to just the things we know about. We do not want to be in a position where we are burying errors or catching errors unexpectedly. This feels opaque and can often result in more bugs. In this case, we should be more inclined to allow the error to bubble up so that it can be seen and logged.
 
