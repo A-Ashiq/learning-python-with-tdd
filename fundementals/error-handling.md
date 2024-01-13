@@ -8,6 +8,8 @@ Error handling allows us to better control the flow of our programs, to provide 
 
 In this chapter, we will learn how to catch errors and how to treat them. As well as how to handle multiple errors and treat them seperately or differently. We will also go over how and why we might want to raise our own errors too.
 
+***
+
 ## Catching errors
 
 Catching and handling errors in Python is pretty simple. It goes something like this:
@@ -44,4 +46,26 @@ But what if the call to `do_something_first()` happened to throw a `KeyError`? I
 Confusing right?
 
 This is why we should aim to keep our `try` blocks as small as possible. Ideally 1 liners. This reduces the blast errors of our error catching to just the things we know about. We do not want to be in a position where we are burying errors or catching errors unexpectedly. This feels opaque and can often result in more bugs. In this case, we should be more inclined to allow the error to bubble up so that it can be seen and logged.
+
+***
+
+## Handling multiple errors the same way
+
+
+
+
+
+***
+
+## Handling multiple errors differently
+
+
+
+
+
+***
+
+## Summary
+
+
 
