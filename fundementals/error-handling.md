@@ -37,7 +37,42 @@ Okay so now that we've got some of the initial theory down, let's setup the appr
 touch src/error_handling.py tests/test_error_handling.py
 ```
 
+With these files in place, let's write the test:
 
+```python
+from src.error_handling import divide_numbers
+
+
+class TestErrorHandling:
+    def test_divide_returns_fallback_value_for_invalid_string_input(self):
+        """
+        Given an integer and a string
+        When `divide_numbers()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        x = 1
+        invalid_input = "some-string"
+
+        # When
+        value = divide_numbers(x=x, y=invalid_input)
+
+        # Then
+        assert value == "N/A"
+
+```
+
+And now let's write the corresponding `divide_numbers()` function:
+
+```python
+def divide_numbers(x: int, y: int) -> int | str:
+    try:
+        return x / y
+    except TypeError:
+        return "N/A"
+```
+
+Now just a heads up, what we've written for our `divide_numbers()` function is not particularly good. But we'll come to that later in this section. For now, we can see that if we run our test. With an input of a string for 1 of the arguments to our function. Then a `TypeError` will be raised. In our case, the `TypeError` will be caught and treated with the fallback value of `"N/A"`.
 
 ### Focused try blocks
 
