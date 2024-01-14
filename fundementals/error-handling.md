@@ -74,6 +74,46 @@ def divide_numbers(x: int, y: int) -> int | str:
 
 Now just a heads up, what we've written for our `divide_numbers()` function is not particularly good. But we'll come to that later in this section. For now, we can see that if we run our test. With an input of a string for 1 of the arguments to our function. Then a `TypeError` will be raised. In our case, the `TypeError` will be caught and treated with the fallback value of `"N/A"`.
 
+To verify this for yourself, comment out the `try/except` clauses within the `divide_numbers()` function and run the test again:
+
+```python
+def divide_numbers(x: int, y: int) -> int | str:
+    return x / y
+```
+
+With this we are removing the `try/except` catch for the `TypeError` and allowing the exception to bubble up to the surface. If we run the test we should see the traceback associated with the `TypeError`:
+
+```python
+FAILED [100%]
+test_error_handling.py:4 (TestErrorHandling.test_divide_returns_fallback_value_for_invalid_string_input)
+self = <test_error_handling.TestErrorHandling object at 0x104b5f590>
+
+    def test_divide_returns_fallback_value_for_invalid_string_input(self):
+        """
+        Given an integer and a string
+        When `divide_numbers()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        x = 1
+        invalid_input = "some-string"
+    
+        # When
+>       value = divide_numbers(x=x, y=invalid_input)
+
+test_error_handling.py:16: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = 1, y = 'some-string'
+
+    def divide_numbers(x: int, y: int) -> int | str:
+        # try:
+>       return x / y
+E       TypeError: unsupported operand type(s) for /: 'int' and 'str'
+
+../src/error_handling.py:3: TypeError
+```
+
 ### Focused try blocks
 
 Ideally, our `try` blocks should be small and focused. The primary driver behind this is that we should not want to catch errors that we do not know about.&#x20;
