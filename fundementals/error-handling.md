@@ -49,7 +49,7 @@ But what if the call to `do_something_first()` happened to throw a `KeyError`? I
 
 Confusing right?
 
-This is why we should aim to keep our `try` blocks as small as possible. Ideally 1 liners. This reduces the blast errors of our error catching to just the things we know about. We do not want to be in a position where we are burying errors or catching errors unexpectedly. This feels opaque and can often result in more bugs. In this case, we should be more inclined to allow the error to bubble up so that it can be seen and logged.
+This is why we should aim to keep our `try` blocks as small as possible. Ideally 1 liners. This reduces the blast errors of our error catching to just the things we know about. We do not want to be in a position where we are **burying errors or catching errors unexpectedly**. This feels opaque and can **often result in more bugs**. In this case, we should be more inclined to allow the error to bubble up so that it can be seen and logged.
 
 ***
 
@@ -95,11 +95,48 @@ The crucial difference here is that our `except` clauses will be checked and the
 
 ## Else clause
 
+Coming to the more rarely used available features within error handling, brings us to the `else` clause.
 
+The `else` clause can be used to define a block of code which is to be executed if the `try` block ran successfully without throwing an error. This can be useful when we want to keep our `try` blocks small and focused, so that we are not blindly catching exceptions:
 
+```python
+try:
+    do_something_that_passes()
+except KeyError:
+    do_something_else()
+else:
+    do_next_thing()             # this runs after the `try` block executes successfully
+```
 
+So you might be wondering. Why would I bother with this clause?
 
+You might be tempted to re-write the above as follows:
 
+```python
+try:
+    do_something_that_passes()
+except KeyError:
+    do_something_else()
+
+do_next_thing()
+```
+
+However, these are **not** the same.&#x20;
+
+In the 2nd version, where we moved `do_next_thing()` to be outside of the error handling, then `do_next_thing()` will be executed after the error handling. So in theory if a `KeyError` is raised from the execution of the `try` block, we wil then call `do_something_else()`, after which `do_next_thing()` will be called, assuming `do_something_else()` does not stop the execution of the program by say raising another error inside of it.
+
+A pattern that you will likely see a lot of is _returning early_ to control the flow of execution:
+
+```python
+try:
+    do_something_that_passes()
+except KeyError:
+    return do_something_else()
+
+do_next_thing()
+```
+
+In this case, if a `KeyError` is thrown then we will return out of this block and `do_next_thing()` will not be called. Returning early can be considered as turnings off the main path.
 
 ***
 
