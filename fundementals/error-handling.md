@@ -29,6 +29,16 @@ In contrast, if the `try` block does **not raise an error** then the defined `ex
 
 The `except` clause catches the **entire** `try` block. In our case, we only had the 1 call to the `do_something_that_fails()` function.&#x20;
 
+### Writing a test for simple error handling
+
+Okay so now that we've got some of the initial theory down, let's setup the approriate files:
+
+```
+touch src/error_handling.py tests/test_error_handling.py
+```
+
+
+
 ### Focused try blocks
 
 Ideally, our `try` blocks should be small and focused. The primary driver behind this is that we should not want to catch errors that we do not know about.&#x20;
