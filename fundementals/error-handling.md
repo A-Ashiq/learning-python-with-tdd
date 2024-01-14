@@ -148,7 +148,7 @@ The `finally` clause can be used as a sort of teardown step. Something that we a
 
 The key thing to be aware of here, is that the `finally` block is executed as the **last before the try block completes.**
 
-
+The `finally` clause can be handy for teardown type operations, perhaps to close and release a connection to an external resource like a database or a file.
 
 ***
 
