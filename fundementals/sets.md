@@ -151,3 +151,11 @@ Note that `main - difference` would be shorthand for `set(main).difference(secon
 With our function in place, the last thing we need to do is run our now passing test.
 
 ***
+
+## Summary
+
+In this section, we learned how to use tuples and what they are. For brevity, we skipped over a few of the more interesting operations. So it might be worth checking them out if you get the time.
+
+{% hint style="info" %}
+As always, you can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-course-materials)
+{% endhint %}
