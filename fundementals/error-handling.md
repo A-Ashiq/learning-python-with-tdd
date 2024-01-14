@@ -15,19 +15,19 @@ In this chapter, we will learn how to catch errors and how to treat them. As wel
 Catching and handling errors in Python is pretty simple. It goes something like this:
 
 ```python
-try:
-    do_something_that_fails()
-except KeyError:
-    do_something_else()
+try:                          # try clause
+    do_something_that_fails() # try block
+except KeyError:              # except clause
+    do_something_else()       # except block
 ```
 
 In this case we call out to our function `do_something_that_fails()`, and we catch any `KeyError` which is thrown during the execution of our `try` block, treating it with the call out to the `do_something_else()` function.
 
-The `except` clause catches the entire `try` clause. In our case, we only had the 1 call to the `do_something_that_fails()` function.&#x20;
+The `except` clause catches the **entire** `try` block. In our case, we only had the 1 call to the `do_something_that_fails()` function.&#x20;
 
 ### Focused try blocks
 
-Ideally, our `try` blocks should be small and focused. The primary driver behind this is that we should not want to catch errors that we don't know about.&#x20;
+Ideally, our `try` blocks should be small and focused. The primary driver behind this is that we should not want to catch errors that we do not know about.&#x20;
 
 For exampe, in this scenario:
 
@@ -51,13 +51,63 @@ This is why we should aim to keep our `try` blocks as small as possible. Ideally
 
 ## Handling multiple errors the same way
 
+Let's say that our `do_something_that_fails()` function call will throw a `KeyError` as well as a `TypeError` and in this scenario we want to treat both errors in the same way with the call to `do_something_else()` as we were doing previously.
+
+This is pretty straight forward for us to do:
+
+```python
+try:
+    do_something_that_fails()
+except (KeyError, TypeError):
+    do_something_else()
+```
+
+Now we wrap our expected exception types within the same `except` clause as a tuple.
+
+When the program is executed, the first `KeyError` or `TypeError` will be caught and treated with our defined `except` block.
+
+***
+
+## Handling multiple errors differently
+
+Okay so what if we want to handle our errors differently?
+
+This is also pretty straight forward. Instead of us wrapping the exception types within the 1 tuple on a single `except` clause, we can chain together multiple `except` clauses against our single `try` block:
+
+```python
+try:
+    do_something_that_fails()
+except KeyError:
+    do_something_else()
+except TypeError:
+    fallback_to_this()
+```
+
+With this in place we call out to `fallback_to_this()` if a `TypeError` is thrown as part of the execution of our `try` block.
+
+The crucial difference here is that our `except` clauses will be checked and the corresponding `except` block will be executed if matched in descending order, going down the chain.
+
+***
+
+## Else clause
+
+
+
 
 
 
 
 ***
 
-## Handling multiple errors differently
+## Finally clause
+
+
+
+
+
+***
+
+## Custom exceptions
 
 
 
