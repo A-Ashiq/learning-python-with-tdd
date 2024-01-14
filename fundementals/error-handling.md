@@ -162,9 +162,13 @@ The `finally` clause can be handy for teardown type operations, perhaps to close
 
 ## Summary
 
+In this chapter, we went into some detail around how to handle errors as well as how to manipulate them to our advantage.
 
+Knowing how to handle errors is incredibly important to being able to control the flow of logic through our applications. And we will definitely see more and more of this as we progress through this course.
 
-
+{% hint style="info" %}
+As always, you can find the source code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-course-materials)
+{% endhint %}
 
 ***
 
