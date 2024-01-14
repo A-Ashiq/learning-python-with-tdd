@@ -142,7 +142,11 @@ In this case, if a `KeyError` is thrown then we will return out of this block an
 
 ## Finally clause
 
+And that brings us to the final optional clause if you'll excuse the dad joke!
 
+The `finally` clause can be used as a sort of teardown step. Something that we always want to execute at the end, regardless of whether an error was raised or the `try` block ran successfully without any errors.
+
+The key thing to be aware of here, is that the `finally` block is executed as the **last before the try block completes.**
 
 
 
