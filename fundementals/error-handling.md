@@ -164,3 +164,10 @@ The key thing to be aware of here, is that the `finally` block is executed as th
 
 
 
+
+
+***
+
+## References
+
+* [Errors and Exceptions | Python Official Documentation](https://docs.python.org/3/tutorial/errors.html)
