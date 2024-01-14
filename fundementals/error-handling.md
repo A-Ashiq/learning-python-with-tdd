@@ -23,6 +23,10 @@ except KeyError:              # except clause
 
 In this case we call out to our function `do_something_that_fails()`, and we catch any `KeyError` which is thrown during the execution of our `try` block, treating it with the call out to the `do_something_else()` function.
 
+{% hint style="info" %}
+In contrast, if the `try` block does **not raise an error** then the defined `except` blocks will **not** be executed.
+{% endhint %}
+
 The `except` clause catches the **entire** `try` block. In our case, we only had the 1 call to the `do_something_that_fails()` function.&#x20;
 
 ### Focused try blocks
