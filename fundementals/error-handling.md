@@ -414,7 +414,7 @@ except KeyError:
 do_next_thing()
 ```
 
-In this case, if a `KeyError` is thrown then we will return out of this block and `do_next_thing()` will not be called. Returning early can be considered as turnings off the main path.
+In this case, if a `KeyError` is thrown then we will return out of this block and `do_next_thing()` will not be called. You might want to consider returning early as a sort of turning off the main path.
 
 ***
 
