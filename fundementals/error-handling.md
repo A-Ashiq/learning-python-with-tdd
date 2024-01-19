@@ -155,6 +155,73 @@ Now we wrap our expected exception types within the same `except` clause as a tu
 
 When the program is executed, the first `KeyError` or `TypeError` will be caught and treated with our defined `except` block.
 
+So let's write a test to capture this:
+
+```python
+class TestErrorHandling:
+    ...    
+    def test_zero_division_error_returns_fallback_value(self):
+        """
+        Given 2 integers where the denominator is 0
+        When `divide_numbers()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        x = 1
+        y = 0
+
+        # When
+        value = divide_numbers(x=x, y=y)
+
+        # Then
+        assert value == "N/A"
+```
+
+Running this test will fail with a `ZeroDivisionError`. This error is thrown by division operations when the denominator is `0`. This is of course an impossible calculation and as such Python communicates this clearly to us:
+
+```python
+FAILED [100%]
+test_error_handling.py:20 (TestErrorHandling.test_zero_division_error_returns_fallback_value)
+self = <test_error_handling.TestErrorHandling object at 0x1023eec00>
+
+    def test_zero_division_error_returns_fallback_value(self):
+        """
+        Given 2 integers where the denominator is 0
+        When `divide_numbers()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        x = 1
+        y = 0
+    
+        # When
+>       value = divide_numbers(x=x, y=y)
+
+test_error_handling.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+x = 1, y = 0
+
+    def divide_numbers(x: int, y: int) -> int | str:
+        try:
+>           return x / y
+E           ZeroDivisionError: division by zero
+
+../src/error_handling.py:3: ZeroDivisionError
+```
+
+So now that we know we can enact a different error from the original error that we have guarded against. Lets go ahead and make use of this concept of treating multiple exceptions with the same `except` block:
+
+```python
+def divide_numbers(x: int, y: int) -> int | str:
+    try:
+        return x / y
+    except (TypeError, ZeroDivisionError):
+        return "N/A"
+```
+
+Now if we run our test file again, we can see that both of our tests pass.
+
 ***
 
 ## Handling multiple errors differently
