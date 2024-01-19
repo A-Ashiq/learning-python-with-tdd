@@ -243,7 +243,7 @@ With this in place we call out to `fallback_to_this()` if a `TypeError` is throw
 
 The crucial difference here is that our `except` clauses will be checked and the corresponding `except` block will be executed if matched in descending order, going down the chain.
 
-For a more concrete example, we are going to take the `get_item_from_dict()` function that we looked at in the previous chapter:
+For a more concrete example, we are going to take the `get_item_from_dict()` function that we looked at in the previous chapter. So lets commit the cardinal sin of copying our own code and drop this function into our `src/error_handling.py` file.
 
 <pre class="language-python"><code class="lang-python">def get_item_from_dict(items: dict, key: str) -> int:
 <strong>    return items[key]
