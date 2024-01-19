@@ -243,6 +243,132 @@ With this in place we call out to `fallback_to_this()` if a `TypeError` is throw
 
 The crucial difference here is that our `except` clauses will be checked and the corresponding `except` block will be executed if matched in descending order, going down the chain.
 
+For a more concrete example, we are going to take the `get_item_from_dict()` function that we looked at in the previous chapter:
+
+<pre class="language-python"><code class="lang-python">def get_item_from_dict(items: dict, key: str) -> int:
+<strong>    return items[key]
+</strong></code></pre>
+
+So we know from the previous chapter that if we provide `items` as a `dict` with a `key` which does not exist then this function will raise a `KeyError`. We can also do something which would never make sense and pass say a `list` instead of a `dict` to the `items` arg and incur a `TypeError`.
+
+Armed with this knowledge we should write our tests:
+
+```python
+from src.error_handling import divide_numbers, get_item_from_dict
+
+
+class TestErrorHandling:    
+    ...
+    def test_key_error_raised_will_return_fallback_value(self):
+        """
+        Given a dict and a key which does not exist in the dict
+        When `get_item_from_dict()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        items = {}
+        key = "abc"
+
+        # When
+        returned_item: str = get_item_from_dict(items=items, key=key)
+
+        # Then
+        assert returned_item == "N/A"
+        
+    def test_type_error_raised_will_return_alternative_value(self):
+        """
+        Given an incompatible argument of a list and a key
+        When `get_item_from_dict()` is called
+        Then the expected alternative value is returned
+        """
+        # Given
+        items = []
+        key = "abc"
+
+        # When
+        returned_item: str = get_item_from_dict(items=items, key=key)
+
+        # Then
+        assert returned_item == "Invalid"
+
+```
+
+With these tests in place, we are trying to build our `get_item_from_dict()` function so that we can treat the `KeyError` and `TypeError` seperately. If we run the tests as is we will get failed tests as follows:
+
+```python
+FAILED [ 75%]
+test_error_handling.py:36 (TestErrorHandling.test_key_error_raised_will_return_fallback_value)
+self = <test_error_handling.TestErrorHandling object at 0x10656d2b0>
+
+    def test_key_error_raised_will_return_fallback_value(self):
+        """
+        Given a dict and a key which does not exist in the dict
+        When `get_item_from_dict()` is called
+        Then the expected fallback value is be returned
+        """
+        # Given
+        items = {}
+        key = "abc"
+    
+        # When
+>       returned_item: str = get_item_from_dict(items=items, key=key)
+
+test_error_handling.py:48: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+items = {}, key = 'abc'
+
+    def get_item_from_dict(items: dict, key: str) -> str:
+>       return items[key]
+E       KeyError: 'abc'
+
+../src/error_handling.py:9: KeyError
+```
+
+```python
+FAILED [100%]
+test_error_handling.py:52 (TestErrorHandling.test_type_error_raised_will_return_alternative_value)
+self = <test_error_handling.TestErrorHandling object at 0x10656dbb0>
+
+    def test_type_error_raised_will_return_alternative_value(self):
+        """
+        Given an incompatible argument of a list and a key
+        When `get_item_from_dict()` is called
+        Then the expected alternative value is returned
+        """
+        # Given
+        items = []
+        key = "abc"
+    
+        # When
+>       returned_item: str = get_item_from_dict(items=items, key=key)
+
+test_error_handling.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+items = [], key = 'abc'
+
+    def get_item_from_dict(items: dict, key: str) -> str:
+>       return items[key]
+E       TypeError: list indices must be integers or slices, not str
+
+../src/error_handling.py:9: TypeError
+```
+
+Armed with this, lets go ahead and re-write our `get_item_from_dict()` function to apply the concept of handling the errors seperately:
+
+```python
+def get_item_from_dict(items: dict, key: str) -> str:
+    try:
+        return items[key]
+    except KeyError:
+        return "N/A"
+    except TypeError:
+        return "Invalid"
+```
+
+If we run our test file again we can see they all pass.
+
 ***
 
 ## Else clause
