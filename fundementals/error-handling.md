@@ -377,6 +377,7 @@ Coming to the more rarely used available features within error handling, brings 
 
 The `else` clause can be used to define a block of code which is to be executed if the `try` block ran successfully without throwing an error. This can be useful when we want to keep our `try` blocks small and focused, so that we are not blindly catching exceptions:
 
+{% code fullWidth="true" %}
 ```python
 try:
     do_something_that_passes()
@@ -385,6 +386,7 @@ except KeyError:
 else:
     do_next_thing()             # this runs after the `try` block executes successfully
 ```
+{% endcode %}
 
 So you might be wondering. Why would I bother with this clause?
 
@@ -424,7 +426,16 @@ And that brings us to the final optional clause if you'll excuse the dad joke!
 
 The `finally` clause can be used as a sort of teardown step. Something that we always want to execute at the end, regardless of whether an error was raised or the `try` block ran successfully without any errors.
 
-The key thing to be aware of here, is that the `finally` block is executed as the **last before the try block completes.**
+The key thing to be aware of here, is that the `finally` block is executed as the **last thing before the try block completes.**
+
+```python
+try:
+    do_something()
+except KeyError:
+    do_something_else()
+finally:
+    always_do_this()             
+```
 
 The `finally` clause can be handy for teardown type operations, perhaps to close and release a connection to an external resource like a database or a file.
 
