@@ -62,6 +62,8 @@ class TestErrorHandling:
 
 ```
 
+### Writing the function to fulfil our test
+
 And now let's write the corresponding `divide_numbers()` function:
 
 ```python
@@ -73,6 +75,8 @@ def divide_numbers(x: int, y: int) -> int | str:
 ```
 
 Now just a heads up, what we've written for our `divide_numbers()` function is not particularly good. But we'll come to that later in this section. For now, we can see that if we run our test. With an input of a string for 1 of the arguments to our function. Then a `TypeError` will be raised. In our case, the `TypeError` will be caught and treated with the fallback value of `"N/A"`.
+
+### Seeing the errors in action
 
 To verify this for yourself, comment out the `try/except` clauses within the `divide_numbers()` function and run the test again:
 
@@ -154,6 +158,8 @@ except (KeyError, TypeError):
 Now we wrap our expected exception types within the same `except` clause as a tuple.
 
 When the program is executed, the first `KeyError` or `TypeError` will be caught and treated with our defined `except` block.
+
+### Writing a test for handling multiple errors&#x20;
 
 So let's write a test to capture this:
 
@@ -251,6 +257,8 @@ For a more concrete example, we are going to take the `get_item_from_dict()` fun
 
 So we know from the previous chapter that if we provide `items` as a `dict` with a `key` which does not exist then this function will raise a `KeyError`. We can also do something which would never make sense and pass say a `list` instead of a `dict` to the `items` arg and incur a `TypeError`.
 
+### Writing a test for handling multiple errors differently
+
 Armed with this knowledge we should write our tests:
 
 ```python
@@ -292,6 +300,16 @@ class TestErrorHandling:
         assert returned_item == "Invalid"
 
 ```
+
+You might be noticing a pattern emerge now. As we build our systems, we let our tests take the drivers seat and let them guide us. The result is that our tests describe the behaviours that we expect from our code, including how we expect our systems to react when things don't quite go to plan.
+
+{% hint style="info" %}
+Most forms of engineering & manufacturing processes are bound by law to provide specifications for their products.
+
+In our world, our test suites double up as a form of specification. It shows the reader exactly what we expect from our system.
+{% endhint %}
+
+### Seeing the errors in action
 
 With these tests in place, we are trying to build our `get_item_from_dict()` function so that we can treat the `KeyError` and `TypeError` seperately. If we run the tests as is we will get failed tests as follows:
 
@@ -354,6 +372,8 @@ E       TypeError: list indices must be integers or slices, not str
 
 ../src/error_handling.py:9: TypeError
 ```
+
+### Writing the function to satisfy our tests
 
 Armed with this, lets go ahead and re-write our `get_item_from_dict()` function to apply the concept of handling the errors seperately:
 
