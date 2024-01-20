@@ -22,6 +22,9 @@
 * [Sets](fundementals/sets.md)
 * [Dictionaries](fundementals/dictionaries.md)
 * [Error handling](fundementals/error-handling.md)
+* [Classes](fundementals/classes.md)
+* [Mocking](fundementals/mocking.md)
+* [Dependency Injection](fundementals/dependency-injection.md)
 
 ## Building an application together
 
