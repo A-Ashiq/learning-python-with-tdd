@@ -441,11 +441,35 @@ The `finally` clause can be handy for teardown type operations, perhaps to close
 
 ***
 
-## Custom exceptions
+## Surfacing errors
 
+So we have been commiting a number of cardinal sins in our example code snippets in this chapter so far. If you scroll up you will come across a function which looks something like this:
 
+```python
+def divide_numbers(x: int, y: int) -> int | str:
+    try:
+        return x / y
+    except (TypeError, ZeroDivisionError):
+        return "N/A"
+```
 
+Imagine you were calling this function with your `x` and `y` arguments. Now lets say when we called out to this `divide_numbers()` function we hit either a `TypeError` or a `ZeroDivisionError`, in either case we would receive a return value of `"N/A"`.
 
+Lets also imagine we passed the return value of this to some other piece of logic. See what the problem with this is? This is a pretty obvious way of embedding bugs into our systems.
+
+The way this function is currently structured is very unkind to the callers of our code. We are being incredibly opaque and we are forcing callers to inspect the return value before deciding what to do.&#x20;
+
+{% hint style="info" %}
+Building software revolves around communicating intent as clearly as possible.&#x20;
+{% endhint %}
+
+Our fallback return value is unclear and ambigious.&#x20;
+
+From the caller’s perspective, the only way they can tell whether the operation was unsuccessful is to check the type of the return value. This seems like a surefire way of imposing more cognitive load on the caller.&#x20;
+
+You can bet your team members won't thank you for this!
+
+In most scenarios, we should allow the error to bubble up to the calling code. That way we are being explicit and clear as to the fact that there was an issue with the call.
 
 ***
 
