@@ -567,3 +567,4 @@ As always, you can find the source code for this chapter at the [Github repo](ht
 ## References
 
 * [Errors and Exceptions | Python Official Documentation](https://docs.python.org/3/tutorial/errors.html)
+* [Retuning None in Failure Scenarios](https://www.afaanashiq.com/python/returning-none-in-failure-scenarios/)
