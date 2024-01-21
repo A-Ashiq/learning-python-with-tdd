@@ -491,6 +491,67 @@ In most scenarios, we should allow the error to bubble up to the calling code. T
 
 ***
 
+## Custom exceptions
+
+Building on the point we just made, we want to write software that is clear and explicit.&#x20;
+
+But built-in exceptions might not always communicate our intent to the letter. There may also be situations in which we want to raise an error to describe a condition which has or has not been met. If this doesn't make sense yet, then don't worry we'll cover this with some examples soon enough.
+
+### Writing the test for a custom exception
+
+Before we get started, lets write a test to capture our theory:
+
+```python
+import pytest
+
+from src.error_handling import (
+    divide_numbers,
+    get_item_from_dict,
+    FoodNotAvailableForBreedError,
+    get_food_type_for_breed,
+)
+
+class TestErrorHandling:
+    ...
+    def test_custom_exception_is_raised(self):
+        """
+        Given an unsupported dog breed
+        When `get_food_type_for_breed()` is called
+        Then a `FoodNotAvailableForBreedError` is raised
+        """
+        # Given
+        unsupported_dog_breed = "Poodle"
+
+        # When / Then
+        with pytest.raises(FoodNotAvailableForBreedError):
+            get_food_type_for_breed(breed=unsupported_dog_breed)
+```
+
+Here we have our new `get_food_type_for_breed()` function. With an unsupported input argument, we expect a `FoodNotAvailableForBreedError` is raised.
+
+With this in place lets go ahead and implement the function:
+
+```python
+def get_food_type_for_breed(breed: str) -> str:
+     if breed == "Poodle":
+         raise FoodNotAvailableForBreedError
+```
+
+Seems simple enough right? Now to implement our new custom exceptions, we need to extend from the base exception class like so:
+
+```python
+class FoodNotAvailableForBreedError(Exception):
+    ...
+```
+
+With all of these pieces in place, our test will pass.
+
+You might be wondering, if we are creating and implementing custom exceptions as part of systems then surely we will end up with quite a few of these?&#x20;
+
+The answer to that question is yes. But we should be prepared to accept this as a trade off for building a system which is clear about its intention and about its failure scenarios.
+
+***
+
 ## Summary
 
 In this chapter, we went into some detail around how to handle errors as well as how to manipulate them to our advantage.
