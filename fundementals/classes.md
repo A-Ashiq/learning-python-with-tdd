@@ -20,5 +20,7 @@ touch src/classes.py tests/test_classes.py
 
 ***
 
+## Class attributes
 
+Its important to draw the distinction between the class and instances of that class.
 
