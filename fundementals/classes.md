@@ -11,3 +11,14 @@ Classes act as a specification, here we define how our objects should behave and
 {% endhint %}
 
 If this doesn't make sense yet. Don't worry, as always we'll guide our learning with tests to get a practical sense of what is going on.
+
+So before we get started lets create the files that we will be using in this chapter:
+
+```
+touch src/classes.py tests/test_classes.py
+```
+
+***
+
+
+
