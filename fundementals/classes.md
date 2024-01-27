@@ -151,8 +151,32 @@ Okay so now lets say we start to need something more than just storing state on 
 
 This is where methods come into play. By and large there a few different types of methods which are available for use:
 
-* Static methods -
-* Class methods -&#x20;
-* Property methods -&#x20;
-* Instance methods -&#x20;
+* Instance methods - A method which has access to the instance. These are the most commonly used type of method.
+* Static methods - A method which can be called without having created an object, as such it does not have access to the instance itself.&#x20;
+* Class methods - Similar to static methods, except class methods have access to the class and not the instance itself.
+* Property methods - Behave similar to instance methods, except they are called without `()` and as such they are called in the same way instance or class attributes are called.&#x20;
+
+
+
+### Instance methods
+
+
+
+
+
+### Static methods
+
+
+
+
+
+### Class methods
+
+
+
+
+
+### Property methods
+
+
 
