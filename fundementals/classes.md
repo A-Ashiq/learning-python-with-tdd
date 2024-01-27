@@ -141,11 +141,18 @@ So for us, the `__init__()` method on line 7 is exactly what we need to provide 
 
 On line 8, we defined `self.diameter = diameter` , this tells our class to create an **instance** attribute on the class i.e. `self.diamater` and point it to the argument we passed in via the `__init__()` method.
 
-
-
 <table><thead><tr><th width="124">Attibute type</th><th width="418">Use cases</th><th>Accessible by</th></tr></thead><tbody><tr><td>Class</td><td><ul><li><em>Global</em> type constants applicable to all objects of that class</li><li>Storing class-level state. E.g. a counter or even holding all created objects</li><li>Holding default values for ease of reference</li></ul></td><td>The class and all instances</td></tr><tr><td>Instance</td><td><ul><li>State related to the instance which would be different from 1 object to the next</li></ul></td><td>The instances only</td></tr></tbody></table>
 
 ***
 
+## Methods
 
+Okay so now lets say we start to need something more than just storing state on our class.
+
+This is where methods come into play. By and large there a few different types of methods which are available for use:
+
+* Static methods -
+* Class methods -&#x20;
+* Property methods -&#x20;
+* Instance methods -&#x20;
 
