@@ -218,7 +218,7 @@ class Circle:
 
     @property
     def circumference(self) -> float:
-        return 2 * math.pi * self.radius
+        return 2 * self.pi * self.radius
 ```
 
 And its as simple as that, we define an instance method and wrap it with the built-in `@property` decorator.
