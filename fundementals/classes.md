@@ -168,7 +168,68 @@ It should be noted that the `self` keyword is actually just a very strong conven
 
 Python takes this `self` as the object itself. This is the glue which provides the current object and all of its state and makes it available to the instance method.
 
+Going back to our `Circle` class lets write a test to capture a new instance method:
 
+```python
+class TestCircle:
+    ...
+    def test_calculate_area_as_instance_method(self):
+        """
+        Given a radius of 2.5
+        When `calculate_area()` is called
+            from an instance of a `Circle`
+        Then the correct value of 19.63 is returned
+        """
+        # Given
+        radius = 2.5
+        circle = Circle(radius=radius)
+
+        # When
+        area: float = circle.calculate_area()
+
+        # Then
+        assert area == math.pi * radius ** 2
+```
+
+Running this test is going to give us our old faithful friend, the `AttributeError`:
+
+```python
+FAILED [100%]
+test_classes.py:49 (TestCircle.test_calculate_area_as_instance_method)
+self = <test_classes.TestCircle object at 0x106853230>
+
+    def test_calculate_area_as_instance_method(self):
+        """
+        Given a radius of 2.5
+        When `calculate_area()` is called
+            from an instance of a `Circle`
+        Then the correct value of 19.63 is returned
+        """
+        # Given
+        radius = 2.5
+        circle = Circle(radius=radius)
+    
+        # When
+>       area = circle.calculate_area()
+E       AttributeError: 'Circle' object has no attribute 'calculate_area'
+
+test_classes.py:62: AttributeError
+```
+
+With that in mind, lets implement the `calculate_area()` method on our `Circle` class:
+
+```python
+class Circle:
+    pi = math.pi
+
+    def __init__(self, radius: float):
+        self.radius = radius
+
+    def calculate_area(self) -> float:
+        return self.pi * self.radius ** 2
+```
+
+We define the instance method in a similar way to the way in which we would a function. The `self` argument is the first argument to be passed into the `calculate_area()` method. With the `self` argument, we have access to both the `pi` class attribute and the `radius` instance attribute, which we use for the implementation.
 
 ### Static methods
 
