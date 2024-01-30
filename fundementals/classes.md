@@ -158,7 +158,15 @@ This is where methods come into play. By and large there a few different types o
 
 ### Instance methods
 
+Instance methods are the most common type of method that we might use on a class. Instance methods have access to the internal state of the class i.e. the class and instance attributes. The instance methods can be used to perform calculations or alter state on the class.
 
+With instance methods we pass the keyword `self` into the method as the first argument.&#x20;
+
+{% hint style="info" %}
+It should be noted that the `self` keyword is actually just a very strong convention, not a reserved keyword.
+{% endhint %}
+
+Python takes this `self` as the object itself. This is the glue which provides the current object and all of its state and makes it available to the instance method.
 
 
 
