@@ -248,9 +248,7 @@ Guido Van Rossum, the creator of Python has previously admitted to static method
 
 Class methods take the `cls` keyword as the implicit 1st argument. As you might have guessed this represents the class itself and as such it means class methods have access to the class but cannot alter state associated with the instance.
 
-A common pattern is to use class methods as factory methods. In other words as ways to instantiate objects with particular state.
-
-
+A common pattern is to use class methods as factory methods or alternative constructors. In other words, as ways to instantiate objects with particular state.
 
 ### Property methods
 
