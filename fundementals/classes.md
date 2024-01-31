@@ -237,7 +237,7 @@ So you might be wondering, if all this holds true then why even bother with them
 
 And there are primarily a couple of reasons we might want to use static methods:
 
-* To group logically-similar pieces of functionality together with the class.
+* To group logically similar pieces of functionality together with the class and keep a cleaner namespace.
 * To leverage class inheritance should the need arise.
 
 ### Class methods
