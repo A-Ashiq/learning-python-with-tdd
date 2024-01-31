@@ -240,6 +240,10 @@ And there are primarily a couple of reasons we might want to use static methods:
 * To group logically similar pieces of functionality together with the class and keep a cleaner namespace.
 * To leverage class inheritance should the need arise.
 
+{% hint style="info" %}
+Guido Van Rossum, the creator of Python has previously admitted to static methods being a bit of a mistake in [this note](https://mail.python.org/pipermail/python-ideas/2012-May/014969.html) and [this one too.](https://mail.python.org/pipermail/python-ideas/2016-July/041189.html)
+{% endhint %}
+
 ### Class methods
 
 
