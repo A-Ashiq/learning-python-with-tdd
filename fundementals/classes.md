@@ -305,3 +305,4 @@ And its as simple as that, we define an instance method and wrap it with the bui
 
 ## Inheritance
 
+\<Coming soon>
