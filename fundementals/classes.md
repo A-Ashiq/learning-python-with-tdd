@@ -229,9 +229,11 @@ We define the instance method in a similar way to the way in which we would a fu
 
 ### Static methods
 
+For all intents and purposes, static methods are the same as functions. The difference being that static methods live on the class itself.
 
+Static methods don't take the `self` or the `cls` argument as the 1st argument and as such static methods are available to the class and not just the object itself as is the case with instance methods. Because static methods don't have access to the state of the object they cannot alter state or perform computation with any input from the object state.
 
-
+So you might be wondering, if all this holds true then why even bother with them? Surely it would be simpler to implement that piece of logic as a module-level function which sits alongside the class.
 
 ### Class methods
 
