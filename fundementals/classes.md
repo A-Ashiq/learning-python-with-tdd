@@ -60,6 +60,8 @@ class Circle:
 
 The class attribute `pi` is defined on the class as shown above.
 
+***
+
 ## Instance attributes
 
 An instance attribute is only available to instances of that class. Generally we want them to provide state that is specific to that object.&#x20;
@@ -298,3 +300,8 @@ class Circle:
 ```
 
 And its as simple as that, we define an instance method and wrap it with the built-in `@property` decorator.
+
+***
+
+## Inheritance
+
