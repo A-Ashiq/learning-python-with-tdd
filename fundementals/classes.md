@@ -348,7 +348,6 @@ class TestRectangle:
 
         # Then
         assert perimeter == 2 * (length + width)
-
 ```
 
 With the import in place we can run the test and see the test pass.
