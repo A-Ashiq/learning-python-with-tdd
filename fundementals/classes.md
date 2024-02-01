@@ -246,6 +246,117 @@ And there are primarily a couple of reasons we might want to use static methods:
 Guido Van Rossum, the creator of Python has previously admitted to static methods being a bit of a mistake in [this note](https://mail.python.org/pipermail/python-ideas/2012-May/014969.html) and [this one too.](https://mail.python.org/pipermail/python-ideas/2016-July/041189.html)
 {% endhint %}
 
+To demonstrate the use of static methods, we're going to make up a new class for rectangles. If you're thinking these examples are overly simplistic, that's the point! In the next chapter we'll start to build something much more tangible than rectangles and circles.
+
+But for now, lets write a test for a static method that we'll call from our new `Rectangle` class:
+
+```python
+class TestRectangle:
+    def test_calculate_perimeter(self):
+        """
+        Given a length of 2.5 and width 1
+        When `calculate_perimeter()` is called
+            from the `Rectangle` class
+        Then the correct value is returned
+        """
+        # Given
+        length = 2.5
+        width = 1.0
+        
+        # When
+        perimeter = Rectangle.calculate_perimeter(
+            length=length, 
+            width=width,
+        )
+        
+        # Then
+        assert perimeter == 2 * (length + width)
+```
+
+See the difference between this and the instance or property methods? In the `# When` section of our test, we call the `calculate_perimiter()` method from the Rectangle class itself **not an instance** of the `Rectangle` class.&#x20;
+
+If we run this test as is, we will get our familiar friend the `NameError`:
+
+```python
+FAILED          [100%]
+test_classes.py:68 (TestRectangle.test_calculate_perimeter)
+self = <test_classes.TestRectangle object at 0x103e37770>
+
+    def test_calculate_perimeter(self):
+        """
+        Given a length of 2.5 and width 1
+        When `calculate_perimeter()` is called
+            from the `Rectangle` class
+        Then the correct value is returned
+        """
+        # Given
+        length = 2.5
+        width = 1.0
+    
+        # When
+>       perimeter = Rectangle.calculate_perimeter(
+            length=length,
+            width=width,
+        )
+E       NameError: name 'Rectangle' is not defined
+
+test_classes.py:81: NameError
+```
+
+With this in mind, lets go and implement the `calculate_perimeter()` on a new `Rectangle` class:
+
+```python
+class Rectangle:
+    @staticmethod
+    def calculate_perimeter(length: float, width: float) -> float:
+        return 2 * (length + width)
+```
+
+We define the method as a function which lives on the `Rectangle` class, wrapping the method with the `@staticmethod` decorator. The `@staticmethod` decorator is built-in and we don't need to explicitly import it.
+
+Also see how we don't have to pass `self` into the method as the 1st argument? This is the _static_ nature of the method. The method is completely independent from the state of the class or any relevant instance of that class.
+
+Now make sure you import the `Rectangle` class into the test file:
+
+```python
+import math
+
+from src.classes import Circle, Rectangle
+
+
+class TestCircle:
+    ...
+    
+
+class TestRectangle:
+    def test_calculate_perimeter(self):
+        """
+        Given a length of 2.5 and width 1
+        When `calculate_perimeter()` is called
+            from the `Rectangle` class
+        Then the correct value is returned
+        """
+        # Given
+        length = 2.5
+        width = 1.0
+
+        # When
+        perimeter = Rectangle.calculate_perimeter(
+            length=length,
+            width=width,
+        )
+
+        # Then
+        assert perimeter == 2 * (length + width)
+
+```
+
+With the import in place we can run the test and see the test pass.
+
+{% hint style="info" %}
+It is worth writing another test and instantiating a `Rectangle` object and trying out the same static method again.
+{% endhint %}
+
 ### Class methods
 
 Class methods take the `cls` keyword as the implicit 1st argument. As you might have guessed this represents the class itself and as such it means class methods have access to the class but cannot alter state associated with the instance.
