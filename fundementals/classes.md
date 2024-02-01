@@ -264,7 +264,7 @@ class TestRectangle:
         width = 1.0
         
         # When
-        perimeter = Rectangle.calculate_perimeter(
+        perimeter: float = Rectangle.calculate_perimeter(
             length=length, 
             width=width,
         )
@@ -294,7 +294,7 @@ self = <test_classes.TestRectangle object at 0x103e37770>
         width = 1.0
     
         # When
->       perimeter = Rectangle.calculate_perimeter(
+>       perimeter: float = Rectangle.calculate_perimeter(
             length=length,
             width=width,
         )
@@ -341,7 +341,7 @@ class TestRectangle:
         width = 1.0
 
         # When
-        perimeter = Rectangle.calculate_perimeter(
+        perimeter: float = Rectangle.calculate_perimeter(
             length=length,
             width=width,
         )
