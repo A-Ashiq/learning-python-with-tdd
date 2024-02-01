@@ -255,8 +255,8 @@ class TestRectangle:
     def test_calculate_perimeter(self):
         """
         Given a length of 2.5 and width 1
-        When `calculate_perimeter()` is called
-            from the `Rectangle` class
+        When the `calculate_perimeter()` method 
+            is called from the `Rectangle` class
         Then the correct value is returned
         """
         # Given
@@ -285,8 +285,8 @@ self = <test_classes.TestRectangle object at 0x103e37770>
     def test_calculate_perimeter(self):
         """
         Given a length of 2.5 and width 1
-        When `calculate_perimeter()` is called
-            from the `Rectangle` class
+        When the `calculate_perimeter()` method 
+            is called from the `Rectangle` class
         Then the correct value is returned
         """
         # Given
@@ -332,8 +332,8 @@ class TestRectangle:
     def test_calculate_perimeter(self):
         """
         Given a length of 2.5 and width 1
-        When `calculate_perimeter()` is called
-            from the `Rectangle` class
+        When the `calculate_perimeter()` method 
+            is called from the `Rectangle` class
         Then the correct value is returned
         """
         # Given
@@ -362,6 +362,35 @@ It is worth writing another test and instantiating a `Rectangle` object and tryi
 Class methods take the `cls` keyword as the implicit 1st argument. As you might have guessed this represents the class itself and as such it means class methods have access to the class but cannot alter state associated with the instance.
 
 A common pattern is to use class methods as factory methods or alternative constructors. In other words, as ways to instantiate objects with particular state.
+
+Taking our `Rectangle` example, we might want to create a class method to act as an alternative constructor for creating squares. Writing our test first:
+
+```python
+class TestRectangle:
+    ...
+    def test_create_square(self):
+        """
+        Given a length of 2.5
+        When the `create_square()` class method
+            is called from the `Rectangle` class
+        Then a `Rectangle` instance is returned
+            with equal length and widths
+        """
+        # Given
+        length = 2.5
+
+        # When
+        square = Rectangle.create_square(
+            length=length,
+        )
+
+        # Then
+        assert square.length == square.width == length
+```
+
+
+
+
 
 ### Property methods
 
