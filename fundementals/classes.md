@@ -388,9 +388,40 @@ class TestRectangle:
         assert square.length == square.width == length
 ```
 
+So lets go and implement the `create_square()` method:
 
 
 
+```python
+import math
+from typing import Self
+
+
+class Circle:
+    ...
+
+
+class Rectangle:
+    def __init__(self, length: float, width: float):
+        self.length = length
+        self.width = width
+
+    @staticmethod
+    def calculate_perimeter(length: float, width: float) -> float:
+        return 2 * (length + width)
+    
+    @classmethod
+    def create_square(cls, length: float) -> Self:
+        return Rectangle(length=length, width=length)
+```
+
+This time around we create a method on the class, and wrap it with the built-in `@classmethod` decorator. Within our `create_square` class method we instantiate the `Rectangle` object according to our custom implementation of a square i.e. when the length and width are the same.
+
+If we run this we'll see our test passes.
+
+{% hint style="info" %}
+You might be wondering what the `: float` and  `-> Self` bits mean on the various methods. We'll cover that in an upcoming chapter
+{% endhint %}
 
 ### Property methods
 
