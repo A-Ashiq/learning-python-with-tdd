@@ -41,5 +41,4 @@ So there will be a number of things which this course will not address. For thes
 This course assumes the following of the reader:
 
 * Basic knowledge of types such as integers, booleans and strings.
-* Basic knowledge of data structures like lists, sets, tuples and dictionaries.
 * Basic knowledge of control flow.
