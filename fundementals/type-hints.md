@@ -43,8 +43,11 @@ See the problem? Because Python allows us to pass any kinds of types we want aro
 
 [PEP-484](https://peps.python.org/pep-0484/) brought about the proposal for type hints in Python. It was included in version 3.5.
 
-
+This type annotation system is entirely optional in Python, but is worth adopting for anything non-trivial. Especially, given the benefits they provide in the context of working within a team on the same codebase.
 
 {% hint style="info" %}
-Python does **not** enforce type hints. Although 3rd party libraries like [mypy](https://www.mypy-lang.org/) can introduce static type checking for us
+Even if you add type hints, Python will **not** enforce type hints. Although 3rd party libraries like [mypy](https://www.mypy-lang.org/) can introduce static type checking for us.
 {% endhint %}
+
+
+
