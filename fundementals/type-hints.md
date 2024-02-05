@@ -51,3 +51,8 @@ Even if you add type hints, Python will **not** enforce type hints. Although 3rd
 
 
 
+## References
+
+* [Typing | Python official documentation](https://peps.python.org/pep-0484/)
+* [PEP 484 | Type hints](https://peps.python.org/pep-0484/)
+* [PEP 483 | The theory of type hints](https://peps.python.org/pep-0483/)
