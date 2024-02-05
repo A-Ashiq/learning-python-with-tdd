@@ -49,7 +49,18 @@ This type annotation system is entirely optional in Python, but is worth adoptin
 Even if you add type hints, Python will **not** enforce type hints. Although 3rd party libraries like [mypy](https://www.mypy-lang.org/) can introduce static type checking for us.
 {% endhint %}
 
+***
 
+Taking our simple `add()` function from earlier, this is how we might want to add type annotations to it:
+
+```python
+def add(x: int, y: int) -> int:
+    return x + y
+```
+
+We are making the assumption here that we only want callers of our function to pass integers into the `add()` function, and not types which can be concatenated instead.
+
+We use the `:` character to indicate the end of the argument name and the start of the type declaration. The `->` , consists of a dash `-`, and the greater than `>` to construct an arrow.  This arrow sign signifies the begining of the declaration of the return type.
 
 ## References
 
