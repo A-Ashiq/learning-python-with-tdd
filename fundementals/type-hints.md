@@ -72,9 +72,20 @@ We use the `:` character to indicate the end of the argument name and the start 
 
 We can also communicate our intent with our type hints. We can use them to tell readers what we expect to be provided to our arguments as well as what we might return as we saw earlier.
 
-We can also use type hints to declare if an argument is optional, which is a common pattern.
+We can also use type hints to declare if an argument is optional, which is a common pattern you will see a lot of:
 
+```python
+def send_request(url: str, query_params: dict[str, str] | None = None) -> None:
+    requests.get(url=url, params=query_params)
+```
 
+In this case our `url` parameter is type hinted as `str` , whereas the `query_params` argument is type hinted as `dict[str, str] | None` i.e. it could be a dictionary or given as None, whilst this argument will default to `None` if nothing is explicitly provided.
+
+This optional parameter means that callers of our `send_request()` function can call it with or without the `query_params` argument.
+
+{% hint style="info" %}
+`Union[..., None]` is equivalent to `Optional[...]`. But as of Python version 3.10, we can now use the `|` union operator instead.
+{% endhint %}
 
 ***
 
