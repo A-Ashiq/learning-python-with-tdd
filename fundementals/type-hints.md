@@ -68,7 +68,15 @@ We use the `:` character to indicate the end of the argument name and the start 
 
 ***
 
+## Communicating with type hints
 
+We can also communicate our intent with our type hints. We can use them to tell readers what we expect to be provided to our arguments as well as what we might return as we saw earlier.
+
+We can also use type hints to declare if an argument is optional, which is a common pattern.
+
+
+
+***
 
 ## References
 
