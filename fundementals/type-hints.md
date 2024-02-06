@@ -4,6 +4,8 @@ When we assign something to a variable. That _thing_ has a specific type. It cou
 
 Python is a **dynamically-typed** language. Which means that we are not required to declare the type associated with our variables, arguments or return values. This has its pros and cons. This reduces the burden on newcomers to the language and means its easier to get up and running. However, because Python allows you to pass anything through a given parameter, this does also allow you to provide different types to those parameters. As well as this, when we assign something to a variable, we can also change its type after the fact. As you can imagine, these characteristics can cause problems and can lead to bugs.
 
+## Function without type hints
+
 Imagine we had ths function, without type hints
 
 ```python
@@ -51,6 +53,8 @@ Even if you add type hints, Python will **not** enforce type hints. Although 3rd
 
 ***
 
+## Adding type hints&#x20;
+
 Taking our simple `add()` function from earlier, this is how we might want to add type annotations to it:
 
 ```python
@@ -61,6 +65,10 @@ def add(x: int, y: int) -> int:
 We are making the assumption here that we only want callers of our function to pass integers into the `add()` function, and not types which can be concatenated instead.
 
 We use the `:` character to indicate the end of the argument name and the start of the type declaration. The `->` , consists of a dash `-`, and the greater than `>` to construct an arrow.  This arrow sign signifies the begining of the declaration of the return type.
+
+***
+
+
 
 ## References
 
