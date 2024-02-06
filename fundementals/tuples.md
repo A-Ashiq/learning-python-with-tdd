@@ -43,7 +43,7 @@ Now we have an interesting case here that we have not come across yet. In this t
 
 Running this test and we will see the following:
 
-```
+```python
 FAILED [100%]
 test_tuples.py:1 (TestTuples.test_raise_error_when_item_is_assigned_after_instantiation)
 self = <test_tuples.TestTuples object at 0x106593c50>

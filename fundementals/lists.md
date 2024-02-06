@@ -50,7 +50,7 @@ For this first test case, we are going to apply TDD to the letter. Now remember,
 
 So if we run this test as things stand we will fall at the first hurdle with an import error:
 
-```
+```python
 test_lists.py:1: in <module>
     from src.lists import add_item_to_list
 E   ImportError: cannot import name 'add_item_to_list' from 'src.lists' (/Users/afaanashiq/projects/learn-python-with-tdd/2-fundementals/src/lists.py)
@@ -75,7 +75,7 @@ Note that the ellipsis `...` here acts as a placeholder. This is akin to the `pa
 
 Running our test again and we will get another failure. This time we will get a `TypeError`:
 
-```
+```python
 FAILED                   [100%]
 test_lists.py:4 (TestLists.test_add_item_to_list)
 self = <test_lists.TestLists object at 0x1045b89b0>
