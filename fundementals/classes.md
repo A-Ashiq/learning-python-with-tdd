@@ -389,8 +389,6 @@ class TestRectangle:
 
 So lets go and implement the `create_square()` method:
 
-
-
 ```python
 import math
 from typing import Self
@@ -475,4 +473,79 @@ And its as simple as that, we define an instance method and wrap it with the bui
 
 ## Inheritance
 
-\<Coming soon>
+Lets say we have created a class and we want to create another related class. We want the 2nd class to come ready-made with all the functionality of the 1st class. This is where inheritance becomes useful.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-02-09 at 21.01.30.png" alt="" width="375"><figcaption></figcaption></figure>
+
+Inheritance allows us to _extend_ a child class from a base parent class. The child class inherits and gains all the functionality from the base class for free.&#x20;
+
+Going back to our `Rectangle` class from earlier, lets ensure we have the following, with the `calculate_area()` method available:
+
+```python
+class Rectangle:
+    def __init__(self, length: float, width: float):
+        self.length = length
+        self.width = width
+    
+    ...
+    
+    def calculate_area(self) -> float:
+        return self.length * self.width
+```
+
+We are most interested in the `calculate_area()` method for our new `Square` class. So lets write a simple test to verify this theory to ourselves:
+
+```python
+import math
+
+from src.classes import Circle, Rectangle, Square
+
+...
+
+
+class TestSquare:
+    def test_calculate_area(self):
+        """
+        Given a length of 2.5
+        When the `calculate_area()` method
+            is called from the `Square` class
+        Then the correct value is returned
+        """
+        # Given
+        length = 2.5
+        square = Square(length=length)
+
+        # When
+        area: float = square.calculate_area()
+
+        # Then
+        assert area == length * length
+```
+
+With this we will instantiate a `Square` object with the 1 `length` parameter. And then we will call the `calculate_area()` method to retrieve the area of the square.
+
+So lets implement the `Square` class now:
+
+{% code lineNumbers="true" %}
+```python
+class Square(Rectangle):
+    def __init__(self, length: float):
+        super().__init__(length=length, width=length)
+```
+{% endcode %}
+
+And that is it! If you run the test now you will see it passes. There's a lot to unpack here, so lets dive in.&#x20;
+
+On line 1, we define the `Square` class and set it to be inheriting from the `Rectangle` class.
+
+We know that squares are similar in characteristics to rectangles with the exception that all 4 sides of the `Rectangle` are of equal length. With this in mind, we can leverage inheritance to our advantage.&#x20;
+
+Line 2 specifies that whenever we initialize an instance of the `Square` class, we must provide a `length` parameter of type `float`.&#x20;
+
+When we extend from a parent class, we get all of its attributes and methods. This includes its `__init__` method. So on line 3 we provide the `length` parameter to both of the `length` and `width` parameters which were required by the `Rectangle` class.&#x20;
+
+***
+
+## References
+
+* [Classes | Python official documentation](https://docs.python.org/3/tutorial/classes.html)
