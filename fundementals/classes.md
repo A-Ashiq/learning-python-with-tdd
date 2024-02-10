@@ -550,7 +550,107 @@ Unlike other languages like Java, Python does support multi-layered inheritance
 
 Python allows us to create chains of inheritance. This isn't always a good thing and should really only be leveraged when the need absolutely arises.
 
-##
+***
+
+Inheritance also allows us to override methods that we have inherited from the parent class.
+
+Lets start off by writing a test to capture the behaviour of our parent class:
+
+```python
+import math
+
+from src.classes import Circle, Rectangle, Square, Employee
+
+...
+
+class TestEmployee:
+    def test_salary(self):
+        """
+        Given a name
+        When the `salary` property method is called
+            from an instance of the `Employee` class
+        Then 34,963 is returned
+        """
+        # Given
+        name = "Joe Bloggs"
+        employee = Employee(name=name)
+
+        # When
+        salary: int = employee.salary
+
+        # Then
+        assert salary == 34_963
+```
+
+We've not yet implemented our parent class. So lets go and do that now:
+
+<pre class="language-python"><code class="lang-python"><strong>class Employee:
+</strong>    def __init__(self, name: str):
+        self.name = name
+
+    @property
+    def salary(self) -> int:
+        return 34_963
+</code></pre>
+
+Here we have an `Employee` class which implements a `salary` property method, which in this case returns the number `34963`.&#x20;
+
+{% hint style="info" %}
+Take note of the `_` character which is primarily used for readability purposes when dealing with large numbers.
+{% endhint %}
+
+Lets now write a test that will check the `salary` of a new `Volunteer` class:
+
+```python
+import math
+
+from src.classes import Circle, Rectangle, Square, Employee, Volunteer
+
+...
+
+class TestVolunteer:
+    def test_salary(self):
+        """
+        Given a name
+        When the `salary` property method is called
+            from an instance of the `Volunteer` class
+        Then 0 is returned
+        """
+        # Given
+        name = "Joe Bloggs"
+        volunteer = Volunteer(name=name)
+
+        # When
+        salary: int = volunteer.salary
+
+        # Then
+        assert salary == 0
+```
+
+If we run this test we will get an `ImportError` as we are trying to import the `Volunteer` class which has not been implemented yet.
+
+So let's head back over and implement our new `Volunteer` class:
+
+```python
+class Employee:
+    def __init__(self, name: str):
+        self.name = name
+
+    @property
+    def salary(self) -> int:
+        return 34_963
+
+
+class Volunteer(Employee):
+    def __init__(self, name: str):
+        super().__init__(name=name)
+
+    @property
+    def salary(self):
+        return 0
+```
+
+We can inherit from the parent `Employee` class as we already know how to. And then we can simply re-implement the `salary` property method as usual to redefine that piece of functionality for our child class.
 
 ***
 
