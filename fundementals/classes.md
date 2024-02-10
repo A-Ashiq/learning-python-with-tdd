@@ -536,7 +536,7 @@ class Square(Rectangle):
 
 And that is it! If you run the test now you will see it passes. There's a lot to unpack here, so lets dive in.&#x20;
 
-On line 1, we define the `Square` class and set it to be inheriting from the `Rectangle` class.
+On line 1, we define the `Square` class and make it extend from the `Rectangle` class.
 
 We know that squares are similar in characteristics to rectangles with the exception that all 4 sides of the `Rectangle` are of equal length. With this in mind, we can leverage inheritance to our advantage.&#x20;
 
