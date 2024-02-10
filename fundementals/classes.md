@@ -475,7 +475,7 @@ And its as simple as that, we define an instance method and wrap it with the bui
 
 Lets say we have created a class and we want to create another related class. We want the 2nd class to come ready-made with all the functionality of the 1st class. This is where inheritance becomes useful.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-02-09 at 21.01.30.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-02-10 at 10.24.19 (1).png" alt="" width="375"><figcaption></figcaption></figure>
 
 Inheritance allows us to _extend_ a child class from a base parent class. The child class inherits and gains all the functionality from the base class for free.&#x20;
 
