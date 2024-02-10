@@ -544,6 +544,14 @@ Line 2 specifies that whenever we initialize an instance of the `Square` class, 
 
 When we extend from a parent class, we get all of its attributes and methods. This includes its `__init__` method. So on line 3 we provide the `length` parameter to both of the `length` and `width` parameters which were required by the `Rectangle` class.&#x20;
 
+{% hint style="info" %}
+Unlike other languages like Java, Python does support multi-layered inheritance
+{% endhint %}
+
+Python allows us to create chains of inheritance. This isn't always a good thing and should really only be leveraged when the need absolutely arises.
+
+##
+
 ***
 
 ## References
