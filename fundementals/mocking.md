@@ -13,3 +13,5 @@ So how do we take pieces of code which glue different parts of our system togeth
 ## References
 
 * [Test Doubles](https://www.afaanashiq.com/code/test-doubles)
+* [Mock object library | Python official documentation](https://docs.python.org/3/library/unittest.mock.html)
+* [Monkeypatch fixture | Pytest documentation](https://docs.pytest.org/en/6.2.x/monkeypatch.html)
