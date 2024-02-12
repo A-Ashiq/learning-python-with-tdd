@@ -6,7 +6,7 @@ Our tests should be as determinstic as possible. But the further up the testing 
 
 So how do we take pieces of code which glue different parts of our system together? How do we verify the agreed contract between multiple parts of our system without having to run them for real? Remember that we will already be doing the latter further up the test pyramid. How do we simulate the behaviour of surrounding components in place of the real thing? How do we verify that we are calling other components correctly? This is where we can introduce test doubles.&#x20;
 
-Mocks are dynamic components which are a form of test double, which can be used to emuate real pieces of functionality or objects.
+Mocks are dynamic components which are a form of test double. They can be used to emuate real pieces of functionality or objects. And we can also use them to verify calls are being made from 1 component to another in the way we expect.
 
 
 
