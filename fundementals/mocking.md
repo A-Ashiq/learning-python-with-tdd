@@ -8,6 +8,12 @@ So how do we take pieces of code which glue different parts of our system togeth
 
 Mocks are dynamic components which are a form of test double. They can be used to emuate real pieces of functionality or objects. And we can also use them to verify calls are being made from 1 component to another in the way we expect.
 
+Before we get started, lets create the files that we will need for this section. In your terminal:
+
+```
+touch src/mocking.py tests/test_mocking.py
+```
+
 
 
 
