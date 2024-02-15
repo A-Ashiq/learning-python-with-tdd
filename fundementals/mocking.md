@@ -67,6 +67,10 @@ In this case, we want to check that the `notify_user()` peels off the `email_add
 
 This might seem quite alien at first. But its important to note that we want our unit tests to be small and focused. Ideally they should be testing 1 major aspect of the functionality. So its acceptable for us to delegate each of these major aspects to different tests. Mocking can help us draw those boundaries around our tests.
 
+***
+
+
+
 
 
 ***
