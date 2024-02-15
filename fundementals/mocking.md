@@ -48,7 +48,6 @@ def notify_user(user: User) -> None:
 
 def send_email(email_address: str) -> None:
     time.sleep(10)
-
 ```
 {% endcode %}
 
@@ -100,7 +99,6 @@ class TestMocking:
 
         # Then
         spy_send_email.assert_called_once_with(email_address=email_address)
-
 ```
 {% endcode %}
 
