@@ -74,5 +74,6 @@ This might seem quite alien at first. But its important to note that we want our
 ## References
 
 * [Test Doubles](https://www.afaanashiq.com/code/test-doubles)
+* [Drawing Test Boundaries](https://www.afaanashiq.com/code/drawing-test-boundaries/)
 * [Mock object library | Python official documentation](https://docs.python.org/3/library/unittest.mock.html)
 * [Monkeypatch fixture | Pytest documentation](https://docs.pytest.org/en/6.2.x/monkeypatch.html)
