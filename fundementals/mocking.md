@@ -14,9 +14,43 @@ Before we get started, lets create the files that we will need for this section.
 touch src/mocking.py tests/test_mocking.py
 ```
 
+***
+
+## Real world scenario
+
+To help us out, we are going to tee up a fake scenario in the `src/mocking.py`  file.
+
+On line 8, we have a simple `User` class which holds on to an `email_address` string that we have to provide to the initialization of a `User`.
+
+On line 13 we have defined a `notify_user()` function which calls out to another function called `send_email()`. In order to simulate the unpredictability of making a network call, we have hardcoded a 10 second wait into the `send_email()` function.
+
+On line 15 we have declared the aforementioned `send_email()` function, which takes an `email_address` argument as a string. This is important because it forms the contract between the `notify_user()` function and the `send_email()` function.
+
+{% code lineNumbers="true" %}
+```python
+import time
 
 
+class User:
+    def __init__(self, email_address: str):
+        self.email_address = email_address
 
+
+def notify_user(user: User) -> None:
+    email_address: str = user.email_address
+    send_email(email_address=email_address)
+    # do some other stuff
+
+
+def send_email(email_address: str) -> None:
+    time.sleep(10)
+
+```
+{% endcode %}
+
+##
+
+***
 
 ## References
 
