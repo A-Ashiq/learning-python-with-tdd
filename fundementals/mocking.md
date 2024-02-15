@@ -52,7 +52,22 @@ def send_email(email_address: str) -> None:
 ```
 {% endcode %}
 
-##
+***
+
+## How do we test this?
+
+So lets say we want to write unit tests against what we have above. How do we go about this?\
+We know that if we simply allow `notify_user()` function calls to run as is then they will call out to the `send_email()` function which will incur the penalty of a request leaving the boundaries of the running process. In our contrived example, we've tried to simulate this with the `time.sleep(10)` call to make the test wait 10 seconds.
+
+This is where mocking becomes useful for us.&#x20;
+
+When we are testing the `notify_user()` function, we can mock out the `send_email()` function and also verify that the `notify_user()` function calls out to the `send_email()` function with the correct arguments.&#x20;
+
+In this case, we want to check that the `notify_user()` peels off the `email_address` attribute from the given `User` instance and provides the `email_address` to the `send_email()` function. We can call this interaction between these 2 functions the _contract_. So we can write a test to verify this contract is in place.&#x20;
+
+This might seem quite alien at first. But its important to note that we want our unit tests to be small and focused. Ideally they should be testing 1 major aspect of the functionality. So its acceptable for us to delegate each of these major aspects to different tests. Mocking can help us draw those boundaries around our tests.
+
+
 
 ***
 
