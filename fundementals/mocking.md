@@ -16,7 +16,7 @@ touch src/mocking.py tests/test_mocking.py
 
 ***
 
-## Real world scenario
+## A sort of real world scenario
 
 To help us out, we are going to tee up a fake scenario in the `src/mocking.py`  file.
 
