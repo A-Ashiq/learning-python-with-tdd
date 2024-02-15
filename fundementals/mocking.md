@@ -114,6 +114,8 @@ On line 22, we call out to the main function, `notify_user()`.
 
 On line 25, we call the `assert_called_once_with()` method on the `spy_send_email` mock object. As part of this, we redeclare how we expected the `send_email` function to have been called. Which was with a single keyword argument of `email_address`.&#x20;
 
+If we run this test, we can see that it runs and passes in under 1 ms. Now see what happens if you removed the `patch` and allow the `notify_user()` function to call out to the real `send_email()` function.
+
 ***
 
 ## References
