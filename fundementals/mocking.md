@@ -102,6 +102,10 @@ class TestMocking:
 ```
 {% endcode %}
 
+On line 7, we create a mock `patch` with a target of  `"src.mocking.send_email"`. This path is the path where the target function is being called **not where it is defined.**
+
+
+
 
 
 ***
