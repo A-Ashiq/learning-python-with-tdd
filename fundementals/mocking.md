@@ -102,7 +102,7 @@ class TestMocking:
 ```
 {% endcode %}
 
-On line 7, we create a mock `patch` with a target of  `"src.mocking.send_email"`. This path is the path **where the target function is being called not where it is defined.** In our case that just happens to be the same thing but it is worth keeping this in mind as it is a gotchya that a lot of people trip up on.
+On line 7, we create a mock `patch` with a target of  `"src.mocking.send_email"`. This path is the path **where the target function is being called not where it is defined.** In our case that just happens to be the same thing but it is worth keeping this in mind as it is a gotchya that a lot of people trip up on. Note that we could also easily have used the `patch` function as a [context manager](https://peps.python.org/pep-0343/) instead of a decorator.
 
 On line 9, we have to assign an argument for the result of this `patch`. We define the name of this argument as we see fit. In this case, we have called it `spy_send_email`. This is because we will _spying_ on the function, where the 2nd part of the argument name happens to be named after the function name.
 
