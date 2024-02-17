@@ -58,7 +58,7 @@ def send_email(email_address: str) -> None:
 So lets say we want to write unit tests against what we have above. How do we go about this?\
 We know that if we simply allow `notify_user()` function calls to run as is then they will call out to the `send_email()` function which will incur the penalty of a request leaving the boundaries of the running process. In our contrived example, we've tried to simulate this with the `time.sleep(10)` call to make the test wait 10 seconds.
 
-This is where mocking becomes useful for us.&#x20;
+This is where mocking becomes useful for us. Mocking is a way for us to substitute components in our code with a dynamic object, this will also swap out the functionality of the target component entirely. We can then check how this mock object was interacted with by the surrounding code.
 
 When we are testing the `notify_user()` function, we can mock out the `send_email()` function and also verify that the `notify_user()` function calls out to the `send_email()` function with the correct arguments.&#x20;
 
