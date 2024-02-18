@@ -170,7 +170,43 @@ class TestSomeFunc:
 
 We've been forced to mock each of these individually. But if we had wrapped these into another layer of abstraction, then we would have made things much easier for ourselves to not only test but also to reason about.
 
+So lets condense our main function as follows:
 
+```python
+def do_first_steps():
+    do_something_first()
+    do_something_following()
+
+
+def do_last_steps():
+    do_something_next()
+    do_something_last()
+
+
+def some_func_revised() -> None:
+    do_first_steps()
+    do_last_steps()
+    # Do other stuff
+```
+
+We've condensed the inner function calls into 2 seperate upper level functions. We could also have wrapped them into the 1 function, and really this is more of a judgement call for us to make. Perhaps the functionality makes sense to be encapsulated into the 1 function or maybe there are 2 main discrete parts to care about.&#x20;
+
+```python
+class TestSomeFuncRevised:
+    @mock.patch(target="src.mocking.do_first_steps")
+    @mock.patch(target="src.mocking.do_last_steps")
+    def test_code_smell_patch_stack(
+        self,
+        mocked_do_first_steps: mock.MagicMock,
+        mocked_do_last_steps: mock.MagicMock,
+    ):
+
+        some_func_revised()
+```
+
+Either way, the level of mocking required for the `some_func_revised()` function is mitigated. We've listened to the things our test was telling us and adjusted accordingly. This is another powerful and useful characteristic of letting tests drive our development. They can often tell us things that we might otherwise. &#x20;
+
+##
 
 ***
 
