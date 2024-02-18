@@ -164,7 +164,6 @@ class TestSomeFunc:
     ):
         
         some_func()
-
 ```
 
 We've been forced to mock each of these individually. But if we had wrapped these into another layer of abstraction, then we would have made things much easier for ourselves to not only test but also to reason about.
