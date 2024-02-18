@@ -118,6 +118,61 @@ If we run this test, we can see that it runs and passes in under 1 ms. Now see w
 
 ***
 
+## Things to note
+
+If we find ourselves having to patch over multiple targets within the scope of our test, this should feel like a [code smell](https://martinfowler.com/bliki/CodeSmell.html). In cases like this, we should opt to ensure that we have created the right levels of abstraction in our code first.
+
+Lets say we have the following function, which calls a number of functions within:
+
+```python
+def do_something_first() -> None:
+    ...
+
+def do_something_following() -> None:
+    ...
+
+def do_something_next() -> None:
+    ...
+
+
+def do_something_last() -> None:
+    ...
+
+
+def some_func() -> None:
+    do_something_first()
+    do_something_following()
+    do_something_next()
+    do_something_last()
+    # Do other stuff
+```
+
+When we want to mock the internals of `some_func()` we would be forced to write something like the following:
+
+```python
+class TestSomeFunc:
+    @mock.patch(target="src.mocking.do_something_first")
+    @mock.patch(target="src.mocking.do_something_following")
+    @mock.patch(target="src.mocking.do_something_next")
+    @mock.patch(target="src.mocking.do_something_last")
+    def test_code_smell_patch_stack(
+        self,
+        mocked_do_something_first: mock.MagicMock,
+        mocked_do_something_following: mock.MagicMock,
+        mocked_do_something_next: mock.MagicMock,
+        mocked_do_something_last: mock.MagicMock,
+    ):
+        
+        some_func()
+
+```
+
+We've been forced to mock each of these individually. But if we had wrapped these into another layer of abstraction, then we would have made things much easier for ourselves to not only test but also to reason about.
+
+
+
+***
+
 ## References
 
 * [Test Doubles](https://www.afaanashiq.com/code/test-doubles)
