@@ -128,8 +128,10 @@ Lets say we have the following function, which calls a number of functions withi
 def do_something_first() -> None:
     ...
 
+
 def do_something_following() -> None:
     ...
+
 
 def do_something_next() -> None:
     ...
