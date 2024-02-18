@@ -204,7 +204,7 @@ class TestSomeFuncRevised:
         some_func_revised()
 ```
 
-Either way, the level of mocking required for the `some_func_revised()` function is mitigated. We've listened to the things our test was telling us and adjusted accordingly. This is another powerful and useful characteristic of letting tests drive our development. They can often tell us things that we might otherwise. &#x20;
+Either way, the level of mocking required for the `some_func_revised()` function is mitigated. We've listened to the things our test was telling us and adjusted accordingly. This is another powerful and useful characteristic of letting tests drive our development. They can often tell us things that we might not otherwise have seen for ourselves. &#x20;
 
 ##
 
