@@ -202,7 +202,14 @@ We've listened to the things our test was telling us and adjusted accordingly. T
 
 ## Code smell: Mocking implementations instead of interfaces
 
+As a general piece of guidance, we should not mock things that we don't own. There are of course exceptions, but the idea is that when we mock things we should mock our own code which wraps around some implementation of the thing we want as opposed to mocking the implementation directly.
 
+This has a few benefits:
+
+* There is a central and reuseable component readily available.
+* That component can be more easily swapped out. \
+  Since we have control over it, we know that it won't be deprecated
+* We can easily change how the component is implemented to bring about the same behaviour, without needing to change users of that component.
 
 
 
