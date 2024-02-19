@@ -198,7 +198,15 @@ Tests can often tell us things that we might not otherwise have seen ourselves.
 
 We've listened to the things our test was telling us and adjusted accordingly. This is another powerful and useful characteristic of letting tests drive our development.
 
-##
+***
+
+## Code smell: Mocking implementations instead of interfaces
+
+
+
+
+
+
 
 ***
 
@@ -206,5 +214,6 @@ We've listened to the things our test was telling us and adjusted accordingly. T
 
 * [Test Doubles](https://www.afaanashiq.com/code/test-doubles)
 * [Drawing Test Boundaries](https://www.afaanashiq.com/code/drawing-test-boundaries/)
+* [Abstractions for Readability](https://www.afaanashiq.com/code/abstractions-for-readability/)
 * [Mock object library | Python official documentation](https://docs.python.org/3/library/unittest.mock.html)
 * [Monkeypatch fixture | Pytest documentation](https://docs.pytest.org/en/6.2.x/monkeypatch.html)
