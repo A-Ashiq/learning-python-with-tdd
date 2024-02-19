@@ -118,7 +118,7 @@ If we run this test, we can see that it runs and passes in under 1 ms. Now see w
 
 ***
 
-## Things to note
+## Code smell: Patch stack
 
 If we find ourselves having to patch over multiple targets within the scope of our test, this should feel like a [code smell](https://martinfowler.com/bliki/CodeSmell.html). In cases like this, we should opt to ensure that we have created the right levels of abstraction in our code first.
 
@@ -126,10 +126,6 @@ Lets say we have the following function, which calls a number of functions withi
 
 ```python
 def do_something_first() -> None:
-    ...
-
-
-def do_something_following() -> None:
     ...
 
 
@@ -143,7 +139,6 @@ def do_something_last() -> None:
 
 def some_func() -> None:
     do_something_first()
-    do_something_following()
     do_something_next()
     do_something_last()
     # Do other stuff
@@ -154,13 +149,11 @@ When we want to mock the internals of `some_func()` we would be forced to write 
 ```python
 class TestSomeFunc:
     @mock.patch(target="src.mocking.do_something_first")
-    @mock.patch(target="src.mocking.do_something_following")
     @mock.patch(target="src.mocking.do_something_next")
     @mock.patch(target="src.mocking.do_something_last")
     def test_code_smell_patch_stack(
         self,
         mocked_do_something_first: mock.MagicMock,
-        mocked_do_something_following: mock.MagicMock,
         mocked_do_something_next: mock.MagicMock,
         mocked_do_something_last: mock.MagicMock,
     ):
@@ -173,19 +166,14 @@ We've been forced to mock each of these individually. But if we had wrapped thes
 So lets condense our main function as follows:
 
 ```python
-def do_first_steps():
+def do_stuff():
     do_something_first()
-    do_something_following()
-
-
-def do_last_steps():
     do_something_next()
     do_something_last()
 
 
 def some_func_revised() -> None:
-    do_first_steps()
-    do_last_steps()
+    do_stuff()
     # Do other stuff
 ```
 
@@ -193,12 +181,10 @@ We've condensed the inner function calls into 2 seperate upper level functions. 
 
 ```python
 class TestSomeFuncRevised:
-    @mock.patch(target="src.mocking.do_first_steps")
-    @mock.patch(target="src.mocking.do_last_steps")
+    @mock.patch(target="src.mocking.do_stuff")
     def test_code_smell_patch_stack(
         self,
-        mocked_do_first_steps: mock.MagicMock,
-        mocked_do_last_steps: mock.MagicMock,
+        mocked_do_stuff: mock.MagicMock,
     ):
 
         some_func_revised()
