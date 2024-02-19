@@ -177,7 +177,9 @@ def some_func_revised() -> None:
     # Do other stuff
 ```
 
-We've condensed the inner function calls into 2 seperate upper level functions. We could also have wrapped them into the 1 function, and really this is more of a judgement call for us to make. Perhaps the functionality makes sense to be encapsulated into the 1 function or maybe there are 2 main discrete parts to care about.&#x20;
+Its important to keep mind the state of the mind of our readers. If they are reading our code, then chances are its in some code review process or they are debugging around this area. As engineers, its our responsibility to try and reduce the cognitive load on our readers as much as we can.
+
+We've condensed the the function calls into the 1 function. Abstractions like this are important because they also force us to write code that reads more like a story, whilst indicating side-line plots if the user is interested. Had we kept what we had before it would have felt more like a complicated novel with numerous useless plotlines.
 
 ```python
 class TestSomeFuncRevised:
