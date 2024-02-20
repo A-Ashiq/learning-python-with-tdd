@@ -206,10 +206,34 @@ We've listened to the things our test was telling us and adjusted accordingly. T
 
 As a general piece of guidance, **we should not mock things that we don't own**. There are of course exceptions, but the idea is that when we mock things we should mock our own code which wraps around some implementation of the thing we want as opposed to mocking the implementation directly.
 
-This has a few benefits:
+Lets say we had something like the following.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-02-20 at 18.52.32.png" alt=""><figcaption></figcaption></figure>
+
+In the above example, `Component A` whatever that may be is not too important, uses the `requests` library to make an HTTP GET request to some external system to retrieve `Resource B`, again its not too important what that is right now as we are still talking in theoretical terms.
+
+When we want to test `Component A` , there may be situations like unit tests whereby we don't want the scope of our test to leave the system boundary. Remember, once we leave the system boundary by whatever medium like a request over network then we as engineers have relinquished control. When we want to draw these boxes in our tests, we might want to mock out the part which leaves the system via the `requests` library.
+
+Although the `requests` library is a very robust and reliable 3rd party library, and we can assume conifdence in it due its maturity, we don't actually own it.
+
+The other thing to note is `Component A` has to understand the _how_ of retreiving `Resource B`. But `Component A` is likely to have some other designated responsibility.
+
+So how do we resolve all of these whilst also making sure that we only mock the things we own?
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-02-20 at 19.02.59.png" alt=""><figcaption></figcaption></figure>
+
+Lets say we wrapped the `requests.get()` call into a function or method, the semantics aren't important.&#x20;
+
+Now we have full control over `Function B`. We decide how it implements the retrieving of `Resource B` because that is ultimately the thing we care about in this case. Having to make a `GET` request over network is a means to an end. `Component A` now also doesn't need to care about we have to get `Resource B`, it just **delegates** that responsibility to `Function B` to take care.
+
+{% hint style="info" %}
+You'll hear a lot of talk in varioud literature about _delegating responsibility._ We don't want a small number of god-like components in our code which do everything. They are difficult to reason about and often brittle.
+{% endhint %}
+
+This also has a few benefits:
 
 * There is a central and reuseable component readily available.
-* Since we have control over it, that component can be more easily swapped out. Say if we wanted to change the implementation by using a different library
+* Since we have control over it, that component can be more easily swapped out. Say if we wanted to change the implementation by using a different library instead of `requests`.
 * We can easily change how the component is implemented to bring about the same behaviour, without needing to change users of that component.
 
 
