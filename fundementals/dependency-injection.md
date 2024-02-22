@@ -3,7 +3,7 @@
 Dependency injection sounds a lot fancier and complicated than what it actually is. \
 But it is an incredibly powerful and useful technique that we should include in our repertoire as it is something we will need later on.
 
-
+Dependency injection is the idea of providing an object or function the things that it needs and will later use as opposed to letting that object or function simply create those things within itself.&#x20;
 
 
 
