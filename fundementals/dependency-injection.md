@@ -1,6 +1,7 @@
 # Dependency Injection
 
-\<Coming soon>
+Dependency injection sounds a lot fancier and complicated than what it actually is. \
+But it is an incredibly powerful and useful technique that we should include in our repertoire as it is something we will need later on.
 
 
 
