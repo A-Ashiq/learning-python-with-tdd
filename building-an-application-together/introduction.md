@@ -6,4 +6,4 @@ We are going to start off with a set of requirememts. We are going to build towa
 
 Our product owner wants us to build an HTTP REST API which will allow users to calculate and determine how much tax they owe.
 
-We will build our application with modularity in mind and letting our tests drive our development.
+We will build our application with modularity in mind and let our tests take the lead and drive our development.
