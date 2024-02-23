@@ -7,7 +7,7 @@ Dependency injection is the idea of providing an object or function the things t
 
 ***
 
-## An example of dependency injection
+## What does no dependency injection look like?
 
 Lets take the following snippet:
 
