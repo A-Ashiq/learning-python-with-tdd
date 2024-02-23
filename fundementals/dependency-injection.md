@@ -30,6 +30,27 @@ See where this is going?&#x20;
 
 As things stand the `UserInterface` creates a `UserRepository` object internally within its `__init__()` method. So the `UserInterface` object has an implicit dependency on the `UserRepository` which in turn depends on a database. So we can't initialize the `UserInterface` without access to a database. Straight out of the gate, the idea of us writing effective unit tests against the `UserInterface` class is becoming a faint possibility.
 
+Now lets say we wanted to swap the `UserRepository` out for a repository which implements its persistence differently from a database. Our current `UserInterface` does not easily allow us to do this.
+
+***
+
+## Applying dependency injection
+
+Taking the `UserInterface` class from above. Lets see what this looks like if we implemented the class with dependency injection:
+
+```python
+class UserInterface:
+    def __init__(self, respository: UserRepository):
+        self.repository = respository
+
+    def get_user(self, user_id: int) -> User:
+        user = self.repository.get_user(user_id=user_id)
+        
+        # do some extra stuff
+```
+
+The difference is subtle but it has a dramatic impact in terms of how we can make use of the `UserInterface`.
+
 
 
 ***
