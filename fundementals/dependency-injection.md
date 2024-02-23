@@ -54,7 +54,9 @@ This time around, we have declared the `repository` argument on the `__init__()`
 
 See how we've added the type hint of  `UserRepository` to the `repository` argument on line number 2? Well, as long as the object that we pass to the `repository` argument implements a `get_user()` method which takes a `user_id` argument then that object will be valid.
 
-This is known as _duck-typing._ Which is a dynamic programming concept whereby the runtime only **cares about the behaviour of an object as opposed to its type**. Taking the above example, we could easily provide an object of another class to the `repository` argument, so long as it implements the same behaviour i.e.  a `get_user()` method with a keyword argument of `user_id`.
+Which is a dynamic programming concept whereby the runtime only **cares about the behaviour of an object as opposed to its type**. Taking the above example, we could easily provide an object of another class to the `repository` argument, so long as it implements the same behaviour i.e.  a `get_user()` method with a keyword argument of `user_id`.
+
+This is known as **duck-typing**_._ The name is derived from the saying _"If it looks like a duck and quacks like a duck, it's a duck"._
 
 Now that we've decoupled the `UserInterface` from the database by virtue of forcing the caller to explicitly provide the `UserRepository` ahead of time, we have added an important control point to our `UserInterface` class. If we want to write tests against the `UserInterface` class at a lower gear, then we can do so much easier than before.
 
