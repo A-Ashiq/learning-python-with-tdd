@@ -52,7 +52,7 @@ The difference is subtle but it has a dramatic impact in terms of how we can mak
 
 This time around, we have declared the `repository` argument on the `__init__()` constructor of the `UserInterface` class on line number 2. So whenever the `UserInterface` class is created we have to provide it with the `UserRepository`.
 
-See how we've added the type hint of  `UserRepository` to the `repository` argument on line number 2? Well, as long as the object that we pass to the `repository` argument implements a `get_user()` method which takes a `user_id` argument then that object will be valid.
+See how we've added the type hint of  `UserRepository` to the `repository` argument on line number 2? Well, as long as the object that we pass to the `repository` argument implements a `get_user()` method which takes a `user_id` argument as per line number. 6, then that object will be valid.
 
 Which is a dynamic programming concept whereby the runtime only **cares about the behaviour of an object as opposed to its type**. Taking the above example, we could easily provide an object of another class to the `repository` argument, so long as it implements the same behaviour i.e.  a `get_user()` method with a keyword argument of `user_id`.
 
