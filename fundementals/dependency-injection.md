@@ -64,9 +64,12 @@ Now that we've decoupled the `UserInterface` from the database by virtue of forc
 
 ## Swapping out the dependency (for tests)
 
+On that note lets take a look at how we might take advantage of dependency injection when we are writing tests.
 
+Lets start of with writing the test:
 
-
+```python
+```
 
 
 
