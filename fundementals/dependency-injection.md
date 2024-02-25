@@ -62,6 +62,18 @@ Now that we've decoupled the `UserInterface` from the database by virtue of forc
 
 ***
 
+## Swapping out the dependency for tests
+
+
+
+
+
+
+
+##
+
+***
+
 ## References
 
 * [Dependency Injection in Python](https://www.afaanashiq.com/python/dependency-injection-in-python/)
