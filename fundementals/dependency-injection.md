@@ -62,7 +62,7 @@ Now that we've decoupled the `UserInterface` from the database by virtue of forc
 
 ***
 
-## Swapping out the dependency for tests
+## Swapping out the dependency (for tests)
 
 
 
