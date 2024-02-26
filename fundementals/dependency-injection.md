@@ -119,9 +119,17 @@ class TestUserInterface:
 ```
 {% endcode %}
 
+The test itself is relatively straight forward.&#x20;
 
+On line 22 we create an instance of the `FakeUserRepository`, this is the dependency that we have replaced with an object which we have modified so that it does not interact with the database.&#x20;
 
-##
+On line 23, when we create the main `UserInterface` class, we pass the `FakeUserRepository` object into the initialization of the `UserInterface` class. This in itself is quite interesting because the `UserInterface` does not need to know or care about the fact that we've given it a different type of object than it would normally expect. This is the duck-typing paradigm we went over earlier.
+
+On line 5 of the `__init__()` method on the `FakeUserRepository`, we provide a list of `User` objects.  The purpose of this is to mimic the peristence aspect of the real `UserRepository` class. This is how we emulate the fact that we otherwise would have stored those `User` objects in a database.
+
+On line 8 we re-implement the `get_user()` method on the `FakeUserRepository.` As a minimum, the `get_user()` method takes the same arguments as the concrete `UserRepository` class.
+
+On line 9 we reimplement the functionality of the `get_user()` method on `FakeUserRepository` class. This reimplements the how the class retrieves a `User` object with the given `user_id` by grabbing the relevant `User` object within its own peristence i.e. the `_users` instance attribute. This mimics the database query which would have otherwise happened with the concrete `UserRepository` class.&#x20;
 
 ***
 
