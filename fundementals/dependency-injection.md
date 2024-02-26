@@ -11,7 +11,22 @@ Dependency injection is the idea of providing an object or function the things t
 
 Lets take the following snippet:
 
-<pre class="language-python"><code class="lang-python"><strong>class UserInterface:
+<pre class="language-python"><code class="lang-python">import time
+
+
+class User:
+    def __init__(self, user_id: int):
+        self.user_id = user_id
+
+
+class UserRepository:
+    @classmethod
+    def get_user(cls, user_id: int) -> User:
+        time.sleep(5)  # Wait for 5s to emulate db query
+        return User(user_id=user_id)
+
+
+<strong>class UserInterface:
 </strong>    def __init__(self):
         self.repository = UserRepository()
 
@@ -19,12 +34,13 @@ Lets take the following snippet:
         user = self.repository.get_user(user_id=user_id)
         
         # do some extra stuff
+        return user
 </code></pre>
 
 In this example, the `UserInterface` object initializes an instance of the `UserRepository`.\
-It then calls out to the `UserRepository` instance in the `get_user()` method.
+It then calls out to the `UserRepository` instance in the `get_user()` method. For the purposes of this exercise the `get_user()` method on the `UserRepository` class has a hardcoded delay of  5 seconds.
 
-Now lets make the assumption that the `UserRepository` represents `User` records in a database. And as such we can assume that `UserRepository` will need a connection to a database.
+Now lets make the assumption that the `UserRepository` represents `User` records in a database. And as such we can assume that `UserRepository` will need a connection to a database.&#x20;
 
 See where this is going?&#x20;
 
@@ -46,6 +62,7 @@ Taking the `UserInterface` class from above. Lets see what this looks like if we
         user = self.repository.get_user(user_id=user_id)
         
         # do some extra stuff
+        return user
 </code></pre>
 
 The difference is subtle but it has a dramatic impact in terms of how we can make use of the `UserInterface`.
@@ -68,8 +85,39 @@ On that note lets take a look at how we might take advantage of dependency injec
 
 Lets go ahead and set this up:
 
+{% code lineNumbers="true" %}
 ```python
+from src.dependency_injection import User, UserInterface
+
+
+class FakeUserRepository:
+    def __init__(self, users: list[User]):
+        self._users = users
+
+    def get_user(self, user_id: int) -> User:
+        return next(user for user in self._users if user.user_id == user_id)
+
+
+class TestUserInterface:
+    def test_get_user(self):
+        """
+        Given a `User` object
+        When `get_user()` is called from an instance of `UserInterface`
+        Then the correct `User` object is returned
+        """
+        # Given
+        user_id = 123
+        user = User(user_id=user_id)
+        fake_user_repository = FakeUserRepository(users=[user])
+        user_interface = UserInterface(respository=fake_user_repository)
+
+        # When
+        retrieved_user: User = user_interface.get_user(user_id=user_id)
+
+        # Then
+        assert retrieved_user == user
 ```
+{% endcode %}
 
 
 
