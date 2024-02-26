@@ -64,9 +64,9 @@ Now that we've decoupled the `UserInterface` from the database by virtue of forc
 
 ## Swapping out the dependency (for tests)
 
-On that note lets take a look at how we might take advantage of dependency injection when we are writing tests.
+On that note lets take a look at how we might take advantage of dependency injection when we are writing tests. Say we wanted to write unit tests against some of the logic in the `get_user()` method on the `UserInterface` class, but we don't want or need to include the database in our test. In this case, we'd be better off injecting a fake version of the `UserRepository` class into the instance of the `UserInterface` which we want to test
 
-Lets start of with writing the test:
+Lets go ahead and set this up:
 
 ```python
 ```
