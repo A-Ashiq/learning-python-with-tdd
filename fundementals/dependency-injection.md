@@ -133,6 +133,18 @@ On line 9 we reimplement the functionality of the `get_user()` method on `FakeUs
 
 ***
 
+## Swapping out the dependency (for something else)
+
+The other interesting property of applying dependency injection in this way is that we can re-use the `UserInterface` class with a different implementation of the `UserRepository`. More specifically, we could replace the `UserRepository` altogether with a different object which implements the `get_user()` method. Lets say for example we wanted to swap the current `UserRepository` out for another object that interacts with a different database or form of peristence.
+
+If you'll excuse the cliche, the only thing we know for sure is that things will change.
+
+{% hint style="info" %}
+So as engineers it is important for us to build systems that are modular and easy to make changes to.
+{% endhint %}
+
+***
+
 ## References
 
 * [Dependency Injection in Python](https://www.afaanashiq.com/python/dependency-injection-in-python/)
