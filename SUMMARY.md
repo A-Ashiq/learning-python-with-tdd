@@ -20,6 +20,7 @@
 * [Lists](fundementals/lists.md)
 * [Tuples](fundementals/tuples.md)
 * [Sets](fundementals/sets.md)
+* [Generators](fundementals/generators.md)
 * [Dictionaries](fundementals/dictionaries.md)
 * [Error handling](fundementals/error-handling.md)
 * [Classes](fundementals/classes.md)
