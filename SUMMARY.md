@@ -24,6 +24,7 @@
 * [Dictionaries](fundementals/dictionaries.md)
 * [Error handling](fundementals/error-handling.md)
 * [Classes](fundementals/classes.md)
+* [Iteration](fundementals/iteration.md)
 * [Mocking](fundementals/mocking.md)
 * [Dependency Injection](fundementals/dependency-injection.md)
 * [Type hints](fundementals/type-hints.md)
