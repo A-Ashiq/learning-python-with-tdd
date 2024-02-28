@@ -47,7 +47,6 @@ class TestGenerators:
         # Then
         with pytest.raises(StopIteration):
             next(iterator)
-
 ```
 {% endcode %}
 
@@ -56,3 +55,9 @@ On line 13, we create an iterator object which will yield 3 integers starting fr
 We then call `next()` on the iterator on lines 16, 19 and 22. The `next()` keyword is how we can ask for the next remaining item from the iterator.
 
 Line 26 contains a piece of syntax we have not come across just yet. The line `with pytest.raises(StopIteration)` says when the encapsulated bit of code throws a `StopIteration` error catch it and bury it because this is expected. The _encapsulated code_ is the indented block contained on line 27. If we had not included line 26, the execution of the test would have thrown a `StopIteration` error and the test would have failed. But in scenarios like this we are actively looking for the error to be thrown.
+
+{% hint style="info" %}
+Iterators also _save_ their state of execution.
+{% endhint %}
+
+So we can pause at any point and resume later to fetch items from the iterator and we will continue to receive the next items without having to go back to the start of the iterator. This is a really useful property compared to a normal function which does not save its state of execution and will always return items as if it is being called for the 1st time.
