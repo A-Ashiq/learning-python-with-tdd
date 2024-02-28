@@ -9,3 +9,12 @@ However, it does mean we lose some of useful properties that we would otherwise 
 So when we are using these objects, how do we know when we have ran out of items?\
 When we are running through a generator, it will return items to us one at a time. Once we reach the end, it can be said that we have _exhausted_ the generator. At this point, the object will raise a `StopIteration` error.
 
+Enough with the theory, lets write some tests and verify this behaviour for ourselves.\
+To get started lets create the files we need. In your terminal:
+
+```
+touch src/generators.py tests/test_generators.py
+```
+
+
+
