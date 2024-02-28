@@ -61,3 +61,11 @@ Iterators also _save_ their state of execution.
 {% endhint %}
 
 So we can pause at any point and resume later to fetch items from the iterator and we will continue to receive the next items without having to go back to the start of the iterator. This is a really useful property compared to a normal function which does not save its state of execution and will always return items as if it is being called for the 1st time.
+
+***
+
+## References
+
+* [Generator tricks for systems programmers](http://www.dabeaz.com/generators/)
+* [Iterator - Python wiki](https://wiki.python.org/moin/Iterator)
+* [Glossary - iterator | Python official documentation](https://docs.python.org/3/glossary.html#term-iterator)
