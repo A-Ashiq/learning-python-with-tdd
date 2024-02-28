@@ -16,5 +16,43 @@ To get started lets create the file we need. In your terminal:
 touch tests/test_generators.py
 ```
 
+Drop into our new test file and lets write the test:
+
+{% code lineNumbers="true" %}
+```python
+import pytest
 
 
+class TestGenerators:
+    def test_items_are_yielded_until_exhausted(self):
+        """
+        Given an iterator of integers
+        When `next()` is called continuously
+        Then the next integers are returned
+            until the iterator is exhausted
+        """
+        # Given
+        iterator = (n for n in range(3))
+
+        # When
+        first_value = next(iterator)
+        assert first_value == 0
+
+        second_value = next(iterator)
+        assert second_value == 1
+
+        third_value = next(iterator)
+        assert third_value == 2
+
+        # Then
+        with pytest.raises(StopIteration):
+            next(iterator)
+
+```
+{% endcode %}
+
+On line 13, we create an iterator object which will yield 3 integers starting from 0.
+
+We then call `next()` on the iterator on lines 16, 19 and 22. The `next()` keyword is how we can ask for the next remaining item from the iterator.
+
+Line 26 contains a piece of syntax we have not come across just yet. The line `with pytest.raises(StopIteration)` says when the encapsulated bit of code throws a `StopIteration` error catch it and bury it because this is expected. The _encapsulated code_ is the indented block contained on line 27. If we had not included line 26, the execution of the test would have thrown a `StopIteration` error and the test would have failed. But in scenarios like this we are actively looking for the error to be thrown.
