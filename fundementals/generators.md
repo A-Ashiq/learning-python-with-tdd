@@ -9,6 +9,10 @@ However, it does mean we lose some of useful properties that we would otherwise 
 So when we are using these objects, how do we know when we have ran out of items?\
 When we are running through a generator, it will return items to us one at a time. Once we reach the end, it can be said that we have _exhausted_ the generator. At this point, the object will raise a `StopIteration` error.
 
+***
+
+## Iterator object
+
 Enough with the theory, lets write some tests and verify this behaviour for ourselves.\
 To get started lets create the file we need. In your terminal:
 
@@ -61,6 +65,54 @@ Iterators also _save_ their state of execution.
 {% endhint %}
 
 So we can pause at any point and resume later to fetch items from the iterator and we will continue to receive the next items without having to go back to the start of the iterator. This is a really useful property compared to a normal function which does not save its state of execution and will always return items as if it is being called for the 1st time.
+
+***
+
+## Iterator function
+
+We can also write the same iterator as a function.
+
+{% code lineNumbers="true" %}
+```python
+import pytest
+
+
+class TestGenerators:
+    ...
+    def test_items_are_yielded_until_exhausted_from_function(self):
+        """
+        Given an iterator of integers as a function
+        When `next()` is called continuously
+        Then the next integers are returned
+            until the iterator is exhausted
+        """
+        # Given
+        def example_iterator():
+            for i in range(3):
+                yield i
+
+        iterator = example_iterator()
+
+        # When
+        first_value = next(iterator)
+        assert first_value == 0
+
+        second_value = next(iterator)
+        assert second_value == 1
+
+        third_value = next(iterator)
+        assert third_value == 2
+
+        # Then
+        with pytest.raises(StopIteration):
+            next(iterator)
+```
+{% endcode %}
+
+In this case, we create the `example_iterator()` function which makes use of the built-in `yield` keyword. This is the thing which generates each item one by one.
+
+On line 18, we call the function once and save it to a variable called `iterator`. From here we can treat it the same as we did before and call `next()` on it until we exhaust it.\
+We have to save the call to the function to a variable because this instantiates the function the once, thus creating a single instance of the `iterator`. If we had continuosly called `example_iterator()` then we would only have ever been returned the first item continuously.&#x20;
 
 ***
 
