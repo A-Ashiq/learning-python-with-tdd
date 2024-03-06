@@ -80,6 +80,48 @@ Process finished with exit code 0
 
 ***
 
+## Looping over dictionaries
+
+When we loop over dictionaries something quite interesting happens. By default, we get the keys of the dictionary only:
+
+```python
+from src.iteration import print_all_items
+
+
+class TestIteration:
+    ...
+    def test_loops_over_dict(self):
+        """
+        Given a dict of strings
+        When `print_all_items()` is called
+        Then each item is printed
+        """
+        # Given
+        items = {"red": 1, "blue": 2, "green": 3}
+
+        # When / Then
+        print_all_items(items=items)
+```
+
+If we run this test, we will get the same output as before:
+
+```python
+============================= test session starts ==============================
+collecting ... collected 1 item
+
+test_iteration.py::TestIteration::test_loops_over_dict PASSED            [100%]
+red
+blue
+green
+
+
+============================== 1 passed in 0.00s ===============================
+
+Process finished with exit code 0
+```
+
+***
+
 ## References
 
 * [Iterators | Python official documentation](https://docs.python.org/3/tutorial/classes.html#iterators)
