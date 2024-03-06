@@ -38,6 +38,10 @@ class TestIteration:
 
 If we run this, we will get our usual `ImportError` because we've tried to import the `print_all_items()` function which does not yet exist.
 
+***
+
+## Implement the iteration
+
 So lets head over to the source file and write the function:
 
 {% code title="" lineNumbers="true" %}
