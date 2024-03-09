@@ -122,6 +122,51 @@ Process finished with exit code 0
 
 ***
 
+## Looping over generators
+
+If you cast your mind back to the [chapter around generators](generators.md), you will remember how we accessed each item in a generator with the `next` call.
+
+A generator is just a sequence of data so we also have the ability to loop over them in the same way we would do a list or a dictionary:
+
+```python
+class TestIteration:
+    ...    
+    def test_loops_over_generator(self):
+        """
+        Given a generator of strings
+        When `print_all_items()` is called
+        Then each item is printed
+        """
+        # Given
+        def iterator_of_items():
+            yield "red"
+            yield "blue"
+            yield "green"
+
+        items = iterator_of_items()
+
+        # When / Then
+        print_all_items(items=items)
+```
+
+If we run this test, we will get the same output as we did with the previous versions:
+
+<pre class="language-python"><code class="lang-python"><strong>============================= test session starts ==============================
+</strong>collecting ... collected 1 item
+
+test_iteration.py::TestIteration::test_loops_over_generator PASSED       [100%]
+red
+blue
+green
+
+
+============================== 1 passed in 0.00s ===============================
+
+Process finished with exit code 0
+</code></pre>
+
+***
+
 ## References
 
 * [Iterators | Python official documentation](https://docs.python.org/3/tutorial/classes.html#iterators)
