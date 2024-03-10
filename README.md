@@ -30,7 +30,7 @@ The intention for this is to stand up as a thorough course. To teach the reader 
 
 ### What this course is not
 
-Unfortunately the realm of software engineering is enourmous. And I'd be lying to you if I said I could cover all of it. In fact, I'd bet my house that if anyone made that claim then they would also be lying too!
+Unfortunately the realm of software engineering is enourmous. And I'd be lying to you if I said I could cover all of it. In fact, I'd bet my house that if anyone made that claim then they would also be lying too! It would also be fair to say you won't learn the entire language by the end of this course. That would also be all but impossible.
 
 So there will be a number of things which this course will not address. For these points, we will _signpost the way out._
 
