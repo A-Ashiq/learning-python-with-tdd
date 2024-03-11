@@ -28,6 +28,8 @@
 * [Mocking](fundementals/mocking.md)
 * [Dependency Injection](fundementals/dependency-injection.md)
 * [Type hints](fundementals/type-hints.md)
+* [Concurrency](fundementals/concurrency.md)
+* [Parallelism](fundementals/parallelism.md)
 * [Summary](fundementals/summary.md)
 
 ## Building an application together
