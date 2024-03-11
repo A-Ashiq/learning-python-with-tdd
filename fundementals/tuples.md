@@ -24,6 +24,7 @@ Tuples are immutable. Which means we cannot make changes to tuples after they ha
 
 We can prove this by writing a test which checks what happens when we try to assign a new item to a tuple:
 
+{% code lineNumbers="true" %}
 ```python
 class TestTuples:
     def test_raise_error_when_item_is_assigned_after_instantiation(self):
@@ -38,6 +39,7 @@ class TestTuples:
         # When / Then
         items[3] = "d"
 ```
+{% endcode %}
 
 Now we have an interesting case here that we have not come across yet. In this test, we are checking for and expect an error to be thrown.
 
@@ -70,6 +72,7 @@ But running this as part of our test suite would result in an overall failure, i
 
 We can refactor our test to assert for the expected error:
 
+{% code lineNumbers="true" %}
 ```python
 import pytest
 
@@ -88,6 +91,7 @@ class TestTuples:
         with pytest.raises(expected_exception=TypeError):
             items[3] = "d"
 ```
+{% endcode %}
 
 In our test, we are now using the `with` keyword to open a context manager. In essence we are saying to the test runner that we are expecting a `TypeError` when the code block within the context manager is executed.
 

@@ -24,6 +24,7 @@ touch src/dicts.py tests/test_dicts.py
 
 Let's write the test first and then we can implement the function:
 
+{% code lineNumbers="true" %}
 ```python
 from src.dicts import add_item_to_dict
 
@@ -48,14 +49,17 @@ class TestDicts:
         assert new_key in items
         assert items[new_key] == new_value
 ```
+{% endcode %}
 
 To start of with we'll get the usual `ImportError`. So lets now head over to the `dicts.py` file and define our `add_item_to_dict()` function:
 
+{% code lineNumbers="true" %}
 ```python
 def add_item_to_dict(items: dict, key: str, value: int) -> dict:
     items[key] = value
     return items
 ```
+{% endcode %}
 
 Here we take the given dict `items` and assign the provided `key` with the `value`.
 
@@ -71,6 +75,7 @@ Keys are deduplicated on write to dictionaries. This means if we have a dictiona
 
 Let's write a test:
 
+{% code lineNumbers="true" %}
 ```python
   ...  
     
@@ -96,6 +101,7 @@ Let's write a test:
         # Then
         assert items == {key: new_value}
 ```
+{% endcode %}
 
 In this test, we add the value of `123` for the key `"abc"`. We then add a different value of `456` with the same key of `"abc"`.&#x20;
 
@@ -133,6 +139,7 @@ We can access keys with the square bracket notation or with the `get()` method. 
 
 Note that the `get()` method is simply a try/except catch whereby we can return a default value instead of allowing the `KeyError` to be raised.
 
+{% code lineNumbers="true" %}
 ```python
 import pytest
 
@@ -157,13 +164,16 @@ class TestDicts:
             get_item_from_dict(items=items, key=key)
         
 ```
+{% endcode %}
 
 Heading over to our source code file we can implement our new function:
 
+{% code lineNumbers="true" %}
 ```python
 def get_item_from_dict(items: dict, key: str) -> int:
     return items[key]
 ```
+{% endcode %}
 
 Running the test and we can see it passes.
 

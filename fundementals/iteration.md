@@ -18,6 +18,7 @@ touch src/iteration.py tests/test_iteration.py
 
 To start with lets write the test:
 
+{% code lineNumbers="true" %}
 ```python
 from src.iteration import print_all_items
 
@@ -35,6 +36,7 @@ class TestIteration:
         # When / Then
         print_all_items(items=items)
 ```
+{% endcode %}
 
 If we run this, we will get our usual `ImportError` because we've tried to import the `print_all_items()` function which does not yet exist.
 
@@ -44,7 +46,7 @@ If we run this, we will get our usual `ImportError` because we've tried to impor
 
 So lets head over to the source file and write the function:
 
-{% code title="" lineNumbers="true" %}
+{% code lineNumbers="true" %}
 ```python
 def print_all_items(items):
     for item in items:
@@ -84,6 +86,7 @@ Process finished with exit code 0
 
 When we loop over dictionaries something quite interesting happens. By default, we get the keys of the dictionary only:
 
+{% code lineNumbers="true" %}
 ```python
 from src.iteration import print_all_items
 
@@ -102,6 +105,7 @@ class TestIteration:
         # When / Then
         print_all_items(items=items)
 ```
+{% endcode %}
 
 If we run this test, we will get the same output as before:
 
@@ -128,6 +132,7 @@ If you cast your mind back to the [chapter around generators](generators.md), yo
 
 A generator is just a sequence of data so we also have the ability to loop over them in the same way we would do a list or a dictionary:
 
+{% code lineNumbers="true" %}
 ```python
 class TestIteration:
     ...    
@@ -148,6 +153,7 @@ class TestIteration:
         # When / Then
         print_all_items(items=items)
 ```
+{% endcode %}
 
 If we run this test, we will get the same output as we did with the previous versions:
 

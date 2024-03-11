@@ -14,12 +14,14 @@ In this chapter, we will learn how to catch errors and how to treat them. As wel
 
 Catching and handling errors in Python is pretty simple. It goes something like this:
 
+{% code lineNumbers="true" %}
 ```python
 try:                          # try clause
     do_something_that_fails() # try block
 except KeyError:              # except clause
     do_something_else()       # except block
 ```
+{% endcode %}
 
 In this case we call out to our function `do_something_that_fails()`, and we catch any `KeyError` which is thrown during the execution of our `try` block, treating it with the call out to the `do_something_else()` function.
 
@@ -39,6 +41,7 @@ touch src/error_handling.py tests/test_error_handling.py
 
 With these files in place, let's write the test:
 
+{% code lineNumbers="true" %}
 ```python
 from src.error_handling import divide_numbers
 
@@ -61,11 +64,13 @@ class TestErrorHandling:
         assert value == "N/A"
 
 ```
+{% endcode %}
 
 ### Writing the function to fulfil our test
 
 And now let's write the corresponding `divide_numbers()` function:
 
+{% code lineNumbers="true" %}
 ```python
 def divide_numbers(x: int, y: int) -> int | str:
     try:
@@ -73,6 +78,7 @@ def divide_numbers(x: int, y: int) -> int | str:
     except TypeError:
         return "N/A"
 ```
+{% endcode %}
 
 Now just a heads up, what we've written for our `divide_numbers()` function is not particularly good. But we'll come to that later in this section. For now, we can see that if we run our test. With an input of a string for 1 of the arguments to our function. Then a `TypeError` will be raised. In our case, the `TypeError` will be caught and treated with the fallback value of `"N/A"`.
 
@@ -80,10 +86,12 @@ Now just a heads up, what we've written for our `divide_numbers()` function is n
 
 To verify this for yourself, comment out the `try/except` clauses within the `divide_numbers()` function and run the test again:
 
+{% code lineNumbers="true" %}
 ```python
 def divide_numbers(x: int, y: int) -> int | str:
     return x / y
 ```
+{% endcode %}
 
 With this we are removing the `try/except` catch for the `TypeError` and allowing the exception to bubble up to the surface. If we run the test we should see the traceback associated with the `TypeError`:
 
@@ -163,6 +171,7 @@ When the program is executed, the first `KeyError` or `TypeError` will be caught
 
 So let's write a test to capture this:
 
+{% code lineNumbers="true" %}
 ```python
 class TestErrorHandling:
     ...    
@@ -182,6 +191,7 @@ class TestErrorHandling:
         # Then
         assert value == "N/A"
 ```
+{% endcode %}
 
 Running this test will fail with a `ZeroDivisionError`. This error is thrown by division operations when the denominator is `0`. This is of course an impossible calculation and as such Python communicates this clearly to us:
 
@@ -218,6 +228,7 @@ E           ZeroDivisionError: division by zero
 
 So now that we know we can enact a different error from the original error that we have guarded against. Lets go ahead and make use of this concept of treating multiple exceptions with the same `except` block:
 
+{% code lineNumbers="true" %}
 ```python
 def divide_numbers(x: int, y: int) -> int | str:
     try:
@@ -225,6 +236,7 @@ def divide_numbers(x: int, y: int) -> int | str:
     except (TypeError, ZeroDivisionError):
         return "N/A"
 ```
+{% endcode %}
 
 Now if we run our test file again, we can see that both of our tests pass.
 
@@ -251,7 +263,7 @@ The crucial difference here is that our `except` clauses will be checked and the
 
 For a more concrete example, we are going to take the `get_item_from_dict()` function that we looked at in the previous chapter. So lets commit the cardinal sin of copying our own code and drop this function into our `src/error_handling.py` file.
 
-<pre class="language-python"><code class="lang-python">def get_item_from_dict(items: dict, key: str) -> int:
+<pre class="language-python" data-line-numbers><code class="lang-python">def get_item_from_dict(items: dict, key: str) -> int:
 <strong>    return items[key]
 </strong></code></pre>
 
@@ -261,6 +273,7 @@ So we know from the previous chapter that if we provide `items` as a `dict` with
 
 Armed with this knowledge we should write our tests:
 
+{% code lineNumbers="true" %}
 ```python
 from src.error_handling import divide_numbers, get_item_from_dict
 
@@ -298,8 +311,8 @@ class TestErrorHandling:
 
         # Then
         assert returned_item == "Invalid"
-
 ```
+{% endcode %}
 
 You might be noticing a pattern emerge now. As we build our systems, we let our tests take the drivers seat and let them guide us. The result is that our tests describe the behaviours that we expect from our code, including how we expect our systems to react when things don't quite go to plan.
 
@@ -377,6 +390,7 @@ E       TypeError: list indices must be integers or slices, not str
 
 Armed with this, lets go ahead and re-write our `get_item_from_dict()` function to apply the concept of handling the errors seperately:
 
+{% code lineNumbers="true" %}
 ```python
 def get_item_from_dict(items: dict, key: str) -> str:
     try:
@@ -386,6 +400,7 @@ def get_item_from_dict(items: dict, key: str) -> str:
     except TypeError:
         return "Invalid"
 ```
+{% endcode %}
 
 If we run our test file again we can see they all pass.
 
@@ -465,6 +480,7 @@ The `finally` clause can be handy for teardown type operations, perhaps to close
 
 So we have been commiting a number of cardinal sins in our example code snippets in this chapter so far. If you scroll up you will come across a function which looks something like this:
 
+{% code lineNumbers="true" %}
 ```python
 def divide_numbers(x: int, y: int) -> int | str:
     try:
@@ -472,6 +488,7 @@ def divide_numbers(x: int, y: int) -> int | str:
     except (TypeError, ZeroDivisionError):
         return "N/A"
 ```
+{% endcode %}
 
 Imagine you were calling this function with your `x` and `y` arguments. Now lets say when we called out to this `divide_numbers()` function we hit either a `TypeError` or a `ZeroDivisionError`, in either case we would receive a return value of `"N/A"`.
 
@@ -501,6 +518,7 @@ But built-in exceptions might not always communicate our intent to the letter. T
 
 Before we get started, lets write a test to capture our theory:
 
+{% code lineNumbers="true" %}
 ```python
 import pytest
 
@@ -526,23 +544,28 @@ class TestErrorHandling:
         with pytest.raises(FoodNotAvailableForBreedError):
             get_food_type_for_breed(breed=unsupported_dog_breed)
 ```
+{% endcode %}
 
 Here we have our new `get_food_type_for_breed()` function. With an unsupported input argument, we expect a `FoodNotAvailableForBreedError` is raised.
 
 With this in place lets go ahead and implement the function:
 
+{% code lineNumbers="true" %}
 ```python
 def get_food_type_for_breed(breed: str) -> str:
      if breed == "Poodle":
          raise FoodNotAvailableForBreedError
 ```
+{% endcode %}
 
 Seems simple enough right? Now to implement our new custom exceptions, we need to extend from the base exception class like so:
 
+{% code lineNumbers="true" %}
 ```python
 class FoodNotAvailableForBreedError(Exception):
     ...
 ```
+{% endcode %}
 
 With all of these pieces in place, our test will pass.
 

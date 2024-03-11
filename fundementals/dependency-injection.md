@@ -11,7 +11,7 @@ Dependency injection is the idea of providing an object or function the things t
 
 Lets take the following snippet:
 
-<pre class="language-python"><code class="lang-python">import time
+<pre class="language-python" data-line-numbers><code class="lang-python">import time
 
 
 class User:

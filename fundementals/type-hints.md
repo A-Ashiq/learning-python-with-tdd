@@ -8,10 +8,12 @@ Python is a **dynamically-typed** language. Which means that we are not required
 
 Imagine we had ths function, without type hints
 
+{% code lineNumbers="true" fullWidth="false" %}
 ```python
 def add(x, y):
     return x + y
 ```
+{% endcode %}
 
 Python allows us to pass anything into the `x` and `y` arguments. So either of these would be valid:
 
@@ -57,10 +59,12 @@ Even if you add type hints, Python will **not** enforce type hints. Although 3rd
 
 Taking our simple `add()` function from earlier, this is how we might want to add type annotations to it:
 
+{% code lineNumbers="true" %}
 ```python
 def add(x: int, y: int) -> int:
     return x + y
 ```
+{% endcode %}
 
 We are making the assumption here that we only want callers of our function to pass integers into the `add()` function, and not types which can be concatenated instead.
 
@@ -74,10 +78,12 @@ We can also communicate our intent with our type hints. We can use them to tell 
 
 We can also use type hints to declare if an argument is optional, which is a common pattern you will see a lot of:
 
+{% code lineNumbers="true" %}
 ```python
 def send_request(url: str, query_params: dict[str, str] | None = None) -> None:
     requests.get(url=url, params=query_params)
 ```
+{% endcode %}
 
 In this case our `url` parameter is type hinted as `str` , whereas the `query_params` argument is type hinted as `dict[str, str] | None` i.e. it could be a dictionary or given as None, whilst this argument will default to `None` if nothing is explicitly provided.
 

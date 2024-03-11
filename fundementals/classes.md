@@ -26,6 +26,7 @@ A class attribute is an attribute that we can define on the class itself, and as
 
 So lets write a test to capture this
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -45,11 +46,13 @@ class TestCircle:
         # Then
         assert pi == math.pi
 ```
+{% endcode %}
 
 In this test we don't instantiate an object from the `Circle` class but instead we reference the class itself.
 
 So lets head over to write the class itself:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -57,6 +60,7 @@ import math
 class Circle:
     pi = math.pi
 ```
+{% endcode %}
 
 The class attribute `pi` is defined on the class as shown above.
 
@@ -70,6 +74,7 @@ Taking our `Circle` example above, we consider `pi` as a kind of global variable
 
 So lets write a test to capture this:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -93,6 +98,7 @@ class TestCircle:
         # Then
         assert circle.radius == radius
 ```
+{% endcode %}
 
 If we run this test as is, we'll get a new error that we haven't seen yet:
 
@@ -168,6 +174,7 @@ Python takes this `self` as the object itself. This is the glue which provides t
 
 Going back to our `Circle` class lets write a test to capture a new instance method:
 
+{% code lineNumbers="true" %}
 ```python
 class TestCircle:
     ...
@@ -188,6 +195,7 @@ class TestCircle:
         # Then
         assert area == math.pi * radius ** 2
 ```
+{% endcode %}
 
 Running this test is going to give us our old faithful friend, the `AttributeError`:
 
@@ -216,6 +224,7 @@ test_classes.py:62: AttributeError
 
 With that in mind, lets implement the `calculate_area()` method on our `Circle` class:
 
+{% code lineNumbers="true" %}
 ```python
 class Circle:
     pi = math.pi
@@ -226,6 +235,7 @@ class Circle:
     def calculate_area(self) -> float:
         return self.pi * self.radius ** 2
 ```
+{% endcode %}
 
 We define the instance method in a similar way to the way in which we would a function. The `self` argument is the first argument to be passed into the `calculate_area()` method. With the `self` argument, we have access to both the `pi` class attribute and the `radius` instance attribute, which we use for the implementation.
 
@@ -250,6 +260,7 @@ To demonstrate the use of static methods, we're going to make up a new class for
 
 But for now, lets write a test for a static method that we'll call from our new `Rectangle` class:
 
+{% code lineNumbers="true" %}
 ```python
 class TestRectangle:
     def test_calculate_perimeter(self):
@@ -272,6 +283,7 @@ class TestRectangle:
         # Then
         assert perimeter == 2 * (length + width)
 ```
+{% endcode %}
 
 See the difference between this and the instance or property methods? In the `# When` section of our test, we call the `calculate_perimiter()` method from the Rectangle class itself **not an instance** of the `Rectangle` class.&#x20;
 
@@ -305,12 +317,14 @@ test_classes.py:81: NameError
 
 With this in mind, lets go and implement the `calculate_perimeter()` on a new `Rectangle` class:
 
+{% code lineNumbers="true" %}
 ```python
 class Rectangle:
     @staticmethod
     def calculate_perimeter(length: float, width: float) -> float:
         return 2 * (length + width)
 ```
+{% endcode %}
 
 We define the method as a function which lives on the `Rectangle` class, wrapping the method with the `@staticmethod` decorator. The `@staticmethod` decorator is built-in and we don't need to explicitly import it.
 
@@ -318,6 +332,7 @@ Also see how we don't have to pass `self` into the method as the 1st argument? T
 
 Now make sure you import the `Rectangle` class into the test file:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -349,6 +364,7 @@ class TestRectangle:
         # Then
         assert perimeter == 2 * (length + width)
 ```
+{% endcode %}
 
 With the import in place we can run the test and see the test pass.
 
@@ -364,6 +380,7 @@ A common pattern is to use class methods as factory methods or alternative const
 
 Taking our `Rectangle` example, we might want to create a class method to act as an alternative constructor for creating squares. Writing our test first:
 
+{% code lineNumbers="true" %}
 ```python
 class TestRectangle:
     ...
@@ -386,9 +403,11 @@ class TestRectangle:
         # Then
         assert square.length == square.width == length
 ```
+{% endcode %}
 
 So lets go and implement the `create_square()` method:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 from typing import Self
@@ -411,6 +430,7 @@ class Rectangle:
     def create_square(cls, length: float) -> Self:
         return Rectangle(length=length, width=length)
 ```
+{% endcode %}
 
 This time around we create a method on the class, and wrap it with the built-in `@classmethod` decorator. Within our `create_square` class method we instantiate the `Rectangle` object according to our custom implementation of a square i.e. when the length and width are the same.
 
@@ -428,6 +448,7 @@ We might want to implement this as a property of the class. Because the circumfe
 
 So lets write a test:
 
+{% code lineNumbers="true" %}
 ```python
 class TestCircle:
     ...
@@ -447,11 +468,13 @@ class TestCircle:
         # Then
         assert circle.circumference == 2 * math.pi * radius
 ```
+{% endcode %}
 
 See the difference? We interface with the `circumference` property in the same way we would as if it were an instance attribute, by calling it without the trailing parenthesis `()`.
 
 Lets head over and implement the property:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -466,6 +489,7 @@ class Circle:
     def circumference(self) -> float:
         return 2 * self.pi * self.radius
 ```
+{% endcode %}
 
 And its as simple as that, we define an instance method and wrap it with the built-in `@property` decorator.
 
@@ -481,6 +505,7 @@ Inheritance allows us to _extend_ a child class from a base parent class. The ch
 
 Going back to our `Rectangle` class from earlier, lets ensure we have the following, with the `calculate_area()` method available:
 
+{% code lineNumbers="true" %}
 ```python
 class Rectangle:
     def __init__(self, length: float, width: float):
@@ -492,9 +517,11 @@ class Rectangle:
     def calculate_area(self) -> float:
         return self.length * self.width
 ```
+{% endcode %}
 
 We are most interested in the `calculate_area()` method for our new `Square` class. So lets write a simple test to verify this theory to ourselves:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -521,6 +548,7 @@ class TestSquare:
         # Then
         assert area == length * length
 ```
+{% endcode %}
 
 With this we will instantiate a `Square` object with the 1 `length` parameter. And then we will call the `calculate_area()` method to retrieve the area of the square.
 
@@ -556,6 +584,7 @@ Inheritance also allows us to override methods that we have inherited from the p
 
 Lets start off by writing a test to capture the behaviour of our parent class:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -581,10 +610,11 @@ class TestEmployee:
         # Then
         assert salary == 34_963
 ```
+{% endcode %}
 
 We've not yet implemented our parent class. So lets go and do that now:
 
-<pre class="language-python"><code class="lang-python"><strong>class Employee:
+<pre class="language-python" data-line-numbers><code class="lang-python"><strong>class Employee:
 </strong>    def __init__(self, name: str):
         self.name = name
 
@@ -601,6 +631,7 @@ Take note of the `_` character which is primarily used for readability purposes 
 
 Lets now write a test that will check the `salary` of a new `Volunteer` class:
 
+{% code lineNumbers="true" %}
 ```python
 import math
 
@@ -626,11 +657,13 @@ class TestVolunteer:
         # Then
         assert salary == 0
 ```
+{% endcode %}
 
 If we run this test we will get an `ImportError` as we are trying to import the `Volunteer` class which has not been implemented yet.
 
 So let's head back over and implement our new `Volunteer` class:
 
+{% code lineNumbers="true" %}
 ```python
 class Employee:
     def __init__(self, name: str):
@@ -649,6 +682,7 @@ class Volunteer(Employee):
     def salary(self):
         return 0
 ```
+{% endcode %}
 
 We can inherit from the parent `Employee` class as we already know how to. And then we can simply re-implement the `salary` property method as usual to redefine that piece of functionality for our child class.
 

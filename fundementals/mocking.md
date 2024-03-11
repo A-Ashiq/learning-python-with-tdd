@@ -124,6 +124,7 @@ If we find ourselves having to patch over multiple targets within the scope of o
 
 Lets say we have the following function, which calls a number of functions within:
 
+{% code lineNumbers="true" %}
 ```python
 def do_something_first() -> None:
     ...
@@ -143,9 +144,11 @@ def some_func() -> None:
     do_something_last()
     # Do other stuff
 ```
+{% endcode %}
 
 When we want to mock the internals of `some_func()` we would be forced to write something like the following:
 
+{% code lineNumbers="true" %}
 ```python
 class TestSomeFunc:
     @mock.patch(target="src.mocking.do_something_first")
@@ -160,11 +163,13 @@ class TestSomeFunc:
         
         some_func()
 ```
+{% endcode %}
 
 We've been forced to mock each of these individually. But if we had wrapped these into another layer of abstraction, then we would have made things much easier for ourselves to not only test but also to reason about.
 
 So lets condense our main function as follows:
 
+{% code lineNumbers="true" %}
 ```python
 def do_stuff():
     do_something_first()
@@ -176,11 +181,13 @@ def some_func_revised() -> None:
     do_stuff()
     # Do other stuff
 ```
+{% endcode %}
 
 Its important to keep mind the state of the mind of our readers. If they are reading our code, then chances are its in some code review process or they are debugging around this area. As engineers, its our responsibility to try and reduce the cognitive load on our readers as much as we can.
 
 We've condensed the the function calls into the 1 function. Abstractions like this are important because they also force us to write code that reads more like a story, whilst indicating side-line plots if the user is interested. Had we kept what we had before it would have felt more like a complicated novel with numerous useless plotlines.
 
+{% code lineNumbers="true" %}
 ```python
 class TestSomeFuncRevised:
     @mock.patch(target="src.mocking.do_stuff")
@@ -191,6 +198,7 @@ class TestSomeFuncRevised:
 
         some_func_revised()
 ```
+{% endcode %}
 
 Either way, the level of mocking required for the `some_func_revised()` function is mitigated.&#x20;
 
@@ -235,10 +243,6 @@ This also has a few benefits:
 * There is a central and reuseable component readily available.
 * Since we have control over it, that component can be more easily swapped out. Say if we wanted to change the implementation by using a different library instead of `requests`.
 * We can easily change how the component is implemented to bring about the same behaviour, without needing to change users of that component.
-
-
-
-
 
 ***
 

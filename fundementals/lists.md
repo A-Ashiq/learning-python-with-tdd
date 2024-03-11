@@ -22,6 +22,7 @@ Unlike some of the other data structures we can **add or remove items** from the
 
 But don't take my word for it. Lets write some tests and verify this claim. Lets start of with setting up our first test, we'll use this to check our previous claim that lists are mutable:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import add_item_to_list
 
@@ -43,6 +44,7 @@ class TestLists:
         # Then
         assert new_numbers == [1, 2, 3, 4]
 ```
+{% endcode %}
 
 > This test will fail when ran because we have not yet defined `add_item_to_list()`
 
@@ -66,10 +68,12 @@ touch src/lists.py
 
 Within that file we should create the function that our test wanted us to create:
 
+{% code lineNumbers="true" %}
 ```python
 def add_item_to_list():
     ...
 ```
+{% endcode %}
 
 Note that the ellipsis `...` here acts as a placeholder. This is akin to the `pass` keyword.
 
@@ -103,10 +107,12 @@ Right so we need to get out of the red. Being true to the letter of TDD would pu
 
 So with that in mind, let's modify our `add_item_to_list()` function:
 
+{% code lineNumbers="true" %}
 ```python
 def add_item_to_list(items: list[int], item: int) -> list[int]:
     return [1, 2, 3, 4]
 ```
+{% endcode %}
 
 Now we have defined 2 arguments to the function along with type hints to say that we expect to be provided with a list of integers and another integer.
 
@@ -116,12 +122,13 @@ In all other possible test cases, our function will not suffice. But remember ou
 
 Now that we are in that safe zone, let's refactor our function to finally make use of the `append()` method on the `list` object:
 
+{% code lineNumbers="true" %}
 ```python
 def add_item_to_list(items: list[int], item: int) -> list[int]:
     items.append(item)
     return items
-
 ```
+{% endcode %}
 
 As you might have guessed, the `append()` method takes an object and adds it to the end of the list. In our case we took a list which contained the integers 1, 2 and 3, and added the integer 4 to the end of the list.
 
@@ -133,6 +140,7 @@ But our test now passes, and we've proved the concept of mutability to ourselves
 
 Let's try this again, but this time let's remove an item:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import add_item_to_list, remove_item_from_list
 
@@ -154,6 +162,7 @@ from src.lists import add_item_to_list, remove_item_from_list
         # Then
         assert new_numbers == [1, 2]
 ```
+{% endcode %}
 
 > From here on out we will be writing each test as a method on our test class. The rest of the test class will be omitted for brevity.
 
@@ -161,18 +170,22 @@ Again, this test is going to fail because we have not defined the `remove_item_f
 
 So let's head over to our `src/lists.py` file and define that function for ourselves:
 
+{% code lineNumbers="true" %}
 ```python
 def remove_item_from_list(items: list[int], item: int) -> list[int]:
     return [1, 2]
 ```
+{% endcode %}
 
 Once again, our test will pass. But it doesn't really mean much functionally. We just want to get to the green zone so we can think in safety about our implementation:
 
+{% code lineNumbers="true" %}
 ```python
 def remove_item_from_list(items: list[int], item: int) -> list[int]:
     items.remove(item)
     return items
 ```
+{% endcode %}
 
 Now we can see our test passes. Again, this would be a good opportunity to write some more tests cases against this function.
 
@@ -188,6 +201,7 @@ So we've found that we can add individual items to a list. But we also have the 
 
 So let's write a test for this:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import add_item_to_list, remove_item_from_list, add_list_to_list
 
@@ -209,12 +223,13 @@ from src.lists import add_item_to_list, remove_item_from_list, add_list_to_list
         # Then
         assert new_numbers == [1, 2, 3, 4]
 ```
+{% endcode %}
 
 As you might have guessed, this test is going to fail.
 
 Our test is telling us what we expect so we should go and define our function:
 
-<pre class="language-python"><code class="lang-python"><strong>def add_list_to_list(items: list[int], items_to_be_added: list[int]) -> list[int]:
+<pre class="language-python" data-line-numbers><code class="lang-python"><strong>def add_list_to_list(items: list[int], items_to_be_added: list[int]) -> list[int]:
 </strong>    items.extend(items_to_be_added)
     return items
 </code></pre>
@@ -237,6 +252,7 @@ The fact that lists are indexed provide us with the ability to manipulate lists 
 
 Getting the index of an item is pretty straight forward. We can call `index()` on the list object with the first argument being the item itself:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import (
     add_item_to_list,
@@ -262,13 +278,16 @@ from src.lists import (
         # Then
         assert index == 1
 ```
+{% endcode %}
 
 Once again, this test is going to fail. We get an `ImportError` so lets go and define it:
 
+{% code lineNumbers="true" %}
 ```python
 def get_index_of_item(items: list[str], item: str) -> int:
     return items.index(item)
 ```
+{% endcode %}
 
 And now that our test passes, we've confirmed our theory!
 
@@ -278,6 +297,7 @@ Because lists are indexed, we can also perform interesting operations like slice
 
 Let's write a test to prove that idea:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import (
     add_item_to_list,
@@ -306,13 +326,16 @@ from src.lists import (
         assert items == ["a", "b", "c", "d"]
 
 ```
+{% endcode %}
 
 Once again, this test is going to fail as things stand, because we haven't defined our function. So lets do just that:
 
+{% code lineNumbers="true" %}
 ```python
 def insert_item_at_index(items: list[str], index: int, item: str) -> list[str]:
     return items.insert(index, item)
 ```
+{% endcode %}
 
 Now our test passes, we can see that we've taken our item, in this case the string `"b"` and inserted it at the position of `1`.&#x20;
 
@@ -328,6 +351,7 @@ There are a number of other operations which we can use on lists, although some 
 
 We can sort items within a list and mutate the list in place. So lets write a test that tries to negate this theory first:
 
+{% code lineNumbers="true" %}
 ```python
   from src.lists import (
     add_item_to_list,
@@ -356,13 +380,16 @@ We can sort items within a list and mutate the list in place. So lets write a te
       assert items == ["a", "b", "c"]
     
 ```
+{% endcode %}
 
 So with our test in place lets head over to our source code:
 
+{% code lineNumbers="true" %}
 ```python
  def sort_items_in_list(items: list[str]) -> list[str]:
     return items.sort()
 ```
+{% endcode %}
 
 And with that in place we have a passing test!
 
@@ -378,6 +405,7 @@ Another very common and useful operation for lists is the ability to get a count
 
 We know the drill pretty well at this point, so lets write the test to try and disprove this claim first:
 
+{% code lineNumbers="true" %}
 ```python
 from src.lists import (
     add_item_to_list,
@@ -406,13 +434,16 @@ from src.lists import (
         # Then
         assert number_of_items == 3
 ```
+{% endcode %}
 
 With this in place, we know what to expect from our test. So let's write the source code to match:
 
+{% code lineNumbers="true" %}
 ```python
 def count_items(items: list[str]) -> int:
     return len(items)
 ```
+{% endcode %}
 
 ***
 

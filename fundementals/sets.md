@@ -14,6 +14,7 @@ touch src/sets.py tests/test_sets.py
 
 In our test file, we are going to write a test to prove the de-deduplication concept to ourselves:
 
+{% code lineNumbers="true" %}
 ```python
 class TestSets:
     def test_items_are_deduplicated(self):
@@ -35,6 +36,7 @@ class TestSets:
         assert duplicated_item in items
 
 ```
+{% endcode %}
 
 In this test we have a `set` along with an item, in this case the string `"a"` that we want to add to our `set`. We repeatedly call our function 5 times to add our item to our `set`.
 
@@ -65,11 +67,13 @@ test_sets.py:17: NameError
 
 With this, lets go and define our `add_item_to_set()` function:
 
+{% code lineNumbers="true" %}
 ```python
 def add_item_to_set(items: set, item: str) -> set:
     items.add(item)
     return items
 ```
+{% endcode %}
 
 In this function, we take our `set` given as the `items` arg and call the `add()` method with the given `item` arg to add the item to the `set`.
 
@@ -77,6 +81,7 @@ Note that with this we expect the `set` to be deduplicated on write. In other wo
 
 Importing our new function into place for our test:
 
+{% code lineNumbers="true" %}
 ```python
 from src.tuples import add_item_to_set
 
@@ -99,8 +104,8 @@ class TestSets:
         # Then
         assert len(items) == 1
         assert duplicated_item in items
-
 ```
+{% endcode %}
 
 Running this and our test now passes.
 
@@ -114,6 +119,7 @@ The first one we are going to look at is the `difference` operation. The `differ
 
 Let's write a test for this:
 
+{% code lineNumbers="true" %}
 ```python
 from src.tuples import get_difference
 
@@ -136,13 +142,16 @@ from src.tuples import get_difference
         # Then
         assert difference == {"a"}
 ```
+{% endcode %}
 
 You know the drill by now. Our `NameError` will tell us to go and write our `get_difference()` function:
 
+{% code lineNumbers="true" %}
 ```python
 def get_difference(main: set, secondary: set) -> set:
     return set(main).difference(secondary)
 ```
+{% endcode %}
 
 {% hint style="info" %}
 Note that `main - difference` would be shorthand for `set(main).difference(secondary)`.
