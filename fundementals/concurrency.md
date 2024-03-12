@@ -2,6 +2,8 @@
 
 You might have heard the terms concurrency and [parallelism](parallelism.md) used interchangeably. But they describe different methodologies when it comes to speeding up the execution of a given collection of workloads.
 
+## When do we need concurrency?
+
 In todays world we often, if not always find ourselves building distributed systems. Taking a very simple architecture with an application which needs to talk to a database:
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-03-12 at 19.45.21.png" alt=""><figcaption></figcaption></figure>
