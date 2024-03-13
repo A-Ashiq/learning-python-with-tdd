@@ -1,6 +1,6 @@
 # Concurrency
 
-You might have heard the terms concurrency and [parallelism](parallelism.md) used interchangeably. But they describe different methodologies when it comes to speeding up the execution of a given collection of workloads.
+You might have heard the terms concurrency and [parallelism](parallelism.md) used interchangeably. But they describe different methodologies when it comes to speeding up the execution of a given collection of workloads. In this section we will focus primarily on concurrency.
 
 ## When do we need concurrency?
 
