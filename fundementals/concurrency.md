@@ -119,7 +119,6 @@ def run_with_multiple_threads(func: Callable, number_of_threads: int) -> None:
     indexes = [i for i in range(number_of_threads)]
     with ThreadPool(processes=number_of_threads) as pool:
         pool.map(func, indexes)
-
 ```
 {% endcode %}
 
@@ -131,11 +130,32 @@ On line 18, we define the `run_with_multiple_threads()` function which takes a c
 
 On line 20, we create a list of numbers counting from 0 up to the aforementioned number of threads. So if that number is 10, then this list will look like `[0, 1, 2, ..., 10]`.
 
-##
+On line 21, we use the `Pool` class from the `multithreading` library. We've renamed this as `Pool` in our namespace via the import on line 2. This is because the `ThreadPool` class has the same API as the `Pool` class which is used for spinning up processes rather than threads.\
+The `multiprocessing.dummy` module exposes an API which mirrors that of the actual multiprocessing functionality, of course with the exception being it replaces threads for processes. We initialize the `ThreadPool` object on line 20, with a key word argument of `processes`, as you might have guessed this informs how many threads to execute the tasks with.
 
-##
+On line 22, we call the `map` method on the pool object. We provide the map operation with our callable and an iterable. In our case this iterable contains a list of integers which we can use in `print` statements to distinguish between the threads in our terminal.
 
-##
+{% hint style="info" %}
+By making use of the `with` statement as a context manager, we don't have to explictly start and join the threads as this is taken care for us for free.
+{% endhint %}
+
+Note that without the use of the context manager, we would have had to write the `run_with_multiple_threads()` as follows:
+
+```python
+def run_with_multiple_threads_simple(func: Callable, number_of_threads: int) -> None:
+    print(f"Creating pool of {number_of_threads} threads")
+    indexes = [i for i in range(number_of_threads)]
+
+    threads = [threading.Thread(target=func, args=(i,)) for i in indexes]
+
+    for thread in threads:
+        thread.start()
+
+    for thread in threads:
+        thread.join()
+```
+
+Not quite as clean and concise right?
 
 ***
 
