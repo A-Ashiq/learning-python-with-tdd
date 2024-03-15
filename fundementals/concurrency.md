@@ -143,6 +143,7 @@ By making use of the `with` statement as a context manager, we don't have to exp
 
 Note that without the use of the context manager, we would have had to write the `run_with_multiple_threads()` as follows:
 
+{% code lineNumbers="true" %}
 ```python
 def run_with_multiple_threads_simple(func: Callable, number_of_threads: int) -> None:
     print(f"Creating pool of {number_of_threads} threads")
@@ -156,6 +157,7 @@ def run_with_multiple_threads_simple(func: Callable, number_of_threads: int) -> 
     for thread in threads:
         thread.join()
 ```
+{% endcode %}
 
 Not quite as clean and concise right?
 
