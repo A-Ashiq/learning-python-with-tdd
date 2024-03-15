@@ -26,11 +26,9 @@ So the main thing to note is that if the execution of the operation requires lea
 
 ## Threading
 
+CPython implements a Global Interpreter Lock (GIL) which means that out of the box, true parallelism isn't on the menu. The GIL means that a Python process can only execute instructions on 1 thread at any 1 given time on 1 core. But for I/O bound concurrency problems, this is not neccessarily something we should care too much about.
 
-
-
-
-
+But Python also implements some pretty interesting and well-tuned thread-switching capability which means that there is not a massive amount of associated overhead with the Python process creating and switching between multiple threads. This is very cheap and quick to do when compared to executing with multiple processes. This can give the illusion of parallelism, and when applied correctly would be indistinguishable from true parallelism. This of course depends on whether the task is sufficiently I/O bound.
 
 ***
 
