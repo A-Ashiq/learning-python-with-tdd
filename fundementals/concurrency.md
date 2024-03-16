@@ -210,6 +210,20 @@ But what is really interesting is we don't neccessarily start the tasks in seque
 
 We can also see that the whole test took 5.03 seconds to complete. Which is roughly equivalent to the time it takes for 1 of our IO bound operations to run. Our test also has some associated overhead derived from our `print` statements. With the remainder being down to the context switching between threads that our Python process was churning through behind the scenes.
 
+As a little bonus. You can replace the `io_bound_operation()` function with the following:
+
+```python
+def io_bound_operation(index: int) -> None:
+    print(f"\nStarting io bound operation for thread number {index}")
+    url = "https://jsonplaceholder.typicode.com/comments"
+    requests.get(url=url)
+    print(
+        f"\nFinished io bound operation for thread number {index} in {SECONDS_TAKEN_FOR_SINGLE_IO_OPERATION}s"
+    )
+```
+
+This will hit the _JSONPlaceholder API,_ which is a free REST API available for testing purposes. You can use this to replace the dummy `time.sleep()` calls we had earlier. **Note that you will likely have to adjust your test assertions as well as the number of threads.** Because the condition/task being performed has changed.
+
 ***
 
 ## How would this look without concurrency?
