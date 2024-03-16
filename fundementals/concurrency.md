@@ -36,6 +36,8 @@ But Python also implements some pretty interesting and well-tuned context switch
 
 Threads are very lightweight and cheap to initialize. But they are limited as to the sort of the problems they can solve for us.
 
+Generally, we should aim to design our multi threading solutions so that the threads can execute their tasks independently of each other. Although it is possible to share data between threads, this adds complexity and its own challenges.
+
 ***
 
 ## Write the test for multiple threads
