@@ -218,7 +218,9 @@ If we had run our IO bound operation sequentially, then by our calculations it w
 10 tasks x 5 seconds per task = 50 seconds in total
 ```
 
+<figure><img src="../.gitbook/assets/Screenshot 2024-03-16 at 09.50.38.png" alt=""><figcaption></figcaption></figure>
 
+The big difference here is that the main thread which is running the application cannot start the next task before the one prior has been completed. So there ends up being a lot of dead time where the application is just spending waiting around for a result to come back. This is known as a _blocking-operation**.**_ Even worse still, the application won't even be making use of its resources. So any resources in the form of CPU and memory will effectively be wasted for that period of time.
 
 ***
 
