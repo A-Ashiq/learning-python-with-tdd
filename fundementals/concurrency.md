@@ -34,6 +34,8 @@ But Python also implements some pretty interesting and well-tuned context switch
 
 &#x20;This can give the illusion of parallelism, and when applied correctly would be indistinguishable from true parallelism. This of course depends on whether the task is sufficiently I/O bound.
 
+Threads are very lightweight and cheap to initialize. But they are limited as to the sort of the problems they can solve for us.
+
 ***
 
 ## Write the test for multiple threads
@@ -130,7 +132,7 @@ We've defined a function called `io_bound_operation()` on line 12. This function
 
 On line 18, we define the `run_with_multiple_threads()` function which takes a callable and an integer, whereby the integer represents the number of threads to spin up.
 
-On line 20, we create a list of numbers counting from 0 up to the aforementioned number of threads. So if that number is 10, then this list will look like `[0, 1, 2, ..., 10]`.
+On line 20, we create a list of numbers counting from 0 up to the aforementioned number of threads. So if that number is 10, then this list will look like `[0, 1, 2, ..., 9]`.
 
 On line 21, we use the `Pool` class from the `multithreading` library. We've renamed this as `Pool` in our namespace via the import on line 2. This is because the `ThreadPool` class has the same API as the `Pool` class which is used for spinning up processes rather than threads.\
 The `multiprocessing.dummy` module exposes an API which mirrors that of the actual multiprocessing functionality, of course with the exception being it replaces threads for processes. We initialize the `ThreadPool` object on line 20, with a key word argument of `processes`, as you might have guessed this informs how many threads to execute the tasks with.
@@ -160,6 +162,63 @@ def run_with_multiple_threads_simple(func: Callable, number_of_threads: int) -> 
 {% endcode %}
 
 Not quite as clean and concise right?
+
+***
+
+## Checking the results
+
+So lets head back to our test and run it. In your console you will see something along the lines of this:
+
+```python
+============================= test session starts ==============================
+collecting ... collected 1 item
+
+test_concurrency.py::TestConcurrency::test_multi_threading_can_run_multiple_io_bound_operations 
+
+============================== 1 passed in 5.03s ===============================
+PASSED [100%]Creating pool of 10 threads
+
+Starting io bound operation for thread number 0
+Starting io bound operation for thread number 1
+Starting io bound operation for thread number 7
+Starting io bound operation for thread number 5
+Starting io bound operation for thread number 9
+Starting io bound operation for thread number 8
+Starting io bound operation for thread number 6
+Starting io bound operation for thread number 3
+Starting io bound operation for thread number 2
+Starting io bound operation for thread number 4
+Finished io bound operation for thread number 1 in 5s
+Finished io bound operation for thread number 7 in 5s
+Finished io bound operation for thread number 3 in 5s
+Finished io bound operation for thread number 8 in 5s
+Finished io bound operation for thread number 6 in 5s
+Finished io bound operation for thread number 4 in 5s
+Finished io bound operation for thread number 2 in 5s
+Finished io bound operation for thread number 0 in 5s
+Finished io bound operation for thread number 9 in 5s
+Finished io bound operation for thread number 5 in 5s
+
+Process finished with exit code 0
+```
+
+Note that some of the additional break lines have been omitted for brevity.
+
+But what is really interesting is we don't neccessarily start the tasks in sequential order. Remember our `indexes` ranged from `[0, 1, 2, ..., 9]`. This is because each task/index is delegated to an individual thread in the pool that we created. So once we assign the tasks to the pool of threads we concede control over the exact order in which the tasks will be executed.
+
+We can also see that the whole test took 5.03 seconds to complete. Which is roughly equivalent to the time it takes for 1 of our IO bound operations to run. Our test also has some associated overhead derived from our `print` statements. With the remainder being down to the context switching between threads that our Python process was churning through behind the scenes.
+
+***
+
+## How would this look without concurrency?
+
+If we had run our IO bound operation sequentially, then by our calculations it would have taken:
+
+```
+10 tasks x 5 seconds per task = 50 seconds in total
+```
+
+
 
 ***
 
