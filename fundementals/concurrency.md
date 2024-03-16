@@ -30,7 +30,7 @@ CPython implements a Global Interpreter Lock (GIL) which means that out of the b
 
 But Python also implements some pretty interesting and well-tuned context switching capability which means that there is not a massive amount of associated overhead with the Python process creating and switching between multiple threads. This is very cheap and quick to do when compared to executing with multiple processes.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-03-15 at 22.56.30.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-03-16 at 17.23.56.png" alt=""><figcaption></figcaption></figure>
 
 &#x20;This can give the illusion of parallelism, and when applied correctly would be indistinguishable from true parallelism. This of course depends on whether the task is sufficiently I/O bound.
 
