@@ -35,6 +35,7 @@ These files are not particularly well named, but that's okay for now. The sole p
 
 Now lets head over to our new test file:
 
+{% code lineNumbers="true" %}
 ```python
 import time
 
@@ -76,6 +77,7 @@ class TestMultiprocessing:
             < time_taken_for_sequential_operations
         )
 ```
+{% endcode %}
 
 ***
 
@@ -140,8 +142,6 @@ Finished io bound operation for thread number 8 in 5s
 Finished io bound operation for thread number 9 in 5s
 
 Process finished with exit code 0
-
-
 ```
 
 Everything looks as we expect right?
