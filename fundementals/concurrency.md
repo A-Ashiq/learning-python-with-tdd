@@ -130,6 +130,10 @@ def run_with_multiple_threads(func: Callable, number_of_threads: int) -> None:
 ```
 {% endcode %}
 
+{% hint style="info" %}
+It should be noted that we could have used the `current_thread()` function from the `threading` library instead of creating a list of integers for`indexes`and providing them to the `ThreadPool`. This was done so we could demonstrate how to pass arguments to each individual thread execution.
+{% endhint %}
+
 There is a lot to unpack here, so buckle in!
 
 We've defined a function called `io_bound_operation()` on line 12. This function is a bit of a sham but the whole point of it is to emulate a long running IO bound operation for our purposes here. In the real world this might be a long running database query or a call being made to some external 3rd party API. Either way it is out of the control of the current application. To simulate this behaviour we've made the function wait for 5 seconds before completing. We've extracted that 5 seconds into a constant on line 9 so that we can use it in our tests for expected time calculations.
