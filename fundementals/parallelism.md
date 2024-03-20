@@ -366,6 +366,14 @@ Now take a look at the total amount of time the test took to run. It took 5.26s 
 
 ***
 
+## What would a memory bound task look like?
+
+So we've covered parallelism to address a CPU bound problem. But what would the equivalent memory bound operation look like?
+
+The main difference would be holding onto data in some kind of data structure. For example, instead of simply running a large counter we would have appended each integer to a list.
+
+***
+
 ## References
 
 * [Multiprocessing | Python official documentation](https://docs.python.org/3/library/multiprocessing.html)
