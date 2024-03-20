@@ -14,9 +14,62 @@ The other thing with parallelism is we are consuming more hardware resources. Ea
 
 ***
 
+## An example CPU bound problem
+
+In this case, we're gonna work backwards. We will define the problem first by writing the source code:
+
+{% code lineNumbers="true" %}
+```python
+import logging
+import time
+from multiprocessing.pool import Pool
+from random import randrange
+
+from typing import Callable
+
+logger = logging.getLogger(__name__)
 
 
+def run_with_multiple_processes(func: Callable, number_of_processes: int) -> None:
+    print(f"Creating pool of {number_of_processes} processes")
+    indexes = [i for i in range(number_of_processes)]
+    with Pool(processes=number_of_processes) as pool:
+        pool.map(func, indexes)
 
+
+def cpu_bound_operation(index: int) -> None:
+    print(f"Starting CPU bound operation for process number {index}")
+    number: int = randrange(10_000_000, 100_000_000)
+    count(number=number)
+    print(f"Finished CPU bound operation for process number {index}")
+
+
+def count(number: int) -> None:
+    start_time = time.time()
+
+    result = 0
+
+    while result < number:
+        result += 1
+
+    end_time = time.time()
+    elapsed_time: float = round(end_time - start_time, 2)
+
+    print(f"Finished counting to {number} in {elapsed_time}s")
+```
+{% endcode %}
+
+On lines 25-36 we define a `count()` function which counts up to a given `number`, starting from 0. &#x20;
+
+And then on lines 18-22 we define another function called `cpu_bound_operation()`. On line 20, we select a random number between 10 million and 100 million.
+
+{% hint style="info" %}
+The `_` character used in large numbers is for readability purposes only. E.g. `10_000_000` is the same as 10000000.
+{% endhint %}
+
+On line 21 we pass the number we just generated into a call to the `count()` function. All of this means the `cpu_bound_operation()` function counts from 0 to a number between 10 milliion and 100 million.
+
+We consider this to be a CPU bound problem because the operation is an intensive calculation being performed by the process which in turn is limited by the speed of the CPU.
 
 ***
 
