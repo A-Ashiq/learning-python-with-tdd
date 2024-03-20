@@ -39,7 +39,7 @@ def run_with_multiple_processes(func: Callable, number_of_processes: int) -> Non
 
 def cpu_bound_operation(index: int) -> None:
     print(f"Starting CPU bound operation for process number {index}")
-    number: int = randrange(10_000_000, 100_000_000)
+    nnumber = 10_000_000
     count(number=number)
     print(f"Finished CPU bound operation for process number {index}")
 
@@ -61,15 +61,177 @@ def count(number: int) -> None:
 
 On lines 25-36 we define a `count()` function which counts up to a given `number`, starting from 0. &#x20;
 
-And then on lines 18-22 we define another function called `cpu_bound_operation()`. On line 20, we select a random number between 10 million and 100 million.
+And then on lines 18-22 we define another function called `cpu_bound_operation()`. On line 20, we define a variable with an integer of 10 million.
 
 {% hint style="info" %}
 The `_` character used in large numbers is for readability purposes only. E.g. `10_000_000` is the same as 10000000.
 {% endhint %}
 
-On line 21 we pass the number we just generated into a call to the `count()` function. All of this means the `cpu_bound_operation()` function counts from 0 to a number between 10 milliion and 100 million.
+On line 21 we pass the number we just saved into a call to the `count()` function. All of this means the `cpu_bound_operation()` function counts from 0 to 10 milliion each time it is called.
 
 We consider this to be a CPU bound problem because the operation is an intensive calculation being performed by the process which in turn is limited by the speed of the CPU.
+
+***
+
+## Write the test for parallel execution
+
+To start off with lets write a test for executing our `cpu_bound_operation()` with multiple processes.
+
+{% code lineNumbers="true" %}
+```python
+import time
+
+from src.multi_processing import run_with_multiple_processes, cpu_bound_operation
+
+
+class TestMultiprocessing:
+    def test_multiprocessing_can_run_multiple_cpu_bound_operations(self):
+        """
+        Given a callable which performs an intensive CPU bound operation
+        When `run_with_multiple_processes()` is called
+            to run the callable with 10 processes
+        Then the total elapsed time is reduced
+            when compared to sequential execution
+        """
+        # Given
+        start_time = time.time()
+        number_of_processes = 10
+
+        # When / Then
+        run_with_multiple_processes(
+            func=cpu_bound_operation, number_of_processes=number_of_processes
+        )
+
+        # Then
+        end_time = time.time()
+        elapsed_time: float = round(end_time - start_time, 2)
+        print(f"Total execution took {elapsed_time}s")
+```
+{% endcode %}
+
+In this test we pass our callable to the `run_with_mutiple_processes()` function whilst asking for a pool of 10 processes.
+
+If we run this test we can see something that looks like the following:
+
+```python
+test_multi_processing.py::TestMultiprocessing::test_multiprocessing_can_run_multiple_cpu_bound_operations 
+
+============================== 1 passed in 0.78s ===============================
+PASSED [100%]Creating pool of 10 processes
+Starting CPU bound operation for process number 0
+Starting CPU bound operation for process number 1
+Starting CPU bound operation for process number 2
+Starting CPU bound operation for process number 3
+Starting CPU bound operation for process number 4
+Starting CPU bound operation for process number 5
+Starting CPU bound operation for process number 6
+Starting CPU bound operation for process number 7
+Starting CPU bound operation for process number 8
+Starting CPU bound operation for process number 9
+Finished counting to 10000000 in 0.45s
+Finished CPU bound operation for process number 1
+Finished counting to 10000000 in 0.49s
+Finished CPU bound operation for process number 0
+Finished counting to 10000000 in 0.45s
+Finished CPU bound operation for process number 5
+Finished counting to 10000000 in 0.48s
+Finished CPU bound operation for process number 3
+Finished counting to 10000000 in 0.44s
+Finished CPU bound operation for process number 7
+Finished counting to 10000000 in 0.49s
+Finished CPU bound operation for process number 2
+Finished counting to 10000000 in 0.47s
+Finished CPU bound operation for process number 4
+Finished counting to 10000000 in 0.46s
+Finished CPU bound operation for process number 6
+Finished counting to 10000000 in 0.45s
+Finished CPU bound operation for process number 8
+Finished counting to 10000000 in 0.44s
+Finished CPU bound operation for process number 9
+Total execution took 0.76s
+
+Process finished with exit code 0
+```
+
+We can see that all the processes are created at the same time. They run independently of each other and complete whenever their specific task has been executed to completion. In total it took 0.76s to count to 10 million on seperate occasions.
+
+***
+
+## Write the test for sequential execution
+
+And to compare this against sequential execution, we'll need another test:
+
+```python
+import time
+
+from src.multi_processing import run_with_multiple_processes, cpu_bound_operation
+
+
+class TestMultiprocessing:
+    ...
+    def test_running_multiple_cpu_bound_operations_sequentially(self):
+        """
+        Given a callable which performs an intensive CPU bound operation
+        When the callable is executed 10 times
+        Then the total elapsed time is greater
+            when compared to parallel execution
+        """
+        # Given
+        start_time = time.time()
+        number_of_executions = 10
+
+        # When / Then
+        for i in range(number_of_executions):
+            cpu_bound_operation(index=i)
+
+        # Then
+        end_time = time.time()
+        elapsed_time: float = round(end_time - start_time, 2)
+        print(f"Total execution took {elapsed_time}s")
+```
+
+If we run this now we'll see the difference. It takes signficantly longer than we were running with the multiple processes:
+
+```python
+test_multi_processing.py::TestMultiprocessing::test_running_multiple_cpu_bound_operations_sequentially 
+
+============================== 1 passed in 2.15s ===============================
+PASSED [100%]Starting CPU bound operation for process number 0
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 0
+Starting CPU bound operation for process number 1
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 1
+Starting CPU bound operation for process number 2
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 2
+Starting CPU bound operation for process number 3
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 3
+Starting CPU bound operation for process number 4
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 4
+Starting CPU bound operation for process number 5
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 5
+Starting CPU bound operation for process number 6
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 6
+Starting CPU bound operation for process number 7
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 7
+Starting CPU bound operation for process number 8
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 8
+Starting CPU bound operation for process number 9
+Finished counting to 10000000 in 0.21s
+Finished CPU bound operation for process number 9
+Total execution took 2.13s
+
+Process finished with exit code 0
+```
+
+Comparing the total execution time of 2.13s to 0.76s and we can see just how stark the difference is, and this of course includes all the overhead associated with spinning up multiple processes to begin with.&#x20;
 
 ***
 
@@ -96,10 +258,11 @@ from src.concurrency import (
     io_bound_operation,
     SECONDS_TAKEN_FOR_SINGLE_IO_OPERATION,
 )
-from src.multi_processing import run_with_multiple_processes
+from src.multi_processing import run_with_multiple_processes, cpu_bound_operation
 
 
 class TestMultiprocessing:
+    ...
     def test_multiprocessing_can_run_multiple_io_bound_operations(self):
         """
         Given a callable which emulates a long I/O operation
