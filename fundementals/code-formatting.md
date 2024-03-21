@@ -10,3 +10,5 @@ Fortunately there is some pretty good tooling out there that solves this problem
 
 * **Linters** can analyse our code for smells and patterns which are deemed low quality and highlight them to us.
 * **Formatters** will take our code and re-write them to conform to an adjustable set of rules. They tidy up our code to an opinionated set of guidelines.
+
+\<more to come on this topic>
