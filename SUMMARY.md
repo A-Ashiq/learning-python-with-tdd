@@ -30,6 +30,7 @@
 * [Type hints](fundementals/type-hints.md)
 * [Concurrency](fundementals/concurrency.md)
 * [Parallelism](fundementals/parallelism.md)
+* [Code formatting](fundementals/code-formatting.md)
 * [Summary](fundementals/summary.md)
 
 ## Building an application together
