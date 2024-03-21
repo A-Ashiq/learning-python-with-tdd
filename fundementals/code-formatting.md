@@ -9,4 +9,4 @@ And we're all different. As humans we also all prefer slightly different styles.
 Fortunately there is some pretty good tooling out there that solves this problem. When it comes to code styles these can generally be broken down into 2 main subgroups:
 
 * **Linters** can analyse our code for smells and patterns which are deemed low quality and highlight them to us.
-* Formatters will take our code and re-write them to conform to an adjustable set of rules. They tidy up our code to an opinionated set of guidelines.
+* **Formatters** will take our code and re-write them to conform to an adjustable set of rules. They tidy up our code to an opinionated set of guidelines.
