@@ -1,4 +1,4 @@
-# Static analysis tooling
+# Code styling
 
 Okay so I can be pretty lazy sometimes.
 
