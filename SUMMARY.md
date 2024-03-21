@@ -30,7 +30,7 @@
 * [Type hints](fundementals/type-hints.md)
 * [Concurrency](fundementals/concurrency.md)
 * [Parallelism](fundementals/parallelism.md)
-* [Static analysis tooling](fundementals/static-analysis-tooling.md)
+* [Static code analysis](fundementals/static-code-analysis.md)
 * [Summary](fundementals/summary.md)
 
 ## Building an application together
