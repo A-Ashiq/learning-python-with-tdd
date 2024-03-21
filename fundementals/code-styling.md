@@ -1,6 +1,6 @@
 # Code styling
 
-Okay so I can be pretty lazy sometimes.
+Okay so I'll admit I can be pretty lazy sometimes.
 
 I also don't like spending valuable time debating coding styles. I'm not talking about functionality here, I'm really talking about styles. Whether to use break lines in certain places or add a comma here or there.
 
