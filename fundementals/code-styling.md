@@ -11,4 +11,14 @@ Fortunately there are some pretty good tools out there which solve these problem
 * **Linters** can analyse our code for smells and patterns which are deemed low quality and highlight them to us.
 * **Formatters** will take our code and re-write them to conform to an adjustable set of rules. They tidy up our code to an opinionated set of guidelines whilst maintaining the logic and functionality.
 
-\<more to come on this topic>
+***
+
+## An example code snippet
+
+To start off with lets make a new file. In your terminal:
+
+```
+touch src/code_styling.py
+```
+
+And now in our newly created file, lets add some code that we want to put through some of our static analysis tooling:
