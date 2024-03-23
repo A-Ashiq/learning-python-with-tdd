@@ -2,6 +2,8 @@
 
 This course is an end-to-end step-by-step guide on building an applications in Python. In this course I will talk through a broad range of concepts, particularly around the why and also including the how.
 
+If by the end of this course, you've found this to be useful. Then you might wanna [check out my blog](https://www.afaanashiq.com/) which is relatively up to date. Although it's been neglected a little whilst I've been writing this course!
+
 ***
 
 ## Context
