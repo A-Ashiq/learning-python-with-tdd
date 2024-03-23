@@ -1,6 +1,6 @@
 # Introduction
 
-This course is an end-to-end step-by-step guide on building an applications in Python. In this course I will talk through a broad range of concepts, particularly around the why including the how.
+This course is an end-to-end step-by-step guide on building an applications in Python. In this course I will talk through a broad range of concepts, particularly around the why and also including the how.
 
 ***
 
