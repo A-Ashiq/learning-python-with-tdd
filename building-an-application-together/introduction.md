@@ -27,3 +27,7 @@ python3 -m venv .venv
 ```
 
 If you cast your mind back to the [environment setup chapter](../getting-started/environment-setup.md), you will know that the command we just sent will create a new virtual environment for us in a new folder called `.venv/` located in the current directory.
+
+{% hint style="info" %}
+Convention dictates that we name this folder `venv/` or `.venv/`. Either will do but the `.` character in file or folder names also indicates hidden configuration type files. Hence why we'll be using that moving forward.
+{% endhint %}
