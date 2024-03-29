@@ -33,7 +33,7 @@
 * [Code styling](fundementals/code-styling.md)
 * [Summary](fundementals/summary.md)
 
-## Building an application together
+## Building an application
 
-* [Introduction](building-an-application-together/introduction.md)
-* [Framework](building-an-application-together/framework.md)
+* [Introduction](building-an-application/introduction.md)
+* [Framework](building-an-application/framework.md)
