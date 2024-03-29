@@ -31,3 +31,7 @@ If you cast your mind back to the [environment setup chapter](../getting-started
 {% hint style="info" %}
 Convention dictates that we name this folder `venv/` or `.venv/`. Either will do but the `.` character in file or folder names also indicates hidden configuration type files. Hence why we'll be using that moving forward.
 {% endhint %}
+
+***
+
+You will be able to reference the source code for this chapter at the [Github repository](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application).
