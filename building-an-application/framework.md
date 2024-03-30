@@ -26,6 +26,14 @@ In the Python spaces there are many different web frameworks available to us, ea
 * [Flask](https://flask.palletsprojects.com/en/3.0.x/) - Considered the polar opposite of Django by some. Flask is quite minimalist by design. It doesn't give you a lot out of the box, but it does allow you to pick and choose the bits you need.&#x20;
 * [FastAPI](https://fastapi.tiangolo.com/) - Probably more comparable to Flask than Django. FastAPI also makes use of the modern Python type system to provide enhanced OpenAPI documentation and performs well as a Python framework. It also emphasises developer productivity and focuses on some of the concepts we've already covered like [dependency injection](../fundementals/dependency-injection.md). &#x20;
 
+***
+
+## Choosing our framework
+
+Your framework choice is a very important decision to make. It has wide ranging impact on how you build your application. It can be pretty difficult to migrate from 1 framework to another and more often than not, we are tied into the selected framework. So with this in mind it is important for us to be confident that we can commit to a given framework.
+
+As welll as the technical features of each framework we often need to consider how much community support there is around a given framework and how well known it is. If it is a framework that no one has ever heard of, then there will be a slightly steeper learning curve associated with it, which makes hiring engineers more of a challenge. There is however a valid argument to be made that good engineers should be able to pick up frameworks with relative ease. After all, frameworks just solve similar problems in slightly different ways.&#x20;
+
 
 
 ***
