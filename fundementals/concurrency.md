@@ -218,6 +218,7 @@ We can also see that the whole test took 5.03 seconds to complete. Which is roug
 
 As a little bonus. You can replace the `io_bound_operation()` function with the following:
 
+{% code lineNumbers="true" %}
 ```python
 def io_bound_operation(index: int) -> None:
     print(f"\nStarting io bound operation for thread number {index}")
@@ -227,6 +228,7 @@ def io_bound_operation(index: int) -> None:
         f"\nFinished io bound operation for thread number {index} in {SECONDS_TAKEN_FOR_SINGLE_IO_OPERATION}s"
     )
 ```
+{% endcode %}
 
 This will hit the _JSONPlaceholder API,_ which is a free REST API available for testing purposes. You can use this to replace the dummy `time.sleep()` calls we had earlier. **Note that you will likely have to adjust your test assertions as well as the number of threads.** Because the condition/task being performed has changed.
 

@@ -64,6 +64,7 @@ All done! ✨ 🍰 ✨
 
 And finally we can take a look at our new function:
 
+{% code lineNumbers="true" %}
 ```python
 def some_function(
     first_number,
@@ -77,6 +78,7 @@ def some_function(
 
     denominator = [fourth_number, fifth_number, sixth_number, seventh_number]
 ```
+{% endcode %}
 
 See the difference?
 
