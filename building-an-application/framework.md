@@ -38,6 +38,70 @@ For the purposes of our application, we are going to add the various pieces as a
 
 ***
 
+## Install the framework
+
+So to get started, we will need to install our framework. Most frameworks should provide documentation on how to get up and running. In this case we need to drop into a terminal instance and use the following command:
+
+```sh
+pip install fastapi
+```
+
+{% hint style="info" %}
+This assumes you are in our new project directory and your virtual environment is activated. To do the latter, make sure you run `source .venv/bin/activate` **before** pip installing anything.&#x20;
+{% endhint %}
+
+Once this is complete, we will then need to install an ASGI server:
+
+```sh
+pip install "uvicorn[standard]"
+```
+
+And that's about it for installing the framework. We have the libraries we need installed within our virtual environment.&#x20;
+
+***
+
+## Updating project dependencies
+
+But before we move on we need to declare our project dependencies and commit them to version control.
+
+If you cast your mind back to the section on [project dependencies](../getting-started/environment-setup.md) you'll realise we have done this before.
+
+So once again drop into your terminal with the following command:
+
+```sh
+pip freeze > requirements.txt
+```
+
+This will take all the dependencies which are currently installed in our virtual environment and create a list of dependencies. This will include the name of each library and the version which has been installed.
+
+Now that we have our project dependencies set up, we will need to add them to our version control.&#x20;
+
+Lets drop into our terminal and add them to our Git staging area:
+
+```sh
+git add requirements.txt
+```
+
+And now lets record the changes to our local Git repository:
+
+```sh
+git commit -m "Add FastAPI and Uvicorn to project dependencies"
+```
+
+The `-m` here stands for _message_. This is the message that we want to be recorded along with our code change. This message should summarise what our code change represents to the code repository. In our case we are simply adding the `FastAPI` and `Uvicorn` dependencies
+
+And finally we can _push_ this commit from our local repository to the remote repository:
+
+```
+git push 
+```
+
+And with that we have pushed our first code change to our repository, which includes a list of the 3rd party libraries required for our selected framework, **FastAPI**.
+
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-one).
+
+***
+
 ## References
 
 * [What is Open API | OpenAPI Initiative](https://www.openapis.org/what-is-openapi)
