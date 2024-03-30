@@ -34,7 +34,7 @@ Your framework choice is a very important decision to make. It has wide ranging 
 
 As welll as the technical features of each framework we often need to consider how much community support there is around a given framework and how well known it is. If it is a framework that no one has ever heard of, then there will be a slightly steeper learning curve associated with it, which makes hiring engineers more of a challenge. There is however a valid argument to be made that good engineers should be able to pick up frameworks with relative ease. After all, frameworks just solve similar problems in slightly different ways.&#x20;
 
-
+For the purposes of our application, we are going to add the various pieces as and when we need them. As I've aluded to earlier, we could pick any framework and eventually meet our goals, but we're going to use **FastAPI**.&#x20;
 
 ***
 
