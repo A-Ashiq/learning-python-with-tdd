@@ -8,4 +8,13 @@ This is where frameworks can be a very worthwhile investment. They take away a l
 
 That being said, they do come with their own learning curve. And depending on the type of framework we've chosen we might be provided with a lot more functionality than we actually need, leading to bloat throughout our codebase.
 
-These frameworks can give us easy ways to build endpoints, provide [Open API](https://www.openapis.org/what-is-openapi) documentation and even Object Relational Mappings (ORMs). If you don't know what these mean, don't worry we'll be covering them in this chapter.&#x20;
+These frameworks can give us easy ways to build endpoints, provide [Open API](https://www.openapis.org/what-is-openapi) documentation and even [Object Relational Mappings](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one) (ORMs). If you don't know what these mean, don't worry we'll be covering them in this chapter.&#x20;
+
+
+
+***
+
+## References
+
+* [What is Open API | OpenAPI Initiative](https://www.openapis.org/what-is-openapi)
+* [What is an ORM, how does it work, and how should I use one? | Stack overflow](https://stackoverflow.com/questions/1279613/what-is-an-orm-how-does-it-work-and-how-should-i-use-one)
