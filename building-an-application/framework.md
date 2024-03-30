@@ -112,3 +112,4 @@ You can find the code for this chapter at the [Github repo](https://github.com/A
 * [Django | Python framework](https://www.djangoproject.com/)
 * [Flask | Python framework](https://flask.palletsprojects.com/en/3.0.x/)
 * [FastAPI | Python framework](https://fastapi.tiangolo.com/)
+* [Installation | FastAPI](https://fastapi.tiangolo.com/#installation)
