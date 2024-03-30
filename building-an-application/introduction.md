@@ -1,6 +1,6 @@
 # Introduction
 
-Now that we've got a framework laid out for ourselves, we can move a step forward into our first project together.
+Now that we've got a set of principles laid out for ourselves, we can move a step forward into our first project together.
 
 We are going to start off with a set of requirements. We are going to build towards the solution and then we'll adapt to a new set of requirements. The idea is to get us to building under real-world scenarios, or at least emulate changes in direction that we can often find ourselves. This often happens in real-world scenarios when product owners come to us with new requirements.
 
