@@ -160,3 +160,12 @@ On line 1 we import the `FastAPI` class and instantiate it on line number 3. Thi
 `FastAPI` is a little different to other frameworks whereby it uses our function definition as part of the OpenAPI documentation and as part of the endpoint itself. So the arguments to the function form the query parameters to the endpoint.
 
 And finally, on line 7 we do something pretty unusual. We simply always return the answer which would satisfy our test. Of course, if we used any input other than the one declared by the test this endpoint wouldn't be fit for purpose. But remember, we just want to see the test pass first. We'll come back to rethink this implementation once we're on the safe ground of passing tests.&#x20;
+
+If we now run this test as is, we will see it passes!
+
+***
+
+
+
+
+
