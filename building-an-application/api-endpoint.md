@@ -128,5 +128,10 @@ Once this is installed, we should freeze our pip dependencies again and commit t
 
 ## Getting to green as quick as possible
 
+To begin with we should create the file for our source code. For now, we won't too much about project structure. That will come later.
 
+```sh
+touch main.py
+```
 
+In this file we can set up the `app` instance which is consumed by the `TestClient` as well as the endpoint that we have already written the test against.&#x20;
