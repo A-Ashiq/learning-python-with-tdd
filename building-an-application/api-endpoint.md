@@ -165,7 +165,24 @@ If we now run this test as is, we will see it passes!
 
 ***
 
+## Subject matter expertise
 
+Now that we're back on safe ground, we can think about how we want to actually implement our calculation.
+
+This is going to require some subject matter expertise. As of March 2024, the income tax bands in the UK look like the following:
+
+| Band               | Taxable income      | Tax rate |
+| ------------------ | ------------------- | -------- |
+| Personal Allowance | Up to £12,570       | 0%       |
+| Basic rate         | £12,571 to £50,270  | 20%      |
+| Higher rate        | £50,271 to £125,140 | 40%      |
+| Additional rate    | over £125,140       | 45%      |
+
+There are some gotchyas to be aware of when it comes to dealing with personal allowance at the higher income rates, but we'll deal with that later.
+
+For now we can take the information given to us and translate that into some business logic that we can apply.
+
+***
 
 
 
