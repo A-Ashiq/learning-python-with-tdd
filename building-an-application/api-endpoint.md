@@ -186,5 +186,30 @@ For now we can take the information given to us and translate that into some bus
 
 ## Refactoring
 
-Armed with our subject matter knowledge we can go back and write something which will calculate the income tax for us for our given input salary of £33,000 instead of the somewhat useless hardcoded value we are currently returning.
+Armed with our subject matter knowledge we can go back and write something which will calculate the income tax for us for our given input salary of £33,000 instead of the somewhat useless hardcoded value we are currently returning:
 
+{% code lineNumbers="true" %}
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get(path="/income-taxes")
+def calculate_income_taxes(salary: float):
+    tax_free_allowance = 12_570
+    tax_owed = (salary - tax_free_allowance) * 0.2
+
+    return {"tax owed": tax_owed}
+```
+{% endcode %}
+
+This is of course still a little naive but it does provide us with basis to work from.
+
+If we run our test now we will see it passes again.
+
+***
+
+## Seperating responsibilities
+
+Before we start writing more test cases and developing our endpoint further, we should stop and take stock of the hole we've just dug ourselves into.
