@@ -135,3 +135,28 @@ touch main.py
 ```
 
 In this file we can set up the `app` instance which is consumed by the `TestClient` as well as the endpoint that we have already written the test against.&#x20;
+
+So our goal here is to get to the _green state_ i.e. where the test is passing as quick as possible. We're not actually too worried about implementation right now. That will also come later. For now we just want the minimal and least path of resistance back to the safe ground of a passing test.
+
+So in our new `main.py`:
+
+{% code lineNumbers="true" %}
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get(path="/income-taxes")
+def calculate_income_taxes(salary: float):
+    return {"tax owed": 4_100}
+```
+{% endcode %}
+
+On line 1 we import the `FastAPI` class and instantiate it on line number 3. This is the `app` instance which encompasses our server and is the same one that is also used by the `TestClient`.
+
+`FastAPI` has its own specifc way of adding endpoints. On line 6 we use the `app` instance in a decorator with the `get` method. This indicates that this function represents the logic to be used for this `GET` endpoint. The `path` argument as you might have guessed represents the new endpoint path name.&#x20;
+
+`FastAPI` is a little different to other frameworks whereby it uses our function definition as part of the OpenAPI documentation and as part of the endpoint itself. So the arguments to the function form the query parameters to the endpoint.
+
+And finally, on line 7 we do something pretty unusual. We simply always return the answer which would satisfy our test. Of course, if we used any input other than the one declared by the test this endpoint wouldn't be fit for purpose. But remember, we just want to see the test pass first. We'll come back to rethink this implementation once we're on the safe ground of passing tests.&#x20;
