@@ -18,19 +18,19 @@ With a virtual environment we can use a different version of say library X and n
 
 To get started, in your terminal create the directory of your choice in which we will keep our project.
 
-```
+```sh
 mkdir python_starter_tutorial
 ```
 
 Now that we have created a directory, we should navigate into it:
 
-```
+```sh
 cd python_starter_tutorial
 ```
 
 And then we can run the following command to create our first virtual environment:
 
-```
+```sh
 python -m venv venv
 ```
 
@@ -44,7 +44,7 @@ Also note that it is a common idiom to expect the virtual environment at the roo
 
 And our final step here is to activate our virtual environment by calling:
 
-```
+```sh
 source venv/bin/activate
 ```
 
@@ -54,7 +54,7 @@ If we are using an IDE like Pycharm then the integrated terminal will activate t
 
 We can take a snapshot of the current state of our project dependencies with the following command:
 
-```
+```sh
 pip freeze > requirements.txt
 ```
 
@@ -70,13 +70,13 @@ The `unittest` library comes bundled with the standard install of Python but we 
 
 `pytest` is a 3rd party library and as such we will need to add it to our project dependencies. To do this we will need to install it with the following command:
 
-```
+```sh
 pip install pytest
 ```
 
 And now lets add it to our project dependencies by calling the following command again:
 
-```
+```sh
 pip freeze > requirements.txt
 ```
 
