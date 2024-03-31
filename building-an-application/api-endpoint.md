@@ -215,3 +215,24 @@ If we run our test now we will see it passes again.
 Before we start writing more test cases and developing our endpoint further, we should stop and take stock of the hole we've just dug ourselves into.
 
 Our API endpoint is doing too much by itself. Right now we cannot test the business logic of the calculation by itself. To test it we are forced to hit the endpoint. Ideally the API layer of our system should only be handling serialization and validation. It should take some given input, validate it and then pass that input over to some other part of our system for the actual calculation. This way we would be free to make changes to the calculation without having to change things at the API layer.
+
+{% code lineNumbers="true" %}
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get(path="/income-taxes")
+def calculate_income_taxes(salary: float):
+    tax_owed: float = calculate_income_tax_owed(salary=salary)
+    return {"tax owed": tax_owed}
+
+
+def calculate_income_tax_owed(salary: float) -> float:
+    tax_free_allowance = 12_570
+    return (salary - tax_free_allowance) * 0.2
+```
+{% endcode %}
+
+See the difference now? The endpoint code doesn't need to know about the details of how to do the calculation, that is the responsibility of the new function we've just defined on lines 12-14. This means we can also write tests directly against this new function and not have to pass through the API layer every time. You can imagine if we had some form of authentication in front of the API, then this would be even more sluggish.
