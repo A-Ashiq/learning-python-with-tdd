@@ -26,6 +26,8 @@ pip freeze > requirements.txt
 
 Now we're ready to start writing our first test.
 
+Note that we've actually missed another dependency that we're gonna need. But we're gonna let our first test guide us and tell us exactly what we need.&#x20;
+
 ***
 
 ## Writing our first test
@@ -44,7 +46,7 @@ And then lets create our test file in our new `integration` folder:
 touch tests/integration/test_main.py 
 ```
 
-In our new test file we can begin to write our very first test for our application:
+In our new test file we can begin to write our very first test for our application.
 
 
 
