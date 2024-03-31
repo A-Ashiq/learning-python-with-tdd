@@ -89,6 +89,10 @@ On line number 23, we verify that we received an HTTP 200 OK response. Note that
 
 And finally on line 24, we check the output calculation provided by our endpoint.
 
+{% hint style="info" %}
+In writing the test first, we focus on the design of the endpoint. The interface to our code and how we want to interact with it. This frees us from thinking about the technical details until later.
+{% endhint %}
+
 If we run this test as is, we'd be expecting to see our old friend the `ImportError` since the `app` has not been defined yet. But that is not the case here:
 
 {% code lineNumbers="true" %}
