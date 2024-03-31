@@ -213,3 +213,5 @@ If we run our test now we will see it passes again.
 ## Seperating responsibilities
 
 Before we start writing more test cases and developing our endpoint further, we should stop and take stock of the hole we've just dug ourselves into.
+
+Our API endpoint is doing too much by itself. Right now we cannot test the business logic of the calculation by itself. To test it we are forced to hit the endpoint. Ideally the API layer of our system should only be handling serialization and validation. It should take some given input, validate it and then pass that input over to some other part of our system for the actual calculation. This way we would be free to make changes to the calculation without having to change things at the API layer.
