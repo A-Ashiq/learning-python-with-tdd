@@ -62,7 +62,7 @@ class TestIncomeTaxesEndpoint:
         """
         Given a salary of £33,000
         When a GET request is made to the `income-taxes/` endpoint
-        Then the calculated tax owed is £4,100
+        Then the calculated tax owed is £4,086
         """
         # Given
         test_client = TestClient(app=app)
@@ -73,7 +73,7 @@ class TestIncomeTaxesEndpoint:
 
         # Then
         assert response.status_code == HTTPStatus.OK
-        assert response.json() == {"tax owed": 4_100}
+        assert response.json() == {"tax owed": 4_086}
 ```
 {% endcode %}
 
@@ -149,7 +149,7 @@ app = FastAPI()
 
 @app.get(path="/income-taxes")
 def calculate_income_taxes(salary: float):
-    return {"tax owed": 4_100}
+    return {"tax owed": 4_086}
 ```
 {% endcode %}
 
@@ -184,5 +184,7 @@ For now we can take the information given to us and translate that into some bus
 
 ***
 
+## Refactoring
 
+Armed with our subject matter knowledge we can go back and write something which will calculate the income tax for us for our given input salary of £33,000 instead of the somewhat useless hardcoded value we are currently returning.
 
