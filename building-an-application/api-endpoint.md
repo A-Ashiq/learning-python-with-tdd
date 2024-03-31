@@ -107,7 +107,6 @@ test_main.py:3: in <module>
 E   RuntimeError: The starlette.testclient module requires the httpx package to be installed.
 E   You can install this with:
 E       $ pip install httpx
-
 ```
 {% endcode %}
 
@@ -118,4 +117,12 @@ So lets run the command as dictated to us by the stracktrace to get the `httpx` 
 ```sh
 pip install httpx
 ```
+
+Once this is installed, we should freeze our pip dependencies again and commit them to version control.
+
+***
+
+## Getting to green as quick as possible
+
+
 
