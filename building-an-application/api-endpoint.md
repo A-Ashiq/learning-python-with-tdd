@@ -235,4 +235,10 @@ def calculate_income_tax_owed(salary: float) -> float:
 ```
 {% endcode %}
 
-See the difference now? The endpoint code doesn't need to know about the details of how to do the calculation, that is the responsibility of the new function we've just defined on lines 12-14. This means we can also write tests directly against this new function and not have to pass through the API layer every time. You can imagine if we had some form of authentication in front of the API, then this would be even more sluggish.
+See the difference now?&#x20;
+
+The endpoint code doesn't need to know about the details of how to do the calculation, that is the responsibility of the new function we've just defined on lines 12-14.&#x20;
+
+This means we can also write tests directly against this new function and not have to pass through the API layer every time. You can imagine if we had some form of authentication in front of the API, then this would be even more sluggish than it already is right now.
+
+In a bigger project we would probably move the `calculate_income_tax_owed()` function into a seperate file in another location too. Perhaps in a dedicated part of the project where domain-level logic lived. Our project is a little too small to warrant this for now.
