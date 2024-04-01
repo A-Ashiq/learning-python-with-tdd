@@ -251,7 +251,7 @@ In a bigger project we would probably move the `calculate_income_tax_owed()` fun
 
 ## Layering in more functionality
 
-So we know that our current calculation approach will handle the _basic rate_ banding for us. We also know that we've completely neglected the next few bandings. So lets take this 1 step at a time. We should now write some tests for the _higher rate_ banding. This is for salaries between £50k and £125k. This time we are going to introduce the idea of parametrization to our tests.
+So we know that our current calculation approach will handle the _basic rate_ banding for us. We also know that we've completely neglected the next few bandings. And we've left a bug in place! But lets take this 1 step at a time. We should now write some tests for the _higher rate_ banding. This is for salaries between £50k and £125k. This time we are going to introduce the idea of parametrization to our tests.
 
 We can provide parameters in the form of expected inputs as well as outputs. Other languages also have this capability for example Golang calls it _table-driven_ tests. Parametrization allows us to send any combination of values into our test:
 
