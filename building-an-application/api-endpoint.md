@@ -208,6 +208,10 @@ This is of course still a little naive but it does provide us with basis to work
 
 If we run our test now we will see it passes again.
 
+{% hint style="info" %}
+Brownie points if you can spot the bug we've introduced above!
+{% endhint %}
+
 ***
 
 ## Seperating responsibilities
