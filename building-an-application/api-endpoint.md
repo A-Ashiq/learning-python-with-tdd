@@ -360,3 +360,7 @@ Process finished with exit code 0
 
 ***
 
+## References
+
+* [Pytest official documentation](https://docs.pytest.org/)
+* [Test Client | FastAPI official documentation](https://fastapi.tiangolo.com/reference/testclient/)
