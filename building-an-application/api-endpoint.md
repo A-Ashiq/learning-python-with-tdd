@@ -242,3 +242,73 @@ The endpoint code doesn't need to know about the details of how to do the calcul
 This means we can also write tests directly against this new function and not have to pass through the API layer every time. You can imagine if we had some form of authentication in front of the API, then this would be even more sluggish than it already is right now.
 
 In a bigger project we would probably move the `calculate_income_tax_owed()` function into a seperate file in another location too. Perhaps in a dedicated part of the project where domain-level logic lived. Our project is a little too small to warrant this for now.
+
+***
+
+## Layering in more functionality
+
+So we know that our current calculation approach will handle the _basic rate_ banding for us. We also know that we've completely neglected the next few bandings. So lets take this 1 step at a time. We should now write some tests for the _higher rate_ banding. This is for salaries between £50k and £125k. This time we are going to introduce the idea of parametrization to our tests.
+
+We can provide parameters in the form of expected inputs as well as outputs. Other languages also have this capability for example Golang calls it _table-driven_ tests. Parametrization allows us to send any combination of values into our test:
+
+{% code lineNumbers="true" %}
+```python
+from http import HTTPStatus
+
+import pytest
+from starlette.testclient import TestClient
+
+from main import app, calculate_income_tax_owed
+
+...
+
+class TestCalculateIncomeTaxOwed:
+    @pytest.mark.parametrize(
+        "salary, expected_tax_owed",
+        (
+            [60_000, 11_432],
+            [65_000, 13_432],
+        ),
+    )
+    def test_calculates_for_higher_rate_banding(
+        self, salary: int, expected_tax_owed: float
+    ):
+        """
+        Given a salary which is in the higher rate banding
+        When `calculate_income_tax_owed()` is called
+        Then the correct calculated tax owed is returned
+        """
+        # Given
+        input_salary = salary
+
+        # When
+        calculated_tax_owed: float = calculate_income_tax_owed(salary=input_salary)
+
+        # Then
+        assert calculated_tax_owed == expected_tax_owed
+```
+{% endcode %}
+
+In line 2 we use the `pytest.mark.parametrize` decorator from the `pytest` library. The first positional argument on line 3 is the `argnames` this represents the name of the arguments which will be passed into the test. And the 2nd positional argument provided to the decorator which starts on line 4 and ends on line 7 are the `argvalues.` These are the values associated with each argument which gets passed into our test.
+
+On line 19, we define the parameter names to the test function so that they are made available to the test.
+
+So instead of writing 2 seperate tests we can reduce duplication and quickly fire as many combinations as we want.&#x20;
+
+Now you're probably wondering why we didn't just use this technique earlier so that we could have 1 test with every combination across every salary banding we could ever need. And that would be a valid concern, lots of engineers would favour that approach. This can feel as though it favours deduplication over structure and readibility. Testing how the calculation performs against say the _higher rate_ banding is a different problem than the _lower rate_ banding. Even our source code for that function has a conditional branch to handle that logic.
+
+{% hint style="info" %}
+The other added benefit to keeping the tests seperate is that the final result will read more like a specification.&#x20;
+{% endhint %}
+
+We could end up with 1 test for _lower rate_ bandings, another for _higher rate_ taxpayers and another for _additional rate_ taxpayers.&#x20;
+
+This feels much more aligned with the actual source code and provides a clear distinction and dilenation between the salary bandings.&#x20;
+
+You might argue that this would result in missed opportunity to keep our test code deduplicated, but that's okay. Reducing duplication in our test code shouldn't be at the top of our agenda when writing tests.
+
+The other issue with grouping them all together under 1 large parametrized test would be that debugging it would become trickier. Lets say a test case for an _additional rate_ banding started to fail. The test as a whole would report a failure and we would have to pick out the combination which incurred the failure.&#x20;
+
+Keeping tests seperated by logical grouping helps provide granularity to our test suite. If a piece of functionality stops working as expected then the failure is localized and easier to pinpoint.
+
+There is however nothing to stop us from peppering our parametrized test with combinations which sit within the same contextual group. i.e. different _higher rate_ salaries. If anything that would be encouraged.
