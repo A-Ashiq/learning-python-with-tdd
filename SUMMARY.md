@@ -38,3 +38,5 @@
 * [Introduction](building-an-application/introduction.md)
 * [Framework](building-an-application/framework.md)
 * [API Endpoint](building-an-application/api-endpoint.md)
+* [Application server](building-an-application/application-server.md)
+* [Bug fixing](building-an-application/bug-fixing.md)
