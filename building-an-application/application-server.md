@@ -79,5 +79,20 @@ The `salary` argument has also been rendered as a query parameter to our endpoin
 
 This has the added benefit that there is only 1 single source of truth. Our code. We don't have to maintain a seperate documentation entity in the form of a YAML file or JSON somewhere else that would eventually and quite easily get out of sync. This also reduces our maintenance burden.
 
+***
 
+## Interacting with the API docs
 
+The most valuable part of the generated OpenAPI documentation is that also doubles up as a kind of user interface (UI). We can hit our endpoint via this UI as if we had been [curling](https://curl.se/docs/manpage.html) the API or making a request to it with some other library:
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-01 at 20.46.49.png" alt=""><figcaption></figcaption></figure>
+
+In the above screenshot, we have hit our API with the salary of `£33,000`. This is the same test case we wrote our test with before.
+
+This UI can be very useful when demonstrating functionality to stakeholders and even for debugging or exploratory purposes.
+
+Speaking of which, why don't you go ahead and see what happens when we input a `salary` figure of any number between 0 and 12,569...
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-01 at 20.53.04.png" alt=""><figcaption></figcaption></figure>
+
+And so we've found our first bug!
