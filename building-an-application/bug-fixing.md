@@ -6,7 +6,7 @@ And at the end of the last section we found our first one. So how do we go about
 
 When it comes to fixing bugs, ideally we should be writing tests at the edge of our system. Taking our endpoint for example, the test which targets the bug should be written against the domain logic if possible i.e. the `calculate_income_tax_owed()` as opposed to the API endpoint itself. Remember the API endpoint might necessitate passing through various unrelated components like authentication, validation and serialization. This of course assumes that the bug is not located in 1 of those areas.
 
-
-
 ***
+
+## Writing the test to catch the bug
 
