@@ -95,3 +95,11 @@ test_main.py::TestCalculateIncomeTaxOwed::test_calculates_no_tax_when_salary_is_
 
 Process finished with exit code 0
 ```
+
+***
+
+## Moving forward
+
+Our logic for calculating income taxes is still missing some key features. In particular, the core functionality of calculating for _additional_ rate tax payers has not been added. This is for salaries over £125,140.
+
+This would be a great chance for you to dig in and build out the implementation for this by yourself.
