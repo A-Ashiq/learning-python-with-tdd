@@ -56,6 +56,10 @@ This will look something like the following:
 
 This is our API created with the OpenAPI format. Each panel represents an individual endpoint. In our case we just have the 1 single endpoint.&#x20;
 
+{% hint style="info" %}
+We can also see our API documentation in the Redoc OpenAPI format at [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
+{% endhint %}
+
 If we take compare this with our API code:
 
 {% code lineNumbers="true" %}
