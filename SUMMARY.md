@@ -40,3 +40,4 @@
 * [API Endpoint](building-an-application/api-endpoint.md)
 * [Application server](building-an-application/application-server.md)
 * [Bug fixing](building-an-application/bug-fixing.md)
+* [Authentication](building-an-application/authentication.md)
