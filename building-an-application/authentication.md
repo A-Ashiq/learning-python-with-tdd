@@ -6,3 +6,13 @@ Sound reasonable enough? For the purposes of our demonstration, we're gonna cut 
 
 ***
 
+
+
+
+
+***
+
+## References
+
+* [HTTP response status codes | MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+* [HTTP 401 Unauthorized | MDN web docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401)
