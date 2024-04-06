@@ -1,4 +1,4 @@
-# API Endpoint
+# API endpoint
 
 To begin with we are going to need an HTTP API endpoint that our users can send a request to. This endpoint should return the calculated income tax that they owe based on the information they provided in their request to the endpoint.
 
@@ -76,6 +76,10 @@ class TestIncomeTaxesEndpoint:
         assert response.json() == {"tax owed": 4_086}
 ```
 {% endcode %}
+
+{% hint style="info" %}
+We probably shouldn't be relying on raw integers or floating point numbers but we can put this to one side for now.
+{% endhint %}
 
 On line 3, we import the `TestClient` class from the `starlette` library which was installed within our virtual environment when installed `fastapi`. Most modern frameworks come bundled with a client that we can use to interact with our own API endpoints under test conditions. For this particular client, the `TestCient` class takes an argument of the `FastAPI` application instance itself, which we have not yet defined.
 
