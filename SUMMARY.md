@@ -26,7 +26,7 @@
 * [Iteration](fundementals/iteration.md)
 * [Classes](fundementals/classes.md)
 * [Mocking](fundementals/mocking.md)
-* [Dependency Injection](fundementals/dependency-injection.md)
+* [Dependency injection](fundementals/dependency-injection.md)
 * [Type hints](fundementals/type-hints.md)
 * [Concurrency](fundementals/concurrency.md)
 * [Parallelism](fundementals/parallelism.md)
@@ -37,7 +37,7 @@
 
 * [Introduction](building-an-application/introduction.md)
 * [Framework](building-an-application/framework.md)
-* [API Endpoint](building-an-application/api-endpoint.md)
+* [API endpoint](building-an-application/api-endpoint.md)
 * [Application server](building-an-application/application-server.md)
 * [Bug fixing](building-an-application/bug-fixing.md)
 * [Command line interface](building-an-application/command-line-interface.md)
