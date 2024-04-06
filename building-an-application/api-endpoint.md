@@ -114,7 +114,9 @@ E       $ pip install httpx
 ```
 {% endcode %}
 
-On line number 12 of the stacktrace we can see the error message that tells us exactly what the problem is. The `TestClient` class depends on the `httpx` package which we don't yet have.
+On line number 12 of the stacktrace we can see the error message that tells us exactly what the problem is. The `TestClient` class depends on the `httpx` package which we don't yet have.&#x20;
+
+In fact, we also [missed this in the documentation](https://fastapi.tiangolo.com/#optional-dependencies).&#x20;
 
 So lets run the command as dictated to us by the stracktrace to get the `httpx` package:
 
@@ -364,3 +366,4 @@ Process finished with exit code 0
 
 * [Pytest official documentation](https://docs.pytest.org/)
 * [Test Client | FastAPI official documentation](https://fastapi.tiangolo.com/reference/testclient/)
+* [Optional Dependencies | FastAPI official documentation](https://fastapi.tiangolo.com/#optional-dependencies)
