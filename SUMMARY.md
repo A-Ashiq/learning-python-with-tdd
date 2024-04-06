@@ -40,4 +40,5 @@
 * [API endpoint](building-an-application/api-endpoint.md)
 * [Application server](building-an-application/application-server.md)
 * [Bug fixing](building-an-application/bug-fixing.md)
+* [Project structure](building-an-application/project-structure.md)
 * [Command line interface](building-an-application/command-line-interface.md)
