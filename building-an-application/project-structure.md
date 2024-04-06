@@ -32,7 +32,21 @@ Our calculations are the only thing so far that actually need to be shared betwe
 
 And we also have our `FastAPI` application instance which only needs to know about the endpoints.
 
-So lets sketch this conceptual model out for ourselves:
+So lets sketch a conceptual model out for ourselves:
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-06 at 13.04.03.png" alt=""><figcaption><p>Conceptual sketch of our system components</p></figcaption></figure>
+
+Our API and our CLI are just a kind of interface to our application. Really they just provide a means of interacting with our system. The domain logic can sit right in the heart of our system and serve the upstream components as and when needed. Ideally we should keep the components at the edge of our system, in our case the API and the CLI free of domain logic. Those components should only reach downwards into the domain core to get what they need to service their own users.
+
+{% hint style="info" %}
+If you imagine a busy restaurant, as customers we interact with the waiters. We give them our orders and they take that order to the kitchen so that the chefs can prepare our food. Our API and CLI are simply different waiters in this analogy. The kitchen represents the domain logic, whilst the prepared food is equivalent to the calculated answers we get back from the domain logic.&#x20;
+{% endhint %}
+
+***
+
+
+
+
 
 
 
