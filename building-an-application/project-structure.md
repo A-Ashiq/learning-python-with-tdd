@@ -44,9 +44,30 @@ If you imagine a busy restaurant, as customers we interact with the waiters. We 
 
 ***
 
+## Directory structure
 
+Taking the conceptual model we've just sketched out for ourselves. Lets now apply this to how we think our new folder structure should look:
 
+```sh
+|- domain/
+    |- taxes.py
+|- interfaces/
+    |- api/
+        |- main.py
+        |- taxes.py
+    |- cli/
+        ...
+|- tests/
+    ... 
+```
 
+Our `api/` and `cli/` directories can be placed within an `interfaces/` directory. The `main.py` of the `api/` folder can hold our application instance, whereas the `interfaces/api/taxes.py` file can house the `GET` `income-taxes` endpoint that we've already written.
+
+We don't know exactly what the `cli` component will look like just yet. But it's fine to assume that we can keep it contained within that folder.
+
+***
+
+##
 
 
 
