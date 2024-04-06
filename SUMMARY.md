@@ -41,4 +41,3 @@
 * [Application server](building-an-application/application-server.md)
 * [Bug fixing](building-an-application/bug-fixing.md)
 * [Command line interface](building-an-application/command-line-interface.md)
-* [Authentication](building-an-application/authentication.md)
