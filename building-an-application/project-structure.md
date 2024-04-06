@@ -6,7 +6,7 @@ So far we've not paid a whole lot of attention to our project structure. We've p
 
 As a bit of a spoiler alert for the next section, we've heard it from the grapevine that our product owner is going to ask us to build a command line interface (CLI) for our application.
 
-Although we could quite easily just continue adding to our `main.py` file, we would be creating a bit of mess from a structural perspective.&#x20;
+Although we could quite easily just continue adding to our `main.py` file, we would be creating a bit of mess from a structural perspective. If we keep going down this road, our project is going to become unwieldy and difficult to extend and add more things to.
 
 In this section we are going to redesign our project structure so that we have clearer boundaries between the different parts of our system. This might feel like additional work which doesn't bring about any new functionality but this will pay dividends for us later down the line.
 
