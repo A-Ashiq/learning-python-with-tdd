@@ -76,3 +76,4 @@ We don't know exactly what the `cli` component will look like just yet. But it's
 ## References
 
 * [Structured Programming with go to Statements | Donald E. Knuth](https://dl.acm.org/doi/10.1145/356635.356640)
+* [The Clean Architecture | Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
