@@ -53,15 +53,18 @@ Taking the conceptual model we've just sketched out for ourselves. Lets now appl
     |- taxes.py
 |- interfaces/
     |- api/
+        |- __init__.py
         |- main.py
-        |- taxes.py
+        |- routers/
+            |- __init__.py
+            |- taxes.py
     |- cli/
         ...
 |- tests/
     ... 
 ```
 
-Our `api/` and `cli/` directories can be placed within an `interfaces/` directory. The `main.py` of the `api/` folder can hold our application instance, whereas the `interfaces/api/taxes.py` file can house the `GET` `income-taxes` endpoint that we've already written.
+Our `api/` and `cli/` directories can be placed within an `interfaces/` directory. The `main.py` of the `api/` folder can hold our application instance, whereas the `interfaces/api/routers/taxes.py` file can house the `GET` `income-taxes` endpoint that we've already written. Note that the `routers/` setup is a `FastAPI` specific way of doing things.
 
 We don't know exactly what the `cli` component will look like just yet. But it's fine to assume that we can keep it contained within that folder.
 
