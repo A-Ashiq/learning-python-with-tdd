@@ -82,9 +82,19 @@ The `-p` flag of the `mkdir` command creates folders recursively for us. So the 
 
 * `domain/`
 * `interfaces/`
-* `interfaces/api`/
+* `interfaces/api/`
 * `interfaces/api/routers/`
 * `interfaces/cli/`
+
+This is the same as:
+
+```
+|- domain/
+|- interfaces/
+    |- api/
+        |- routers/
+    |- cli/
+```
 
 ***
 
