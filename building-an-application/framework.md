@@ -64,7 +64,7 @@ And that's about it for installing the framework. We have the libraries we need 
 
 But before we move on we need to declare our project dependencies and commit them to version control.
 
-If you cast your mind back to the section on [project dependencies](../getting-started/environment-setup.md) you'll realise we have done this before.
+If you cast your mind back to the section on [project dependencies](../getting-started/environment-setup.md#project-dependencies) you'll realise we have done this before.
 
 So once again drop into your terminal with the following command:
 
