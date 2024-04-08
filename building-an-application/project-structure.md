@@ -48,7 +48,7 @@ If you imagine a busy restaurant, as customers we interact with the waiters. We 
 
 Taking the conceptual model we've just sketched out for ourselves. Lets now apply this to how we think our new folder structure should look:
 
-```sh
+```
 |- domain/
     |- taxes.py
 |- interfaces/
@@ -117,6 +117,22 @@ Most modern IDEs like Pycharm or VS Code have really useful refactoring tools, i
 In doing so, they will redo all imports for us too, which is worth its weight in gold.
 
 <figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.00.42.png" alt=""><figcaption></figcaption></figure>
+
+And now lets also move the tests into the correct place. Lets make the directories we need:
+
+```sh
+mkdir -p tests/unit/domain
+```
+
+And then lets make the test file that we need:
+
+```sh
+touch tests/unit/domain/test_taxes.py
+```
+
+With that in place, we can use the `Move` tool to move the existing test class `TestCalculateIncomeTaxOwed` to the new `tests/unit/domain/test_taxes.py` file.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.13.46.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
