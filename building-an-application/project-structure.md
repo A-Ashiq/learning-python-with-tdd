@@ -116,7 +116,7 @@ Most modern IDEs like Pycharm or VS Code have really useful refactoring tools, i
 
 In doing so, they will redo all imports for us too, which is worth its weight in gold.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.00.42.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.00.42.png" alt=""><figcaption><p>Screenshot from Pycharm for moving the <code>calculate_income_tax_owed()</code> into the interfaces layer</p></figcaption></figure>
 
 And now lets also move the tests into the correct place. Lets make the directories we need:
 
@@ -132,7 +132,7 @@ touch tests/unit/domain/test_taxes.py
 
 With that in place, we can use the `Move` tool to move the existing test class `TestCalculateIncomeTaxOwed` to the new `tests/unit/domain/test_taxes.py` file.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.13.46.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.13.46.png" alt=""><figcaption><p>Screenshot from Pycharm for moving the <code>TestCalculateIncomeTaxOwed</code> into the unit tests file</p></figcaption></figure>
 
 ***
 
@@ -148,7 +148,15 @@ touch interfaces/api/main.py interfaces/api/__init__.py
 
 And finally, lets use the `Move` tool again, to move the `app` which was previously at `main.py` to instead be located in `interfaces.api/main.py`
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 22.09.44.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 22.09.44.png" alt=""><figcaption><p>Screenshot from Pycharm for moving the main <code>FastAPI</code> app instance</p></figcaption></figure>
+
+***
+
+
+
+
+
+
 
 ***
 
