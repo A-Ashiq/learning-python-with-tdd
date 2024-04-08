@@ -98,9 +98,27 @@ This is the same as:
 
 ***
 
-##
+## Setting up the domain layer
 
+Our function `calculate_income_tax_owed()` is currently in the `main.py` file. It is also our only real bit of domain logic right now.
 
+To set up our domain layer, we will need to make a new file and move that function into that file.
+
+To begin with, lets make the new file:
+
+```sh
+touch domain/taxes.py
+```
+
+Most modern IDEs like Pycharm or VS Code have really useful refactoring tools, including tools to move functions and classes from 1 file to another.&#x20;
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 20.55.22.png" alt=""><figcaption><p>Screenshot of <code>Move</code> refactoring tool in Pycharm</p></figcaption></figure>
+
+In doing so, they will redo all imports for us too, which is worth its weight in gold.
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 20.57.40.png" alt=""><figcaption></figcaption></figure>
+
+***
 
 
 
