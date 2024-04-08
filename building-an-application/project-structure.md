@@ -136,7 +136,19 @@ With that in place, we can use the `Move` tool to move the existing test class `
 
 ***
 
+## Creating a home for the main app
 
+We also know that we need to make a new home for our main `FastAPI` application instance.
+
+So lets go ahead and create the files we need:
+
+```sh
+touch interfaces/api/main.py interfaces/api/__init__.py
+```
+
+And finally, lets use the `Move` tool again, to move the `app` which was previously at `main.py` to instead be located in `interfaces.api/main.py`
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 22.09.44.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
