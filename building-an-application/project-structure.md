@@ -70,7 +70,27 @@ We don't know exactly what the `cli` component will look like just yet. But it's
 
 ***
 
+## Restructuring the project
+
+To begin with lets create the new folders that we'll need:
+
+```sh
+mkdir -p domain interfaces/api/routers interfaces/cli
+```
+
+The `-p` flag of the `mkdir` command creates folders recursively for us. So the above command will create the following:
+
+* `domain/`
+* `interfaces/`
+* `interfaces/api`/
+* `interfaces/api/routers/`
+* `interfaces/cli/`
+
+***
+
 ##
+
+
 
 
 
