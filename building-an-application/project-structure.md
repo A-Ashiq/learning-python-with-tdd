@@ -116,7 +116,7 @@ Most modern IDEs like Pycharm or VS Code have really useful refactoring tools, i
 
 In doing so, they will redo all imports for us too, which is worth its weight in gold.
 
-<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 20.57.40.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-08 at 21.00.42.png" alt=""><figcaption></figcaption></figure>
 
 ***
 
