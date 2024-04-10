@@ -253,6 +253,10 @@ Now our `tests/` directory should look something like:
 
 And whilst we're at it we will want to add `__init__.py` files throughout the `tests/` directory.
 
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-four).
+{% endhint %}
+
 ***
 
 ## References

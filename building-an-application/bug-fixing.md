@@ -103,3 +103,7 @@ Process finished with exit code 0
 Our logic for calculating income taxes is still missing some key features. In particular, the core functionality of calculating for _additional_ rate tax payers has not been added. This is for salaries over £125,140.
 
 This would be a great chance for you to dig in and build out the implementation for this by yourself.
+
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-three).
+{% endhint %}

@@ -364,6 +364,10 @@ test_main.py::TestCalculateIncomeTaxOwed::test_calculates_for_higher_rate_bandin
 Process finished with exit code 0
 ```
 
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-two).
+{% endhint %}
+
 ***
 
 ## References
