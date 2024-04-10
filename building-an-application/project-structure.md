@@ -152,7 +152,59 @@ And finally, lets use the `Move` tool again, to move the `app` which was previou
 
 ***
 
+## Splitting the API by routes
 
+When dealing with larger applications, we often want to split our API into groups. [Flask uses blueprints](https://flask.palletsprojects.com/en/2.3.x/blueprints/) to acheive this. [FastAPI uses the concept of an `APIRouter`](https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter). They are pretty similar just dressed up a little different.
+
+The idea being we register our endpoints on an `APIRouter` instance. And then we can register the `APIRouter` on the main `FastAPI` app instance to wire it up to the application.
+
+Lets add the files we need:
+
+```sh
+touch interfaces/api/routers/__init__.py interfaces/api/routers/taxes.py
+```
+
+Once this is done, we can go and set up our first `APIRouter` and wire the endpoint into it:
+
+{% code lineNumbers="true" %}
+```python
+from fastapi import APIRouter
+
+from domain.taxes import calculate_income_tax_owed
+
+router = APIRouter()
+
+
+@router.get(path="/income-taxes")
+def calculate_income_taxes(salary: float) -> dict[str, float]:
+    tax_owed: float = calculate_income_tax_owed(salary=salary)
+    return {"tax owed": tax_owed}
+    
+```
+{% endcode %}
+
+The way in which we interact with the `APIRouter` is exactly the same as when we were previously wiring the endpoints straight into main `FastAPI` app instance, which happens to be a great design approach which has made our lives easier!
+
+Once this is in place, we can get rid of the original `main.py` file as we no longer need it:
+
+```sh
+rm main.py
+```
+
+And the last thing we need to do is to register the `APIRouter` into the main `FastAPI` app instance:
+
+{% code lineNumbers="true" %}
+```python
+from fastapi import FastAPI
+from .routers import taxes
+
+app = FastAPI()
+app.include_router(router=taxes.router)
+
+```
+{% endcode %}
+
+##
 
 
 
