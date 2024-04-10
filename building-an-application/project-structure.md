@@ -204,11 +204,54 @@ app.include_router(router=taxes.router)
 ```
 {% endcode %}
 
-##
+***
 
+## Updating the tests directory to reflect the source code
 
+We have 1 more little task left. We need to make sure that the `tests/` directory reflects the changes we've made to the project structure of the source code.
 
+Currently our `tests/` directory looks like the following:
 
+```
+|- tests/
+    |- integration/
+        |- test_main.py
+    |- unit/
+        |- domain/
+            |- test_taxes.py
+```
+
+The `test_taxes.py` file is in the correct position but the `test_main.py` in the `integration/` subdirectory does not reflect what we have now.&#x20;
+
+We know that the tests in the `test_main.py` file hit the `GET /income-taxes` endpoint. This is now brought about via the `APIRouter` we just created and wired up.
+
+So lets tee up the directories that we need in the correct place:
+
+```sh
+mkdir -p tests/integration/interfaces/api/routers
+```
+
+And then let's use the `mv` command to move the original test file into the correct place and rename it in 1 fell swoop:
+
+```sh
+mv tests/integration/test_main.py tests/integration/interfaces/api/routers/test_taxes.py
+```
+
+Now our `tests/` directory should look something like:
+
+```
+|- tests/
+    |- integration/
+        |- interfaces/
+            |- api/
+                |- routers/
+                    |- test_taxes.py
+    |- unit/
+        |- domain/
+            |- test_taxes.py
+```
+
+And whilst we're at it we will want to add `__init__.py` files throughout the `tests/` directory.
 
 ***
 
