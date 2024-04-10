@@ -263,3 +263,5 @@ You can find the code for this chapter at the [Github repo](https://github.com/A
 
 * [Structured Programming with go to Statements | Donald E. Knuth](https://dl.acm.org/doi/10.1145/356635.356640)
 * [The Clean Architecture | Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+* [Bigger Applications | FastAPI official documentation](https://fastapi.tiangolo.com/tutorial/bigger-applications/#apirouter)
+* [Modular Applications with Blueprints | Flask official documentation](https://flask.palletsprojects.com/en/2.3.x/blueprints/)
