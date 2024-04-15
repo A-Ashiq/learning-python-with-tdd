@@ -35,6 +35,75 @@ pip freeze > requirements.txt
 
 ***
 
+## Writing the test first
+
+To begin with we'll need our test folders and files. So lets tee up the correct folder:
+
+```sh
+mkdir -p tests/integration/interfaces/cli/modules
+```
+
+And lets add the test files we need:
+
+```sh
+touch tests/integration/interfaces/cli/modules/test_taxes.py tests/integration/interfaces/cli/modules/__init__.py
+```
+
+And now we're ready to start writing the test in the new file `tests/integration/interfaces/cli/modules/test_taxes.py`:
+
+{% code lineNumbers="true" %}
+```python
+from click.testing import Result
+from typer.testing import CliRunner
+
+from cli import app
+
+runner = CliRunner()
+
+
+class TestCalculateIncomeTaxed:
+    def test_returns_correct_calculation(self):
+        """
+        Given a salary of £10,000
+        When the `taxes calculate-income-taxes` command is called
+        Then the correct calculation is returned in the standard output
+        """
+        # Given
+        salary = 10_000
+        main_module_name = "taxes"
+        sub_module_name = "calculate-income-taxes"
+        cli_runner = CliRunner()
+
+        # When
+        result: Result = cli_runner.invoke(app=app, args=[main_module_name, sub_module_name, str(salary)])
+
+        # Then
+        assert result.exit_code == 0
+        assert "£0" in result.stdout
+
+```
+{% endcode %}
+
+In this test we describe how we want to call our CLI with the command:
+
+```
+taxes calculate-income-taxes 10000
+```
+
+We initialize the `CliRunner` from the `typer` library and provide the main `app` instance to be consumed by it.
+
+On line 26, we check that the exit code of the result is 0. This exit code indicates that everything went just fine, consider it to be the happy path. A non-zero exit code normally indicates that something went wrong.
+
+On line 27, we check `stdout` which is the stream in which programs write output to the main environment. This is how we can interact to and from the running program via our CLI.
+
+Note that right now, the import on line 4 which brings in the main `app` instance will throw an error because we have not yet defined that `app` instance or that file.
+
+***
+
+
+
+***
+
 ## References
 
 * [Argparse | Python official documentation](https://docs.python.org/3/library/argparse.html)
