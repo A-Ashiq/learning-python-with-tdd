@@ -100,7 +100,34 @@ Note that right now, the import on line 4 which brings in the main `app` instanc
 
 ***
 
+## Creating the CLI application instance
 
+We'll need to create the object which represents the CLI application.
+
+Lets make a file at the root level of our project. We'll put it at the root level of the codebase primarily so we can get to it easily when issuing commands from the terminal:
+
+```renpy
+touch cli.py
+```
+
+And within that file we should instantiate the CLI application:
+
+{% code lineNumbers="true" %}
+```python
+from typer import Typer
+
+app = Typer()
+
+
+if __name__ == "__main__":
+    app()
+
+```
+{% endcode %}
+
+Take note of line 6, which means only execute the code block below if the file, in this case `cli.py` is being called directly. If it is being imported then only execute the code outside of this block.&#x20;
+
+This allows us to define what should happen if we call the file and differentiate this from when other files simply import code from within this file.
 
 ***
 
