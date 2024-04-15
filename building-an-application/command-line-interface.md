@@ -131,8 +131,79 @@ This allows us to define what should happen if we call the file and differentiat
 
 ***
 
+## Implement the solution
+
+Now that we have the main CLI application ready, we are in a position to wire up the new component into this application object. This component will represent a kind of route but for the CLI application instead.
+
+So lets tee up the files that we need:
+
+```sh
+touch interfaces/cli/modules/taxes.py interfaces/cli/modules/__init__.py interfaces/cli/__init__.py
+```
+
+And now lets drop into the new `interfaces/cli/modules/taxes.py` file:
+
+{% code lineNumbers="true" %}
+```python
+from typer import Typer
+
+from domain.taxes import calculate_income_tax_owed
+
+app = Typer()
+
+
+@app.command()
+def calculate_income_taxes(salary: float) -> None:
+    calculated_tax: float = calculate_income_tax_owed(salary=salary)
+    print(f"£{calculated_tax}")
+
+```
+{% endcode %}
+
+On line 1, we import the `Typer` class from the `typer` library and instantiate it on line 5. If this feels like deja vu and looks familiar then your instincts would be correct. The API to the `typer` library is very similar to that of `FastAPI`.
+
+On line 9, we define a new function and decorate it with `app.command()`. The `typer` library consumes these functions in the same way `FastAPI` does, the parameters we define are used as the arguments to the CLI command along with associated type hints.&#x20;
+
+{% hint style="info" %}
+Docstrings are also consumed and displayed but we've not provided any yet.
+{% endhint %}
+
+On line 10, we adopt the approach we've already agreed on in terms of taking the input and passing it to the domain layer for the calculation to be performed.
+
+And finally on line 11, we print the result to the terminal. Remember that we are building a CLI here, so we do want our results to be printed to `stdout`. Also note that we are simply printing to `stdout` currently. The `typer` library comes bundled with `rich`,  which allows us to add formatting and styling to the content which is published to `stdout`, including markup, tables and colours.
+
+***
+
+## Wiring the route up to the CLI app
+
+And now the last thing for us to do is to wire up our `taxes` command into the CLI application.
+
+{% code lineNumbers="true" %}
+```python
+from typer import Typer
+from interfaces.cli.modules import taxes
+
+app = Typer()
+app.add_typer(typer_instance=taxes.app, name="taxes")
+
+
+if __name__ == "__main__":
+    app()
+
+```
+{% endcode %}
+
+On line 2 we import our `taxes` module into the main `cli.py` file.
+
+On line 5 we wire up that `Typer` instance into the main `Typer` CLI application instance.\
+The `add_typer()` method is similar to the `register_endpoint()` method we saw when wiring `Router` objects up to the `FastAPI` application instance.\
+The `name` parameter to the `add_typer()` method represents the main module name of the command.
+
+***
+
 ## References
 
 * [Argparse | Python official documentation](https://docs.python.org/3/library/argparse.html)
 * [Click official documentation](https://click.palletsprojects.com/en/)
 * [Place official documentation](https://plac.readthedocs.io/en/latest/)
+* [Rich official documentation](https://rich.readthedocs.io/en/stable/introduction.html)
