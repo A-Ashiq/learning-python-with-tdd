@@ -19,6 +19,22 @@ The `typer` library provides a similar API to that of `FastAPI` so we're going t
 
 ***
 
+## Installing the dependency
+
+We've been around this block before. So lets install the `typer` library within our project:
+
+```sh
+pip install typer
+```
+
+And finally, to pin it within our project dependencies:
+
+```sh
+pip freeze > requirements.txt
+```
+
+***
+
 ## References
 
 * [Argparse | Python official documentation](https://docs.python.org/3/library/argparse.html)
