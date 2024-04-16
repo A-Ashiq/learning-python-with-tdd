@@ -205,6 +205,22 @@ You can find the code for this chapter at the [Github repo](https://github.com/A
 
 ***
 
+## Using the CLI
+
+In the same way in which we tested the application server manually in a [previous section](application-server.md). We're now going to do the same with the CLI we've just built.
+
+So lets drop into our terminal:
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-16 at 18.49.50.png" alt=""><figcaption></figcaption></figure>
+
+Entering this into our terminal will submit the command to our CLI and return the calculation:
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-16 at 18.49.59.png" alt=""><figcaption></figcaption></figure>
+
+And that is it. We've now built an application server along with a corresponding CLI. Both of which are calculated with the same domain core logic.
+
+***
+
 ## References
 
 * [Argparse | Python official documentation](https://docs.python.org/3/library/argparse.html)
