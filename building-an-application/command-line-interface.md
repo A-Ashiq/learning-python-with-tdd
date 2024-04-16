@@ -199,6 +199,10 @@ On line 5 we wire up that `Typer` instance into the main `Typer` CLI application
 The `add_typer()` method is similar to the `register_endpoint()` method we saw when wiring `Router` objects up to the `FastAPI` application instance.\
 The `name` parameter to the `add_typer()` method represents the main module name of the command.
 
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-five).
+{% endhint %}
+
 ***
 
 ## References
