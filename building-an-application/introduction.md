@@ -34,4 +34,6 @@ Convention dictates that we name this folder `venv/` or `.venv/`. Either will do
 
 ***
 
+{% hint style="info" %}
 You will be able to reference the source code for this chapter at the [Github repository](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application).
+{% endhint %}
