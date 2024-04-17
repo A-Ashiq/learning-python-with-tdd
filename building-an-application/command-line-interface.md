@@ -199,10 +199,6 @@ On line 5 we wire up that `Typer` instance into the main `Typer` CLI application
 The `add_typer()` method is similar to the `register_endpoint()` method we saw when wiring `Router` objects up to the `FastAPI` application instance.\
 The `name` parameter to the `add_typer()` method represents the main module name of the command.
 
-{% hint style="info" %}
-You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-five).
-{% endhint %}
-
 ***
 
 ## Using the CLI
@@ -218,6 +214,10 @@ Entering this into our terminal will submit the command to our CLI and return th
 <figure><img src="../.gitbook/assets/Screenshot 2024-04-16 at 18.49.59.png" alt=""><figcaption></figcaption></figure>
 
 And that is it. We've now built an application server along with a corresponding CLI. Both of which are calculated with the same domain core logic.
+
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-five).
+{% endhint %}
 
 ***
 
