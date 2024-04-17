@@ -14,3 +14,10 @@ This can make our system easier to reason about and more extensible.
 
 
 
+
+
+
+
+{% hint style="info" %}
+You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
+{% endhint %}
