@@ -87,6 +87,8 @@ This is admittedly getting a little rough around the edges, but that is okay for
 
 And now if we run the tests they will now pass.&#x20;
 
+Our solution is still missing the [personal allowance taper logic](api-endpoint.md#subject-matter-expertise) so it is still not where we might want it to be. But the crucial thing is we've moved another step forward in the right direction.
+
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
 {% endhint %}
