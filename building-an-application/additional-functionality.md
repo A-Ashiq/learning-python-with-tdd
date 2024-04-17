@@ -61,7 +61,7 @@ And now lets go ahead and write a solution to wrap the logic we need to satisfy 
 def calculate_income_tax_owed(salary: float) -> float:
     tax_free_allowance = 12_570
     basic_rate_threshold = 50_270
-    higher_rate_threshold = 125140
+    higher_rate_threshold = 125_140
 
     if salary <= tax_free_allowance:
         return 0
