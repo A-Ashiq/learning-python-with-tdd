@@ -103,7 +103,83 @@ So how do write tests which can tie together these components and verify that th
 
 Casting our minds back to the [mocking chapter](../fundementals/mocking.md) and we already have the tools to do this.
 
+***
+
+## Contract tests
+
 When we want to write tests to verify the contract between 2 components we can simply mock 1 of them and cast assertions on how the collaborating component is being called.
+
+### Contract test for the CLI
+
+To begin with we can take our CLI component and write a contract test for it. In this test we will want to verify that the input `salary` figure which is received from the user input from the command line is passed to the call to the domain function, `calculate_income_tax_owed()`. We can also check to see if the returned value from the function is used in the output of the CLI.
+
+So to get started with this we will need a new package within the tests folder. This time you can add the folders and files for yourself:
+
+```
+|- tests/                            # already exists
+    |- unit/                         # already exists
+        |- interfaces/               # to be added
+            |- __init__.py           # to be added
+            |- cli/                  # to be added
+                |- __init__.py       # to be added
+                |- modules/          # to be added
+                    |- __init__.py   # to be added
+                    |- test_taxes.py # to be added
+```
+
+&#x20;Once this is done, we can drop into our new test file at `tests/unit/interfaces/cli/modules/test_taxes.py`:
+
+{% code lineNumbers="true" %}
+```python
+from unittest import mock
+
+from cli import app
+from click.testing import Result
+from typer.testing import CliRunner
+
+MODULE_PATH = "interfaces.cli.modules.taxes"
+
+
+class TestCalculateIncomeTaxes:
+    @mock.patch(f"{MODULE_PATH}.calculate_income_tax_owed")
+    def test_delegates_call_to_domain_logic(
+        self, spy_calculate_income_tax_owed: mock.MagicMock
+    ):
+        """
+        Given a salary of £10,000
+        When the `taxes calculate-income-taxes` command is called
+        Then the call is delegated to `calculate_income_tax_owed()`
+            to perform the calculation
+        """
+        # Given
+        salary = 10_000
+        cli_runner = CliRunner()
+
+        # When
+        result: Result = cli_runner.invoke(
+            app=app, args=["taxes", "calculate-income-taxes", str(salary)]
+        )
+
+        # Then
+        spy_calculate_income_tax_owed.assert_called_once_with(salary=salary)
+
+        returned_calculation = spy_calculate_income_tax_owed.return_value
+        assert f"£{returned_calculation}" in result.stdout
+
+```
+{% endcode %}
+
+On line 7 we define a constant called `MODULE_PATH` which is a string which represents the path to the file in which the thing we are about to test lives. The crucial thing to note is that because we are testing the CLI component, the target path of our mock should there at the entrypoint as opposed to where the function was orginally defined.
+
+On line 26-28 we invoke the CLI in the same way as we've seen with a [previous test that we've already written.](command-line-interface.md#writing-the-test-first) The difference here is that the underlying domain function, `calculate_income_tax_owed()` has been mocked out.
+
+On line 31 we verify the contract between the CLI component and the `calculate_income_tax_owed()` by checking the arguments which were passed from the caller (the CLI component) to the callee (the domain function). Take note of the `assert_called_once_with()` method which is simply a convenience method available to us on the mock object.
+
+And on line 33, we capture the return value of the mocked function. It should be noted that because we've mocked it out, this is not the actual computed value. Because the calculation has not taken place due to the fact that we mocked it out. This can be a little confusing at first, so spend some time mulling this over. Drop into a debugger and see for yourself.
+
+And finally on line 34 we use the returned value from the mock to verify it was consumed correctly by the thing we are testing i.e. CLI component.
+
+And with all that in place we have a half decent test in place which is testing the contract between 1 of our interface components and the domain layer.
 
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
