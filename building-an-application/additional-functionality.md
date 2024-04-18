@@ -89,6 +89,22 @@ And now if we run the tests they will now pass.&#x20;
 
 Our solution is still missing the [personal allowance taper logic](api-endpoint.md#subject-matter-expertise) so it is still not where we might want it to be. But the crucial thing is we've moved another step forward in the right direction.
 
+***
+
+## Tying everything together
+
+We've now estabilshed our design, the API and CLI components simply call out to the domain logic which lives further downstream to get the things they need.&#x20;
+
+<figure><img src="../.gitbook/assets/Screenshot 2024-04-18 at 21.08.35.png" alt="" width="301"><figcaption></figcaption></figure>
+
+When it comes to testing these components we shouldn't need to repeat the same tests across both the interface layers for say a given list of inputs. This would be repeating the same tests over and over.&#x20;
+
+So how do write tests which can tie together these components and verify that the contract between them is holding up as we expect it to?
+
+Casting our minds back to the [mocking chapter](../fundementals/mocking.md) and we already have the tools to do this.
+
+When we want to write tests to verify the contract between 2 components we can simply mock 1 of them and cast assertions on how the collaborating component is being called.
+
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
 {% endhint %}
