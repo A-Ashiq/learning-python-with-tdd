@@ -8,7 +8,7 @@ If by the end of this course, you've found this to be useful. Then you might wan
 
 ## Context
 
-I have been working as a software engineer for a number of years now. With my last couple of years spent leading teams. During this time I've tried a few things for both myself and the people around me.
+My name is Afaan Ashiq and I have been working as a software engineer for a number of years now. With my last couple of years spent leading teams. During this time I've tried a few things for both myself and the people around me.
 
 ### Why am I building this course?
 
