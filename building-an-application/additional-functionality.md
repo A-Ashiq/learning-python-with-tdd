@@ -247,7 +247,7 @@ By and large this test looks pretty similar to the one we wrote for the CLI comp
 
 And that's about it, now that we've got our contract tests in place we can sleep better at night!
 
-But we've started to repeat things in some of our tests, particularly around the `TestClient` and the `CliRunner` for example. Next up, we'll look at some techniques for how we can address this duplication and encourage reuseability in our test suite.
+But we've started to repeat things in some of our tests, particularly around the `TestClient` and the `CliRunner` for example. Later on, we'll look at some techniques for how we can address this duplication and encourage reuseability in our test suite.
 
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
