@@ -181,6 +181,74 @@ And finally on line 34 we use the returned value from the mock to verify it was 
 
 And with all that in place we have a half decent test in place which is testing the contract between 1 of our interface components and the domain layer.
 
+### Contract test for the API
+
+The next step for us would be to write another contract test, this time we want to verify the contract between our API component and the domain logic that it depends on.
+
+Similar to what we've just done, in this test we'll want to verify that the input `salary` figure which is received from the HTTP request is passed to the call to the domain function, `calculate_income_tax_owed()`. Again, we can also check to see if the returned value from the function is used in the HTTP response.
+
+And the same as before, we'll need a new package within the tests folder. So go ahead and add the following files and folders:
+
+```
+|- tests/                            # already exists
+    |- unit/                         # already exists
+        |- interfaces/               # already exists
+            |- __init__.py           # already exists
+            |- api/                  # to be added
+                |- __init__.py       # to be added
+                |- routers/          # to be added
+                    |- __init__.py   # to be added
+                    |- test_taxes.py # to be added
+```
+
+And with that structure in place, we can head over to our new `tests/unit/interfaces/api/routers/test_taxes.py` file:
+
+{% code lineNumbers="true" %}
+```python
+from unittest import mock
+
+from starlette.testclient import TestClient
+
+from interfaces.api.main import app
+
+
+MODULE_PATH = "interfaces.api.routers.taxes"
+
+
+class TestCalculateIncomeTaxes:
+    @mock.patch(f"{MODULE_PATH}.calculate_income_tax_owed")
+    def test_delegates_call_to_domain_logic(
+        self, spy_calculate_income_tax_owed: mock.MagicMock
+    ):
+        """
+        Given a salary of £10,000
+        When a GET request is made to the `income-taxes/` endpoint
+        Then the call is delegated to `calculate_income_tax_owed()`
+            to perform the calculation
+        """
+        # Given
+        test_client = TestClient(app=app)
+        salary = 10_000
+        spy_calculate_income_tax_owed.return_value = 123
+
+        # When
+        response = test_client.get("/income-taxes", params={"salary": salary})
+
+        # Then
+        spy_calculate_income_tax_owed.assert_called_once_with(salary=salary)
+
+        returned_calculation = spy_calculate_income_tax_owed.return_value
+        assert response.json() == {"tax owed": returned_calculation}
+
+```
+{% endcode %}
+
+By and large this test looks pretty similar to the one we wrote for the CLI component, the main exception being on line 34 where we verify the use of the mocked function in the output.
+
+And that's about it, now that we've got our contract tests in place we can sleep better at night!
+
+But we've started to repeat things in some of our tests, particularly around the `TestClient` and the `CliRunner` for example. Next up, we'll look at some techniques for how we can address this duplication and encourage reuseability in our test suite.
+
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-six).
 {% endhint %}
