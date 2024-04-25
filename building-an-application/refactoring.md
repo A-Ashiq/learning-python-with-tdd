@@ -54,15 +54,15 @@ def _calculate_basic_rate_tax_owed(salary) -> float:
 
 def _calculate_higher_rate_tax_owed(salary) -> float:
     return (HIGHER_RATE_THRESHOLD - PERSONAL_ALLOWANCE_THRESHOLD) * 0.20 + (
-            salary - HIGHER_RATE_THRESHOLD
+        salary - HIGHER_RATE_THRESHOLD
     ) * 0.40
 
 
 def _calculate_additional_rate_tax_owed(salary) -> float:
     return (
-            (HIGHER_RATE_THRESHOLD - PERSONAL_ALLOWANCE_THRESHOLD) * 0.20
-            + (ADDITIONAL_RATE_THRESHOLD - HIGHER_RATE_THRESHOLD) * 0.40
-            + (salary - ADDITIONAL_RATE_THRESHOLD) * 0.45
+        (HIGHER_RATE_THRESHOLD - PERSONAL_ALLOWANCE_THRESHOLD) * 0.20
+        + (ADDITIONAL_RATE_THRESHOLD - HIGHER_RATE_THRESHOLD) * 0.40
+        + (salary - ADDITIONAL_RATE_THRESHOLD) * 0.45
     )
 
 ```
