@@ -43,3 +43,4 @@
 * [Project structure](building-an-application/project-structure.md)
 * [Command line interface](building-an-application/command-line-interface.md)
 * [Additional functionality](building-an-application/additional-functionality.md)
+* [Refactoring](building-an-application/refactoring.md)
