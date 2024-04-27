@@ -84,7 +84,9 @@ If we run our tests again, they will still pass.
 
 ## A note about private functions
 
-Private functions in Python are defined as functions or methods with a leading `_` . As in the name of the function must start with `_`. As you might have guessed private functions in Python are also not quite enforced in the same way as other languages. There is nothing to stop you from defining it as is and importing it directly elsewhere.
+Private functions in Python are defined as functions or methods with a leading `_` . As in the name of the function must start with `_`. As you might have guessed private functions in Python are also not quite enforced in the same way as other languages. There is nothing to actually stop you from defining it as is and importing it directly elsewhere.
+
+Private functions should generally be used in cases whereby we perhaps want to split logic up as we've done here but we didn't want those individual pieces of logic to be used directly. If something is private, the design intent is very much that it should not be called directly. Rather it should form part of the public API of a component, whereby the caller is unaware of this. As such, we'd consider this to be an implementation detail that is being abstracted away from the caller.
 
 {% hint style="info" %}
 You can find the code for this chapter at the [Github repo](https://github.com/A-Ashiq/learning-python-with-tdd-building-an-application-part-seven/).
