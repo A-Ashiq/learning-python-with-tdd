@@ -68,7 +68,7 @@ def _calculate_additional_rate_tax_owed(salary: float) -> float:
 ```
 {% endcode %}
 
-See the difference now? The `calculate_income_tax_owed()` has become a lot simpler and easier to read. It delegates the responsibility of performing the calculation to our new private functions according to thresholds.&#x20;
+See the difference now? The `calculate_income_tax_owed()` function has become a lot simpler and easier to read. It delegates the responsibility of performing the calculation to our new private functions according to thresholds.&#x20;
 
 We've moved the thresholds to the upper scope of the file because they are shared between the calculations.
 
@@ -78,7 +78,7 @@ The thresholds could really do with being injected into the calculation function
 
 In other languages, there is the concept of **constants**. Constants are similar to variables the key difference being that they cannot be changed after being initialized. Python does not support constants but it does have a convention to indicate a constant. Variables defined in capital letters are to be considered as constants. We've made use of this convention on lines 1-3.
 
-If we run our tests again, they will still pass.
+If we run our tests again, they will still pass. Remember we should be able to complete the refactor without the tests failing.
 
 ***
 
