@@ -34,6 +34,8 @@ A lot of the time, I'd learn syntax or the rough outline of concepts but I was m
 
 The intention for this is to stand up as a thorough course. To teach the reader the fundementals of good software engineering. To demonstrate how to write effective tests and why this should be the first big thing you learn. And then how this can underpin your daily work.
 
+This course is inspired by [Learn Go with Tests](https://quii.gitbook.io/learn-go-with-tests). Which is the way I first picked up Go.
+
 ### What this course is not
 
 Unfortunately the realm of software engineering is enourmous. And I'd be lying to you if I said I could cover all of it. In fact, I'd bet my house that if anyone made that claim then they would also be lying too! It would also be fair to say you won't learn the entire language by the end of this course. That would also be all but impossible.
