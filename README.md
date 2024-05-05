@@ -6,9 +6,7 @@ If by the end of this course, you've found this to be useful. Then you might wan
 
 This **course is free and always will be.**&#x20;
 
-{% hint style="info" %}
-But if you feel as though you managed to get something from this course, then I'd really appreciate a small contribution via [buy me a coffee](https://buymeacoffee.com/afaanashiq).
-{% endhint %}
+> But if you feel as though you managed to get something from this course, then I'd really appreciate a small contribution via [buy me a coffee](https://buymeacoffee.com/afaanashiq).
 
 ***
 
