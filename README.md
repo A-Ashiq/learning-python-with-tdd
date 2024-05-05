@@ -4,6 +4,12 @@ This course is an end-to-end step-by-step guide on building an applications in P
 
 If by the end of this course, you've found this to be useful. Then you might wanna [check out my blog](https://www.afaanashiq.com/) which is relatively up to date. Although it's been neglected a little whilst I've been writing this course!
 
+This **course is free and always will be.**&#x20;
+
+{% hint style="info" %}
+But if you feel as though you managed to get something from this course, then I'd really appreciate a small contribution via [buy me a coffee](https://buymeacoffee.com/afaanashiq).
+{% endhint %}
+
 ***
 
 ## Context
